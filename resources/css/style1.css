@@ -1,0 +1,29 @@
+.language {
+  float : right;
+  padding-right: 50px;
+}
+#select{
+  float : right;
+}
+#languageText{
+  float : left;
+  padding-right: 10px;
+}
+
+.english {
+  display: inline;
+}
+
+.navigation {
+  margin: 50px;
+}
+
+.navigation ul li {
+  float : left;
+  margin: 0px 10px;
+}
+
+.footer {
+  padding-top: 100px;
+  margin: 50px;
+}
