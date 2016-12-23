@@ -1,0 +1,24 @@
+{
+    "selectorText" : [
+        "Language: ",
+        "言語: "
+    ],
+    "navigation": [
+        [
+            "Home",
+            "例えば一"
+        ],
+        [
+            "Browse",
+            "例ニ"
+        ],
+        [
+            "Search",
+            "探す"
+        ],
+        [
+            "About",
+            "内容"
+        ]
+    ]
+}

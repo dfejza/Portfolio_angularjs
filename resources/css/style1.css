@@ -10,6 +10,12 @@
   padding-right: 10px;
 }
 
+.fake-link {
+    color: green;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .english {
   display: inline;
 }

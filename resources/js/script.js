@@ -1,40 +1,72 @@
-var languageSelect = document.getElementById('LanguageSelect');
 var selectedLanguage = readCookie('language');
+var json;
+language = {
+    ENGLISH : 0,
+    JAPANESE : 1
+}
+
+// Startup function
+$(document).ready(function(){
+
+  $.getJSON("/resources/data/data.json", function(result){
+    json = result;
+  })
+  // Wait for the asynchronus call to finish, or else the language contents are unknown
+  .done( function() {
+      //Load the cookies, remembering the last user setting
+    if(selectedLanguage== 'english')
+    {
+      $('#langSelect').val('english');
+      formatLanguage(language.ENGLISH);
+    }
+    if(selectedLanguage== 'japanese')
+    {
+      $('#langSelect').val('japanese');
+      formatLanguage(language.JAPANESE);
+    }
+  });
 
 
-// if ((selectedLanguage == 'english') ||
-// (selectedLanguage == 'japanese')
-// {
-//   $(".language select").val(selectedLanguage);
-//   var sel = $(".language select").val(selectedLanguage);
-//   if (selectedLanguage == 'english') {
-//     $(".english").css("display", "inline");
-//     $(".japanese").css("display", "none");
-//   } else if (selectedLanguage == 'japanese') {
-//     $(".english").css("display", "none");
-//     $(".japanese").css("display", "inline");
-//   }
-// }
 
-$(".language select").bind('change', function() {
-  //on change set cookie and...
-  setCookie('language', this.value, 365);
+  // Change text of the language select based off user lanuage
+  $('#langSelect').on('change', function() {
 
-  //change css depending on what is selected
-  var sel = $(".language select").val();
-  if (sel == 'english') {
-    $('#languageText').text('Language:');
-    // Change the JS object pointer to english
+    //on change set cookie and...
+    setCookie('language', this.value, 365);
 
-  } else if (sel == 'japanese') {
-    $('#languageText').text('gengo:');
-    // Change the JS object pointer to japanese
+    var sel = $('#langSelect').val();
 
-  }
+    if (sel == 'english') {
+
+      // Change the JS object pointer to english
+      formatLanguage(language.ENGLISH);
+
+    } else if (sel == 'japanese') {
+
+      // Change the JS object pointer to japanese
+      formatLanguage(language.JAPANESE);
+
+    }
+  });
+
 });
 
+// Function used to change the lanuage of the website.
+// Called when the selection from
+function formatLanguage(languageIndex) {
+      // Change the text found on the language selection
+      $('#languageText').text(json.selectorText[languageIndex]);
+
+      // Cycle through the navigation bar and change the language
+      $('.navigation li').each(function(i,e){
+        $(e).text(json.navigation[i][languageIndex]);
+      });
+}
+
+
+
 function saveLanguage(cookieValue) {
-  var sel = document.getElementById('LanguageSelect');
+  var sel = document.getElementById('langSelect');
   setCookie('language', cookieValue, 365);
 }
 
