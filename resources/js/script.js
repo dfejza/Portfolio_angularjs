@@ -1,4 +1,6 @@
-var selectedLanguage = readCookie('language');
+var langaugeCookie = readCookie('language');
+var selectedLanguage;
+var currentPage = "page0";
 var json;
 language = {
     ENGLISH : 0,
@@ -11,18 +13,19 @@ $(document).ready(function(){
   $.getJSON("/resources/data/data.json", function(result){
     json = result;
   })
-  // Wait for the asynchronus call to finish, or else the language contents are unknown
   .done( function() {
-      //Load the cookies, remembering the last user setting
-    if(selectedLanguage== 'english')
+      //Load the cookies, remembering the last user seetting
+    if(langaugeCookie== 'english')
     {
       $('#langSelect').val('english');
-      formatLanguage(language.ENGLISH);
+      selectedLanguage = language.ENGLISH;
+      formatPage();
     }
-    if(selectedLanguage== 'japanese')
+    if(langaugeCookie== 'japanese')
     {
       $('#langSelect').val('japanese');
-      formatLanguage(language.JAPANESE);
+      selectedLanguage = language.JAPANESE;
+      formatPage();
     }
   });
 
@@ -37,30 +40,55 @@ $(document).ready(function(){
     var sel = $('#langSelect').val();
 
     if (sel == 'english') {
-
+      selectedLanguage = language.ENGLISH;
       // Change the JS object pointer to english
-      formatLanguage(language.ENGLISH);
+      formatPage();
 
     } else if (sel == 'japanese') {
-
+      selectedLanguage = language.JAPANESE;
       // Change the JS object pointer to japanese
-      formatLanguage(language.JAPANESE);
+      formatPage();
 
     }
+  });
+
+  // Click listener for the page selection
+  $('ul').on('click', 'li.fake-link', function(){
+    loadPage(this.id);
   });
 
 });
 
 // Function used to change the lanuage of the website.
 // Called when the selection from
-function formatLanguage(languageIndex) {
+function formatPage() {
       // Change the text found on the language selection
-      $('#languageText').text(json.selectorText[languageIndex]);
+      $('#languageText').text(json.selectorText[selectedLanguage]);
 
       // Cycle through the navigation bar and change the language
       $('.navigation li').each(function(i,e){
-        $(e).text(json.navigation[i][languageIndex]);
+        $(e).text(json.navigation[i][selectedLanguage]);
       });
+
+      // Change the contents of the body by redrawing
+      // First remove
+      $('.dynamic').each(function(i,e){
+        $(e).remove();
+      });
+      // Next redraw
+      $.each(json[currentPage], function(i,e){
+        $('body').append(e.text[selectedLanguage]);
+      });
+}
+
+// Make everything dynamic.
+// Parse the json file and enumerate the page based off it's specs
+function loadPage(pageNum){
+  currentPage = pageNum;
+  formatPage();
+  // $.each(json[pageNum], function(i,e){
+  //   $('body').append(e.text[selectedLanguage]);
+  // });
 }
 
 

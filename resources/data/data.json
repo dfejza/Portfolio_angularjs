@@ -6,19 +6,38 @@
     "navigation": [
         [
             "Home",
-            "例えば一"
+            "ホーム"
         ],
         [
             "Browse",
-            "例ニ"
+            "バロース"
         ],
         [
             "Search",
-            "探す"
+            "検索条件"
         ],
         [
             "About",
-            "内容"
+            "紹介"
         ]
-    ]
+    ],
+    "page0": {
+        "header" : {
+            "text" : [ "<h1 class=\"dynamic\">Dardan Fejza</h1>", "<h1 class=\"dynamic\">Dardan Fejza</h1>"]
+        },
+        "subHeader" : {
+            "text" : [ "<h3 class=\"dynamic\">Software Engineer</h3>" ,"<h3 class=\"dynamic\">ソフトウェアエンジニア</h3>"]
+        }      
+    },
+    "page1": {
+        "header" : {
+            "text" : [ "<h1 class=\"dynamic\">NANAMI IS SPOILED</h1>","<h3 class=\"dynamic\">ななみは甘えん坊です。</h3>" ]
+        }
+    },
+    "page2": {
+
+    },
+    "page3": {
+
+    }
 }
