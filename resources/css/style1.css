@@ -1,13 +1,8 @@
+
 .language {
   float : right;
-  padding-right: 50px;
-}
-#select{
-  float : right;
-}
-#languageText{
-  float : left;
-  padding-right: 10px;
+  padding-left: 50px;
+  margin-top: -150px;
 }
 
 .fake-link {
@@ -21,15 +16,24 @@
 }
 
 .navigation {
-  margin: 50px;
+  margin-top: -200px;
+  float : right;
 }
 
 .navigation ul li {
   float : left;
+  list-style-type: none;
   margin: 0px 10px;
 }
 
-.footer {
-  padding-top: 100px;
-  margin: 50px;
+
+.dynamic {
+  padding-left: 100px;
+}
+.dynamic ul {
+  padding-left: 150px;
+}
+
+body {
+ margin-top: 200;
 }

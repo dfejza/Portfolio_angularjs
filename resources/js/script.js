@@ -21,10 +21,15 @@ $(document).ready(function(){
       selectedLanguage = language.ENGLISH;
       formatPage();
     }
-    if(langaugeCookie== 'japanese')
+    else if(langaugeCookie== 'japanese')
     {
       $('#langSelect').val('japanese');
       selectedLanguage = language.JAPANESE;
+      formatPage();
+    }
+    else
+    {
+      selectedLanguage = language.ENGLISH;
       formatPage();
     }
   });
@@ -63,7 +68,7 @@ $(document).ready(function(){
 // Called when the selection from
 function formatPage() {
       // Change the text found on the language selection
-      $('#languageText').text(json.selectorText[selectedLanguage]);
+      //$('#languageText').text(json.selectorText[selectedLanguage]);
 
       // Cycle through the navigation bar and change the language
       $('.navigation li').each(function(i,e){
@@ -77,8 +82,9 @@ function formatPage() {
       });
       // Next redraw
       $.each(json[currentPage], function(i,e){
-        $('body').append(e.text[selectedLanguage]);
+        $('body').append(e[selectedLanguage]);
       });
+      $('.dynamic').addClass('animated bounceinleft');
 }
 
 // Make everything dynamic.

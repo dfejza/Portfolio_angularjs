@@ -1,5 +1,5 @@
 {
-    "selectorText" : [
+    "selectorText": [
         "Language: ",
         "言語: "
     ],
@@ -9,35 +9,46 @@
             "ホーム"
         ],
         [
-            "Browse",
-            "バロース"
+            "Projects",
+            "プロジェクト"
         ],
         [
-            "Search",
-            "検索条件"
-        ],
-        [
-            "About",
+            "About Me",
             "紹介"
         ]
     ],
-    "page0": {
-        "header" : {
-            "text" : [ "<h1 class=\"dynamic\">Dardan Fejza</h1>", "<h1 class=\"dynamic\">Dardan Fejza</h1>"]
-        },
-        "subHeader" : {
-            "text" : [ "<h3 class=\"dynamic\">Software Engineer</h3>" ,"<h3 class=\"dynamic\">ソフトウェアエンジニア</h3>"]
-        }      
-    },
-    "page1": {
-        "header" : {
-            "text" : [ "<h1 class=\"dynamic\">NANAMI IS SPOILED</h1>","<h3 class=\"dynamic\">ななみは甘えん坊です。</h3>" ]
-        }
-    },
-    "page2": {
-
-    },
-    "page3": {
-
-    }
+    "page0": [
+        [
+            "<h1 class=\"dynamic\">Dardan Fejza</h1>",
+            "<h1 class=\"dynamic\">Dardan Fejza</h1>"
+        ],
+        [
+            "<h3 class=\"dynamic\">Software Engineer</h3>",
+            "<h3 class=\"dynamic\">ソフトウェアエンジニア</h3>"
+        ],
+        [
+            "<h4 class=\"dynamic\">Goals of this website:</h4>",
+            "<h4 class=\"dynamic\">TODOTODOTODO</h4>"
+        ],
+        [
+            "<ul class=\"dynamic\"> <li>Exercise Javascript / HTML5 / CSS capibilites</li> <li>Provide a clean, easy to read portfolio for potential employers </li> <li>Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)</li> <li>Provide an interface for other projects (future javascript applications)</li></ul>",
+            "<ul class=\"dynamic\">TODOTODOTODO</ul>"
+        ],
+        [
+            "<h4 class=\"dynamic\">TODO:</h4>",
+            "<h4 class=\"dynamic\">TODOTODOTODO</h4>"
+        ],
+        [
+            "<ul class=\"dynamic\"> <li>Have this automatically generated using the github project readme.md</li><li> Create a JS widget to use github API to display account projects</li></ul>",
+            "<ul class=\"dynamic\">日比谷通りわどこですか？</ul>"
+        ]
+    ],
+    "page1": [[
+        "<h1 class=\"dynamic\">TODO</h1>",
+        "<h3 class=\"dynamic\">日比谷通りわどこですか？</h3>"
+    ]],
+    "page2": [[
+        "<h1 class=\"dynamic\">TODO</h1>",
+        "<h3 class=\"dynamic\">日比谷通りわどこですか？</h3>"
+    ]]
 }
