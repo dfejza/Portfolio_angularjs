@@ -3,3 +3,4 @@
 2. Provide a clean, easy to read portfolio for potential employers
 3. Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)
 4. Provide an interface for other projects (future javascript applications)"
+    a. Create a javascript widget to use github and bitbucket API to show projects done
