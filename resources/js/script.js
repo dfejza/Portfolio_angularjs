@@ -47,12 +47,12 @@ $(document).ready(function(){
     if (sel == 'english') {
       selectedLanguage = language.ENGLISH;
       // Change the JS object pointer to english
-      formatPage();
+      loadPage(currentPage);
 
     } else if (sel == 'japanese') {
       selectedLanguage = language.JAPANESE;
       // Change the JS object pointer to japanese
-      formatPage();
+      loadPage(currentPage);
 
     }
   });
@@ -95,6 +95,9 @@ function loadPage(pageNum){
   formatPage();
 
   // Provide an override for unique pages
+  // Homepage Feature removed. Output looks clunky
+  // if(currentPage=='page0')
+  //   formatPageHome();
   if(currentPage=='page1')
     formatPagePortfoilio();
 
@@ -102,6 +105,19 @@ function loadPage(pageNum){
   //   $('body').append(e.text[selectedLanguage]);
   // });
 }
+
+// Feature removed. Output looks clunky
+// // Override for homepage
+// function formatPageHome(){
+//   //URL for readme
+//   homepageurl = 'https://raw.githubusercontent.com/dfejza/portfolio/master/README.md';
+//   // GET request
+//   $.get( homepageurl ,function(json)
+//   {
+//     var outhtml = '<h2>'+ json + '</h2>';
+//     $('body').append(outhtml);
+//   });
+// }
 
 // Override to format the portfolio page
 // Exercises GET
@@ -129,10 +145,10 @@ function formatPagePortfoilio(){
 
         if(fullname == undefined) { fullname = username; }
 
-        var outhtml = '<h2>'+fullname+' <span class="smallname">(@<a href="'+profileurl+'" target="_blank">'+username+'</a>)</span></h2>';
-        outhtml = outhtml + '<div class="ghcontent"><div class="avi"><a href="'+profileurl+'" target="_blank"><img src="'+aviurl+'" width="80" height="80" alt="'+username+'"></a></div>';
-        outhtml = outhtml + '<p>Followers: '+followersnum+' - Following: '+followingnum+'<br>Repos: '+reposnum+'</p></div>';
-        outhtml = outhtml + '<div class="repolist clearfix">';
+        var outhtml = '<h2> <span class="content_title">'+fullname+' </span> <span class="content_name">(@<a href="'+profileurl+'" target="_blank">'+username+'</a>)</span></h2>';
+        outhtml = outhtml + '<div class="content_body"><div class="content_pic"><a href="'+profileurl+'" target="_blank"><img src="'+aviurl+'" width="120" height="120" alt="'+username+'"></a></div>';
+        outhtml = outhtml + '<p>Followers: '+followersnum+'<br>Following: '+followingnum+'<br>Repos: '+reposnum+'</p><br><br><br></div>';
+        outhtml = outhtml + '<div class="content_repos">';
 
         var repositories;
         $.getJSON(repouri, function(json){
@@ -143,13 +159,13 @@ function formatPagePortfoilio(){
         function outputPageContent() {
           if(repositories.length == 0) { outhtml = outhtml + '<p>No repos!</p></div>'; }
           else {
-            outhtml = outhtml + '<p><strong>Repos List:</strong></p> <ul>';
+            outhtml = outhtml + '<p><span class="content_repotitle"><strong>Repos List:</strong></p></span>';
             $.each(repositories, function(index) {
               outhtml = outhtml + '<li><a href="'+repositories[index].html_url+'" target="_blank">'+repositories[index].name + '</a></li>';
             });
-            outhtml = outhtml + '</ul></div>'; 
+            outhtml = outhtml + '</div>'; 
           }
-          $('body').append(outhtml);
+          $('.dynamic').append(outhtml);
         } // end outputPageContent()
       } // end else statement
   });
