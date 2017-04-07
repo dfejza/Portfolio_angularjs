@@ -1,7 +1,7 @@
 
 .language {
   float : right;
-  padding-left: 50px;
+  padding-left: 70px;
   margin-top: -150px;
 }
 
@@ -18,6 +18,29 @@
 .navigation {
   margin-top: -200px;
   float : right;
+}
+
+.content_title {
+   font-size : 64px;
+}
+.content_name {
+   font-size : 22px;
+}
+
+.content_body {
+   font-size : 16px;
+}
+
+.content_pic {
+   float : left;
+   padding-right: 10px;
+}
+
+.content_repotitle {
+   font-size : 34px;
+}
+.content_repos{
+  font-size : 22px;
 }
 
 .navigation ul li {
