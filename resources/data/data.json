@@ -17,33 +17,18 @@
             "紹介"
         ]
     ],
-    "page0": 
-    [
-        [
-            "<h1 class=\"dynamic\">Dardan Fejza</h1>",
-            "<h1 class=\"dynamic\">Dardan Fejza</h1>"
-        ],
-        [
-            "<h3 class=\"dynamic\">Software Engineer</h3>",
-            "<h3 class=\"dynamic\">ソフトウェアエンジニア</h3>"
-        ],
-        [
-            "<h4 class=\"dynamic\">Goals of this website:</h4>",
-            "<h4 class=\"dynamic\">TODOTODOTODO</h4>"
-        ],
-        [
-            "<ul class=\"dynamic\"> <li>Exercise Javascript / HTML5 / CSS capibilites</li> <li>Provide a clean, easy to read portfolio for potential employers </li> <li>Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)</li> <li>Provide an interface for other projects (future javascript applications)</li></ul>",
-            "<ul class=\"dynamic\">TODOTODOTODO</ul>"
-        ],
-        [
-            "<h4 class=\"dynamic\">TODO:</h4>",
-            "<h4 class=\"dynamic\">TODOTODOTODO</h4>"
-        ],
-        [
-            "<ul class=\"dynamic\"> <li>Have this automatically generated using the github project readme.md</li><li> Create a JS widget to use github API to display account projects</li><li>Phone compatibility</li></ul>",
-            "<ul class=\"dynamic\">日比谷通りわどこですか？</ul>"
+    "page0": {
+        "name" : ["Dardan Fejza", "Dardan Fejza"],
+        "jobTitle" : ["Software Engineer", "ソフトウェアエンジニア"],
+        "goalsTitle" : ["Goals of this website", "このウェブサイトの目標"],
+        "goals" : [
+            ["Exercise Javascript / HTML5 / CSS capabilities", "エクササイズJavascript / HTML5 / CSS機能"],
+            ["Provide a clean, easy to read portfolio for potential employers", "潜在的な雇用者のためのきれいで読みやすいポートフォリオを提供する"],
+            ["Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)", "このウェブサイトをベースにして、新しい言語を探索してください。 （Angular JS、Ruby onなどを使用して複製）"],
+            ["Provide an interface for other projects (future javascript applications)", "他のプロジェクト（将来のjavascriptアプリケーション）用のインタフェースを提供する"]
         ]
-    ],
+    }
+    ,
     "page1": [[
         "<h4 class=\"dynamic\"></h1>",
         "<h4 class=\"dynamic\"></h3>"
