@@ -1,40 +1,41 @@
 {
-    "selectorText": [
-        "Language: ",
-        "言語: "
-    ],
-    "navigation": [
-        [
-            "Home",
-            "ホーム"
-        ],
-        [
-            "Projects",
-            "プロジェクト"
-        ],
-        [
-            "About Me",
-            "紹介"
-        ]
-    ],
-    "page0": {
-        "name" : ["Dardan Fejza", "Dardan Fejza"],
-        "jobTitle" : ["Software Engineer", "ソフトウェアエンジニア"],
-        "goalsTitle" : ["Goals of this website", "このウェブサイトの目標"],
-        "goals" : [
-            ["Exercise Javascript / HTML5 / CSS capabilities", "エクササイズJavascript / HTML5 / CSS機能"],
-            ["Provide a clean, easy to read portfolio for potential employers", "潜在的な雇用者のためのきれいで読みやすいポートフォリオを提供する"],
-            ["Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)", "このウェブサイトをベースにして、新しい言語を探索してください。 （Angular JS、Ruby onなどを使用して複製）"],
-            ["Provide an interface for other projects (future javascript applications)", "他のプロジェクト（将来のjavascriptアプリケーション）用のインタフェースを提供する"]
-        ]
-    }
-    ,
-    "page1": [[
-        "<h4 class=\"dynamic\"></h1>",
-        "<h4 class=\"dynamic\"></h3>"
-    ]],
-    "page2": [[
-        "<h1 class=\"dynamic\">TODO</h1>",
-        "<h3 class=\"dynamic\">日比谷通りわどこですか？</h3>"
-    ]]
+	"selectorText": [
+		"Language: ",
+		"言語: "
+	],
+	"navigation": [
+		[
+			"Home",
+			"ホーム"
+		],
+		[
+			"Projects",
+			"プロジェクト"
+		],
+		[
+			"About Me",
+			"紹介"
+		]
+	],
+	"page0": {
+		"name" : ["Dardan Fejza", "Dardan Fejza"],
+		"jobTitle" : ["Software Engineer", "ソフトウェアエンジニア"],
+		"goalsTitle" : ["Goals of this website", "このウェブサイトの目標"],
+		"goals" : [
+			["Exercise Javascript / HTML5 / CSS capabilities", "エクササイズJavascript / HTML5 / CSS機能"],
+			["Provide a clean, easy to read portfolio for potential employers", "潜在的な雇用者のためのきれいで読みやすいポートフォリオを提供する"],
+			["Explore new languages, with this website being a base. (Angular JS, replicate using Ruby on, ect)", "このウェブサイトをベースにして、新しい言語を探索してください。 （Angular JS、Ruby onなどを使用して複製）"],
+			["Provide an interface for other projects (future javascript applications)", "他のプロジェクト（将来のjavascriptアプリケーション）用のインタフェースを提供する"]
+		]
+	}
+	,
+	"page1": {
+		"repoCount" : ["Repositories", "リポジトリ"],
+		"followers" : ["Followers", "フォロワー"],
+		"following" : ["Following", "フォロー"]
+	},
+	"page2": [[
+		"<h1 class=\"dynamic\">TODO</h1>",
+		"<h3 class=\"dynamic\">日比谷通りわどこですか？</h3>"
+	]]
 }

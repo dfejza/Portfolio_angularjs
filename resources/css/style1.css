@@ -1,62 +1,71 @@
 
-.language {
+/*----- Header Bar --------*/
+.headerBar {
+ padding:0.5em;
+ height: 40;
+ 
+}
+.navigationLeft{
+  float : left;
+}
+.navigationRight{
   float : right;
-  padding-left: 70px;
-  margin-top: -150px;
+}
+
+.navigationPages{
+  margin-right:10px;
+  display: inline;
 }
 
 .fake-link {
     color: green;
     text-decoration: underline;
+    display:inline-block;
     cursor: pointer;
+    padding: 8px 16px;
 }
 
-.english {
-  display: inline;
+.fake-link:hover {
+    background-color: #555;
+    color: white;
 }
 
-.navigation {
-  margin-top: -200px;
-  float : right;
+#langSelect {
+  padding: 8px 16px;
 }
 
-.content_title {
-   font-size : 64px;
-}
-.content_name {
-   font-size : 22px;
+#langSelect:hover {
+    background-color: #555;
+    color: white;
 }
 
-.content_body {
-   font-size : 16px;
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*----- Generic Body Spacing --------*/
+#main {
+ margin-top: 200;
+ margin-left: 100;
+}
+
+
+/*----- Portfolio Page --------*/
+#portfolio{
+  margin-top: -240;
 }
 
 .content_pic {
    float : left;
-   padding-right: 10px;
+   margin-top: 5;
+   padding-right: 10;
 }
 
-.content_repotitle {
-   font-size : 34px;
-}
-.content_repos{
-  font-size : 22px;
-}
-
-.navigation ul li {
-  float : left;
-  list-style-type: none;
-  margin: 0px 10px;
+.gitDetails {
+  line-height: 0px; 
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 
-.dynamic {
-  padding-left: 100px;
-}
-.dynamic ul {
-  padding-left: 150px;
-}
-
-body {
- margin-top: 200;
-}

@@ -1,6 +1,7 @@
 var langaugeCookie = readCookie('language');
 var selectedLanguage;
 var currentPage = "page0";
+var repouri = 'https://api.github.com/users/dfejza';
 var json;
 language = {
   ENGLISH : 0,
@@ -64,47 +65,38 @@ $(document).ready(function(){
 
 });
 
-// Function used to change the lanuage of the website.
-// Called when the selection from
-function formatPage() {
-  //First lets remove the old page
-  //TODO
-
-  //Change the text found on the language selection
-  $('#languageText').text(json.selectorText[selectedLanguage]);
-
+// No matter the page, the header should remain the same
+function formatPageHeader() {
   // Cycle through the navigation bar and change the language
-  $('.navigation li').each(function(i,e){
+  $('.navigationPages li').each(function(i,e){
     $(e).text(json.navigation[i][selectedLanguage]);
   });
 
-      // // Change the contents of the body by redrawing
-      // // First remove
-      // $('.dynamic').each(function(i,e){
-      //   $(e).remove();
-      // });
-      // // Next redraw
-      // $.each(json[currentPage], function(i,e){
-      //   $('body').append(e[selectedLanguage]);
-      // });
-      // $('.dynamic').addClass('animated bounceinleft');
-    }
+}
 
 // Make everything dynamic.
 // Parse the json file and enumerate the page based off it's specs
 function loadPage(pageNum){
+  // remove the selected class
+  $('#'+ currentPage).removeClass('active');
+  // Show which page is selected by adding the css to the pageselection
+  $('#'+ pageNum).last().addClass('active');
+  
+  // Global var keeping track of the page we are on
   currentPage = pageNum;
-  formatPage();
-  // // Provide an override for unique pages
-  // // Homepage Feature removed. Output looks clunky
-  if(currentPage=='page0')
-    formatPageHome();
-  if(currentPage=='page1')
-    formatPagePortfoilio();
 
-  // // $.each(json[pageNum], function(i,e){
-  // //   $('body').append(e.text[selectedLanguage]);
-  // // });
+  // Set the language
+  formatPageHeader();
+
+
+
+  // Check which page. Goto specified formatting function
+  if(currentPage=='page0'){
+    formatPageHome();
+  }
+  if(currentPage=='page1'){
+    formatPagePortfoilio();
+  }
 }
 
 function formatPageHome(){
@@ -128,59 +120,25 @@ function formatPagePortfoilio(){
 
   $("#main").load("portfolio.html", function(){
     // Fetch
-    homeurl = 'https://api.github.com/users/dfejza';
-    repouri = 'https://api.github.com/users/dfejza/repos';
-    requestJSON( homeurl ,function(json)
+    requestJSON( repouri ,function(retunData)
     {
-      // Function returned from the call
-      // Check if valid
-      if(json.message == "Not Found" || username == '') {
-        $('body').html("<h2>No User Info Found</h2>");
-      }
-      else {
-          // else we have a user and we display their info
-          var fullname   = json.name;
-          var username   = json.login;
-          var aviurl     = json.avatar_url;
-          var profileurl = json.html_url;
-          var location   = json.location;
-          var followersnum = json.followers;
-          var followingnum = json.following;
-          var reposnum     = json.public_repos;
+      //From the home API call lets store the icon, following and followers, and # of repos
+      var icon = retunData.avatar_url;
+      var followers = retunData.followers;
+      var following = retunData.following;
+      var username = retunData.login;
+      var usernameLink = retunData.html_url;
+      var repoCount = retunData.public_repos;
 
-          if(fullname == undefined) { fullname = username; }
+      // Format the HTML according to the JSONs
+      $('#icon').attr('src', icon);
+      $('#username').append(username);
+      $('#username').attr('href', usernameLink);
+      $('#repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
+      $('#followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
+      $('#following').append(json.page1.following[selectedLanguage] + " : " + following);
 
-          var outhtml = '<h2> <span class="content_title">'+fullname+' </span> <span class="content_name">(@<a href="'+profileurl+'" target="_blank">'+username+'</a>)</span></h2>';
-          outhtml = outhtml + '<div class="content_body"><div class="content_pic"><a href="'+profileurl+'" target="_blank"><img src="'+aviurl+'" width="120" height="120" alt="'+username+'"></a></div>';
-          if(selectedLanguage == language.ENGLISH)
-            outhtml = outhtml + '<p>Followers: '+followersnum+'<br>Following: '+followingnum+'<br>Repos: '+reposnum+'</p><br><br><br></div>';
-          else
-            outhtml = outhtml + '<p>フォロワー: '+followersnum+'<br>フォロー: '+followingnum+'<br>リポジトリ: '+reposnum+'</p><br><br><br></div>';
-          outhtml = outhtml + '<div class="content_repos">';
-
-          var repositories;
-          $.getJSON(repouri, function(json){
-            repositories = json;   
-            outputPageContent();                
-          });          
-          
-          function outputPageContent() {
-            if(repositories.length == 0) { outhtml = outhtml + '<p>No repos!</p></div>'; }
-            else {
-              if(selectedLanguage == language.ENGLISH)
-                outhtml = outhtml + '<p><span class="content_repotitle"><strong>Repos List:</strong></p></span>';
-              else
-                outhtml = outhtml + '<p><span class="content_repotitle"><strong>リポジトリ リスト:</strong></p></span>';
-
-              $.each(repositories, function(index) {
-                outhtml = outhtml + '<li><a href="'+repositories[index].html_url+'" target="_blank">'+repositories[index].name + '</a></li>';
-              });
-              outhtml = outhtml + '</div>'; 
-            }
-            $('#portfolio').append(outhtml);
-          } // end outputPageContent()
-        } // end else statement
-      });
+    });
   });
 }
 
