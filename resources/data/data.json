@@ -15,6 +15,10 @@
 		[
 			"About Me",
 			"紹介"
+		],
+		[
+			"Update JSON",
+			"Update JSON"
 		]
 	],
 	"page0": {
@@ -32,10 +36,15 @@
 	"page1": {
 		"repoCount" : ["Repositories", "リポジトリ"],
 		"followers" : ["Followers", "フォロワー"],
-		"following" : ["Following", "フォロー"]
+		"following" : ["Following", "フォロー"],
+		"projects"  : [[]]
 	},
-	"page2": [[
-		"<h1 class=\"dynamic\">TODO</h1>",
-		"<h3 class=\"dynamic\">日比谷通りわどこですか？</h3>"
-	]]
+	"page2": {
+		"repoCount" : ["Repositories", "リポジトリ"]
+	}
+	,
+	"page3": {
+
+	},
+
 }

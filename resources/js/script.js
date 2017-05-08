@@ -17,6 +17,10 @@ $(document).ready(function(){
     json = result;
   })
   .done( function() {
+
+      // Temp function to update the local database
+      updateDatabase();
+
       //Load the cookies, remembering the last user seetting
       if(langaugeCookie== 'english')
       {
@@ -99,6 +103,9 @@ function loadPage(pageNum){
   if(currentPage=='page1'){
     formatPagePortfoilio();
   }
+  if(currentPage=='page3'){
+    updateDatabase();
+  }
 }
 
 function formatPageHome(){
@@ -124,47 +131,21 @@ function formatPagePortfoilio(){
     // Create a template using mustache
     var template = $("#projTemplate").html();    // Template for git proj
 
-    // Fetch the GIT user details
-    var icon;
-    requestJSON( gitRepouri ,function(retunData)
-    {
-      //From the home API call lets store the icon, following and followers, and # of repos
-      icon = retunData.avatar_url;
-      var followers = retunData.followers;
-      var following = retunData.following;
-      var username = retunData.login;
-      var usernameLink = retunData.html_url;
-      var repoCount = retunData.public_repos;
+    // Format the HTML according to the JSONs
+    $('.portfolioHeader1 #username').append(json.page3.git.username);
+    $('.portfolioHeader1 #username').attr('href', json.page3.git.usernameLink);
+    $('.portfolioHeader1 #imgLink1').attr('href', json.page3.git.usernameLink);
+    $('.portfolioHeader1 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + json.page3.git.repoCount);
+    $('.portfolioHeader1 #followers').append(json.page1.followers[selectedLanguage] + " : " + json.page3.git.followers);
+    $('.portfolioHeader1 #following').append(json.page1.following[selectedLanguage] + " : " + json.page3.git.following);
 
-      // Format the HTML according to the JSONs
-      $('.portfolioHeader1 #username').append(username);
-      $('.portfolioHeader1 #username').attr('href', usernameLink);
-      $('.portfolioHeader1 #imgLink1').attr('href', usernameLink);
-      $('.portfolioHeader1 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
-      $('.portfolioHeader1 #followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
-      $('.portfolioHeader1 #following').append(json.page1.following[selectedLanguage] + " : " + following);
-
-    });
-
-    // Fetch the Bit Bucket user details
-    requestJSONP( bitbucketRepouri ,function(retunData)
-    {
-      //From the home API call lets store the icon, following and followers, and # of repos
-      var followers = "NA";
-      var following = "NA";
-      var username = retunData.username;
-      var usernameLink = "https://bitbucket.org/dfejza/";
-      var repoCount = "2";
-
-      // Format the HTML according to the JSONs
-      $('.portfolioHeader2 #username').append(username);
-      $('.portfolioHeader2 #username').attr('href', usernameLink);
-      $('.portfolioHeader2 #imgLink1').attr('href', usernameLink);
-      $('.portfolioHeader2 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
-      $('.portfolioHeader2 #followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
-      $('.portfolioHeader2 #following').append(json.page1.following[selectedLanguage] + " : " + following);
-
-    });
+    // Format the HTML according to the JSONs
+    $('.portfolioHeader2 #username').append(json.page3.bitB.username);
+    $('.portfolioHeader2 #username').attr('href', json.page3.bitB.usernameLink);
+    $('.portfolioHeader2 #imgLink1').attr('href', json.page3.bitB.usernameLink);
+    $('.portfolioHeader2 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + json.page3.bitB.repoCount);
+    $('.portfolioHeader2 #followers').append(json.page1.followers[selectedLanguage] + " : " + json.page3.bitB.followers);
+    $('.portfolioHeader2 #following').append(json.page1.following[selectedLanguage] + " : " + json.page3.bitB.following);
 
     // Fetch each project GITHUB
     requestJSON( (gitRepouri+"/repos") ,function(retunData)
@@ -173,10 +154,10 @@ function formatPagePortfoilio(){
       $.each(retunData, function(key, data){
         // Fill in template
         var view = { name:        data.name,
-                     link:        data.html_url,
-                     image:       icon,
-                     fullname:    data.full_name,
-                     description: data.description};
+         link:        data.html_url,
+         image:       icon,
+         fullname:    data.full_name,
+         description: data.description};
 
         // Create specialized object
         var rendered = Mustache.render(template, view);
@@ -187,17 +168,17 @@ function formatPagePortfoilio(){
     });
 
 
-        // Fetch each project BITBUCKET
+    // Fetch each project BITBUCKET
     requestJSONP(bitbucketRepouriRepo ,function(retunData)
     {
       // Iterate through the array returned
       $.each(retunData.values, function(key, data){
         // Fill in template
         var view = { name:        data.name,
-                     link:        data.html_url,
-                     image:       icon,
-                     fullname:    data.full_name,
-                     description: data.slug};
+         link:        data.html_url,
+         image:       icon,
+         fullname:    data.full_name,
+         description: data.slug};
 
         // Create specialized object
         var rendered = Mustache.render(template, view);
@@ -208,6 +189,38 @@ function formatPagePortfoilio(){
     });
 
   });
+}
+
+function updateDatabase(){
+  // Create object to be written into json
+  var git = {};
+  var bitB = {};
+  var dataObj = {git, bitB};
+
+  // Copy the GIT and Bit Bucket information into the JSON
+  requestJSON( gitRepouri ,function(retunData)  {
+      //From the home API call lets store the icon, following and followers, and # of repos
+      dataObj.git.icon = retunData.avatar_url;
+      dataObj.git.followers = retunData.followers;
+      dataObj.git.following = retunData.following;
+      dataObj.git.username = retunData.login;
+      dataObj.git.usernameLink = retunData.html_url;
+      dataObj.git.repoCount = retunData.public_repos;
+
+      // Fetch the Bit Bucket user details
+      requestJSONP( bitbucketRepouri ,function(retunData)    {
+        //From the home API call lets store the icon, following and followers, and # of repos
+        dataObj.bitB.followers = "NA";
+        dataObj.bitB.following = "NA";
+        dataObj.bitB.username = retunData.username;
+        dataObj.bitB.usernameLink = "https://bitbucket.org/dfejza/";
+        dataObj.bitB.repoCount = "2";
+
+        json.page3 = dataObj;
+        var test = 1;
+      });
+    });
+
 }
 
 // GET json
