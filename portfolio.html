@@ -1,10 +1,40 @@
-<div class= "content">
-<p id="portfolio">
-	<img class="content_pic gitDetails" id="icon" src="" height="80" width="80">
-	<a href="" id="username"></a>
-	<h5 id="repoCount" class="gitDetails"></h3>
-	<h5 id="followers" class="gitDetails"></h5>
-	<h5 id="following" class="gitDetails"></h5>
-</p>
-<b></b>
+<div class="container">
+	<div class="row" id="portfolio">
+		<div class="portfolioHeader1 col-sm-5">
+			<a id="imgLink1" href="">
+				<img class="content_pic gitDetails" id="icon" src="/resources/images/github.png" height="80" width="80">
+			</a>
+			<a href="" id="username"></a>
+			<h5 id="repoCount" class="gitDetails"></h5>
+			<h5 id="followers" class="gitDetails"></h5>
+			<h5 id="following" class="gitDetails"></h5>
+		</div>
+
+
+		<div class="portfolioHeader2 col-sm-5">
+			<a id="imgLink2" href="" >
+				<img class="content_pic gitDetails" id="icon" src="/resources/images/bitbucket.png" height="80" width="80">
+			</a>
+			<a href="" id="username"></a>
+			<h5 id="repoCount" class="gitDetails"></h5>
+			<h5 id="followers" class="gitDetails"></h5>
+			<h5 id="following" class="gitDetails"></h5>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="projects" class="media">
+	<script id="projTemplate" type="text/template">
+		<a id="{{name}}" href="{{link}}" class="media-left">
+			<img class="projectIcon media-object" id="icon" src="{{image}}" style="width:200px">
+		</a>
+		<div class="media-body">
+			<h1 class="media-heading">{{fullname}}</h4>
+				<p id="media-txt">{{description}}</p>
+			</div>
+		</div>
+		<br />
+	</script>
 </div>

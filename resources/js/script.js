@@ -1,7 +1,9 @@
 var langaugeCookie = readCookie('language');
 var selectedLanguage;
 var currentPage = "page0";
-var repouri = 'https://api.github.com/users/dfejza';
+var gitRepouri = 'https://api.github.com/users/dfejza';
+var bitbucketRepouri = "https://api.bitbucket.org/2.0/users/dfejza";
+var bitbucketRepouriRepo = "https://api.bitbucket.org/2.0/repositories/dfejza";
 var json;
 language = {
   ENGLISH : 0,
@@ -119,11 +121,15 @@ function formatPageHome(){
 function formatPagePortfoilio(){
 
   $("#main").load("portfolio.html", function(){
-    // Fetch
-    requestJSON( repouri ,function(retunData)
+    // Create a template using mustache
+    var template = $("#projTemplate").html();    // Template for git proj
+
+    // Fetch the GIT user details
+    var icon;
+    requestJSON( gitRepouri ,function(retunData)
     {
       //From the home API call lets store the icon, following and followers, and # of repos
-      var icon = retunData.avatar_url;
+      icon = retunData.avatar_url;
       var followers = retunData.followers;
       var following = retunData.following;
       var username = retunData.login;
@@ -131,14 +137,76 @@ function formatPagePortfoilio(){
       var repoCount = retunData.public_repos;
 
       // Format the HTML according to the JSONs
-      $('#icon').attr('src', icon);
-      $('#username').append(username);
-      $('#username').attr('href', usernameLink);
-      $('#repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
-      $('#followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
-      $('#following').append(json.page1.following[selectedLanguage] + " : " + following);
+      $('.portfolioHeader1 #username').append(username);
+      $('.portfolioHeader1 #username').attr('href', usernameLink);
+      $('.portfolioHeader1 #imgLink1').attr('href', usernameLink);
+      $('.portfolioHeader1 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
+      $('.portfolioHeader1 #followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
+      $('.portfolioHeader1 #following').append(json.page1.following[selectedLanguage] + " : " + following);
 
     });
+
+    // Fetch the Bit Bucket user details
+    requestJSONP( bitbucketRepouri ,function(retunData)
+    {
+      //From the home API call lets store the icon, following and followers, and # of repos
+      var followers = "NA";
+      var following = "NA";
+      var username = retunData.username;
+      var usernameLink = "https://bitbucket.org/dfejza/";
+      var repoCount = "2";
+
+      // Format the HTML according to the JSONs
+      $('.portfolioHeader2 #username').append(username);
+      $('.portfolioHeader2 #username').attr('href', usernameLink);
+      $('.portfolioHeader2 #imgLink1').attr('href', usernameLink);
+      $('.portfolioHeader2 #repoCount').append(json.page1.repoCount[selectedLanguage] + " : " + repoCount);
+      $('.portfolioHeader2 #followers').append(json.page1.followers[selectedLanguage] + " : " + followers);
+      $('.portfolioHeader2 #following').append(json.page1.following[selectedLanguage] + " : " + following);
+
+    });
+
+    // Fetch each project GITHUB
+    requestJSON( (gitRepouri+"/repos") ,function(retunData)
+    {
+      // Iterate through the array returned
+      $.each(retunData, function(key, data){
+        // Fill in template
+        var view = { name:        data.name,
+                     link:        data.html_url,
+                     image:       icon,
+                     fullname:    data.full_name,
+                     description: data.description};
+
+        // Create specialized object
+        var rendered = Mustache.render(template, view);
+
+        // Add the object
+        $("#projects").append(rendered);
+      });
+    });
+
+
+        // Fetch each project BITBUCKET
+    requestJSONP(bitbucketRepouriRepo ,function(retunData)
+    {
+      // Iterate through the array returned
+      $.each(retunData.values, function(key, data){
+        // Fill in template
+        var view = { name:        data.name,
+                     link:        data.html_url,
+                     image:       icon,
+                     fullname:    data.full_name,
+                     description: data.slug};
+
+        // Create specialized object
+        var rendered = Mustache.render(template, view);
+
+        // Add the object
+        $("#projects").append(rendered);
+      });
+    });
+
   });
 }
 
@@ -146,6 +214,16 @@ function formatPagePortfoilio(){
 function requestJSON(url, callback) {
   $.ajax({
     url: url,
+    complete: function(xhr) {
+      callback.call(null, xhr.responseJSON);
+    }
+  });
+}
+// GET jsonp (cross domain)
+function requestJSONP(url, callback) {
+  $.ajax({
+    url: url,
+    dataType: 'jsonp',
     complete: function(xhr) {
       callback.call(null, xhr.responseJSON);
     }

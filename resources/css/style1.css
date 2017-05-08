@@ -3,11 +3,12 @@
 .headerBar {
  padding:0.5em;
  height: 40;
- 
 }
+
 .navigationLeft{
   float : left;
 }
+
 .navigationRight{
   float : right;
 }
@@ -52,9 +53,11 @@
 
 
 /*----- Portfolio Page --------*/
-#portfolio{
-  margin-top: -240;
+.container{
+  margin-top: -180;
+  padding-bottom: 150;
 }
+
 
 .content_pic {
    float : left;
@@ -63,9 +66,13 @@
 }
 
 .gitDetails {
-  line-height: 0px; 
+  line-height: 5px; 
   font-size: 12px;
   margin-left: 5px;
+}
+
+.projects {
+  padding-bottom: 20;
 }
 
 
