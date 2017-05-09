@@ -140,4 +140,15 @@
 				})
 			}
 		}, 1000); // interval set at 1 second
+
+
+
+
+
+		// Next lets parse the readme files and convert from markdown to HTML
+		var showdown  = require('showdown'),
+	    converter = new showdown.Converter(),
+	    text      = '#hello, markdown!',
+	    html      = converter.makeHtml(text);
+	    console.log(html)
 	})
