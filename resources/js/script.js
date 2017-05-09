@@ -17,10 +17,6 @@ $(document).ready(function(){
     json = result;
   })
   .done( function() {
-
-      // Temp function to update the local database
-      updateDatabase();
-
       //Load the cookies, remembering the last user seetting
       if(langaugeCookie== 'english')
       {
@@ -104,22 +100,13 @@ function loadPage(pageNum){
     formatPagePortfoilio();
   }
   if(currentPage=='page3'){
-    updateDatabase();
+
   }
 }
 
 function formatPageHome(){
   // Lets load the specified page into body
-  $("#main").load("home.html", function(){
-    // Load the specifics of each ID from the JSON
-    $("#name").append(json.page0.name[selectedLanguage]);
-    $("#jobTitle").append(json.page0.jobTitle[selectedLanguage]);
-    $("#goalsTitle").append(json.page0.goalsTitle[selectedLanguage]);
-    // Loop through the array of goals
-    $.each(json.page0.goals,function(i,e){
-      $("#goals").append("<li>" + e[selectedLanguage] + "</li>");
-    });
-
+  $("#main").load(json.page0.contentRaw[selectedLanguage], function(){
   });
 }
 
@@ -131,7 +118,7 @@ function formatPagePortfoilio(){
     // Create a template using mustache
     var template = $("#projTemplate").html();    // Template for git proj
 
-    // Format the HTML according to the JSONs
+    // Format the HTML according to the JSON's Git User
     $('.portfolioHeader1 #username').append(json.page3.git.username);
     $('.portfolioHeader1 #username').attr('href', json.page3.git.usernameLink);
     $('.portfolioHeader1 #imgLink1').attr('href', json.page3.git.usernameLink);
@@ -139,7 +126,7 @@ function formatPagePortfoilio(){
     $('.portfolioHeader1 #followers').append(json.page1.followers[selectedLanguage] + " : " + json.page3.git.followers);
     $('.portfolioHeader1 #following').append(json.page1.following[selectedLanguage] + " : " + json.page3.git.following);
 
-    // Format the HTML according to the JSONs
+    // Format the HTML according to the JSON's Bit Bucket User
     $('.portfolioHeader2 #username').append(json.page3.bitB.username);
     $('.portfolioHeader2 #username').attr('href', json.page3.bitB.usernameLink);
     $('.portfolioHeader2 #imgLink1').attr('href', json.page3.bitB.usernameLink);
@@ -148,102 +135,45 @@ function formatPagePortfoilio(){
     $('.portfolioHeader2 #following').append(json.page1.following[selectedLanguage] + " : " + json.page3.bitB.following);
 
     // Fetch each project GITHUB
-    requestJSON( (gitRepouri+"/repos") ,function(retunData)
-    {
-      // Iterate through the array returned
-      $.each(retunData, function(key, data){
-        // Fill in template
-        var view = { name:        data.name,
-         link:        data.html_url,
-         image:       icon,
-         fullname:    data.full_name,
-         description: data.description};
+    // Format the HTML according to the JSON's Git's repos
+    $.each(json.page3.git.repos, function(key, data){
+      // Fill in template
+      var view = { name:        data.name,
+       link:        data.link,
+       image:       "",
+       fullname:    data.name,
+       description: data.description};
 
-        // Create specialized object
-        var rendered = Mustache.render(template, view);
+      // Create specialized object
+      var rendered = Mustache.render(template, view);
 
-        // Add the object
-        $("#projects").append(rendered);
-      });
+      // Add the object
+      $("#projects").append(rendered);
     });
 
 
     // Fetch each project BITBUCKET
-    requestJSONP(bitbucketRepouriRepo ,function(retunData)
-    {
-      // Iterate through the array returned
-      $.each(retunData.values, function(key, data){
-        // Fill in template
-        var view = { name:        data.name,
-         link:        data.html_url,
-         image:       icon,
-         fullname:    data.full_name,
-         description: data.slug};
+    // Iterate through the array returned
+    $.each(json.page3.bitB.repos, function(key, data){
+      // Fill in template
+      var view = { name:        data.name,
+       link:        "",
+       image:       "",
+       fullname:    data.name,
+       description: data.description};
 
-        // Create specialized object
-        var rendered = Mustache.render(template, view);
+      // Create specialized object
+      var rendered = Mustache.render(template, view);
 
-        // Add the object
-        $("#projects").append(rendered);
-      });
+      // Add the object
+      $("#projects").append(rendered);
     });
 
   });
 }
 
-function updateDatabase(){
-  // Create object to be written into json
-  var git = {};
-  var bitB = {};
-  var dataObj = {git, bitB};
 
-  // Copy the GIT and Bit Bucket information into the JSON
-  requestJSON( gitRepouri ,function(retunData)  {
-      //From the home API call lets store the icon, following and followers, and # of repos
-      dataObj.git.icon = retunData.avatar_url;
-      dataObj.git.followers = retunData.followers;
-      dataObj.git.following = retunData.following;
-      dataObj.git.username = retunData.login;
-      dataObj.git.usernameLink = retunData.html_url;
-      dataObj.git.repoCount = retunData.public_repos;
-
-      // Fetch the Bit Bucket user details
-      requestJSONP( bitbucketRepouri ,function(retunData)    {
-        //From the home API call lets store the icon, following and followers, and # of repos
-        dataObj.bitB.followers = "NA";
-        dataObj.bitB.following = "NA";
-        dataObj.bitB.username = retunData.username;
-        dataObj.bitB.usernameLink = "https://bitbucket.org/dfejza/";
-        dataObj.bitB.repoCount = "2";
-
-        json.page3 = dataObj;
-        var test = 1;
-      });
-    });
-
-}
-
-// GET json
-function requestJSON(url, callback) {
-  $.ajax({
-    url: url,
-    complete: function(xhr) {
-      callback.call(null, xhr.responseJSON);
-    }
-  });
-}
-// GET jsonp (cross domain)
-function requestJSONP(url, callback) {
-  $.ajax({
-    url: url,
-    dataType: 'jsonp',
-    complete: function(xhr) {
-      callback.call(null, xhr.responseJSON);
-    }
-  });
-}
-
-
+// Remember the previous language selection and store in cookies
 function saveLanguage(cookieValue) {
   var sel = document.getElementById('langSelect');
   setCookie('language', cookieValue, 365);
