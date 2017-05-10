@@ -99,8 +99,8 @@ function loadPage(pageNum){
   if(currentPage=='page1'){
     formatPagePortfoilio();
   }
-  if(currentPage=='page3'){
-
+  if(currentPage=='page2'){
+    formatAboutMe();
   }
 }
 
@@ -168,6 +168,13 @@ function formatPagePortfoilio(){
       // Add the object
       $("#projects").append(rendered);
     });
+
+  });
+}
+
+function formatAboutMe(){
+  // Lets load the specified page into body
+  $("#main").load("aboutme.html", function(){
 
   });
 }
