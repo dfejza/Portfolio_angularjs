@@ -33,6 +33,9 @@
 		}
 	};
 
+	// README URLS
+	var engReadme = "https://raw.githubusercontent.com/dfejza/portfolio/master/README.md";
+	var jpReadme = "https://raw.githubusercontent.com/dfejza/portfolio/master/READMEJP.md"
 
 
 
@@ -145,10 +148,39 @@
 
 
 
-		// Next lets parse the readme files and convert from markdown to HTML
-		var showdown  = require('showdown'),
-	    converter = new showdown.Converter(),
-	    text      = '#hello, markdown!',
-	    html      = converter.makeHtml(text);
-	    console.log(html)
+
+
 	})
+
+// Create the ENG readme HTML site
+request(engReadme, function (error, response, body) {
+	// Next lets parse the readme files and convert from markdown to HTML
+	var showdown  = require('showdown'),
+    converter = new showdown.Converter(),
+    html      = converter.makeHtml(body);
+    
+    fs.writeFile(("./mainENG.html"), html,function(err) {
+	    if(err) {
+	        return console.log(err);
+	    }
+
+	    console.log("The English main HTML was saved!");
+	}); 
+});
+
+// Create the JP readme HTML site
+request(jpReadme, function (error, response, body) {
+	// Next lets parse the readme files and convert from markdown to HTML
+	var showdown  = require('showdown'),
+    converter = new showdown.Converter(),
+    html      = converter.makeHtml(body);
+    
+    fs.writeFile(("./mainJPN.html"), html,function(err) {
+	    if(err) {
+	        return console.log(err);
+	    }
+
+	    console.log("The JPN main HTML was saved!");
+	}); 
+});
+
