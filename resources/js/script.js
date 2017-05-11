@@ -37,7 +37,45 @@ $(document).ready(function(){
       }
     });
 
+      //##### send add record Ajax request to response.php #########
+      $("#main").on("click", '.btn', function (e) {
+        e.preventDefault();
+        if($("#comments").val()==='')
+        {
+          alert("Please enter some text!");
+          return false;
+        }
+      // Get the IP of the user
+      $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+        console.log(JSON.stringify(data, null, 2));
 
+        // Get the date
+        var d = new Date();
+
+        var formInput = {
+          date :  d.getHours() + ":" + d.getMinutes() + " - " + (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear(),
+          ip : data.ip,
+          name : $("#name").val(),
+          email : $("#email").val(),
+          message : $("#comments").val()
+        };
+
+        $.ajax({
+          url: "https://api.mlab.com/api/1/databases/portfolio/collections/message?apiKey=cSTPcc7WxJ2mIKW1gH6xdo63QlWYvfBc",
+          type: "POST",
+          data: JSON.stringify(formInput),
+          contentType: "application/json"
+        }).done(function( msg ) {
+          console.log(msg);
+        });
+
+      });
+
+
+      $("#FormSubmit").hide(); //hide submit button
+      $("#LoadingImage").show(); //show loading image
+      
+    });
 
   // Change text of the language select based off user lanuage
   $('#langSelect').on('change', function() {
