@@ -48,7 +48,8 @@
 /*----- Generic Body Spacing --------*/
 #main {
  margin-top: 200;
- margin-left: 100;
+   margin-left: auto ;
+  margin-right: auto ;
 }
 
 
@@ -81,21 +82,20 @@
   margin-left: 0;
 }
 
-
-  .container-fluid {
-      padding: 60px 50px;
-  }
-  .bg-grey {
-      background-color: #f6f6f6;
-  }
-  .logo-small {
-      color: #f4511e;
-      font-size: 100px;
-  }
-  .logo {
-      color: #f4511e;
-      font-size: 200px;
-  }
-  .bold {
-    font-weight: 900;
-  }
+.container-fluid {
+    padding: 60px 50px;
+}
+.bg-grey {
+    background-color: #f6f6f6;
+}
+.logo-small {
+    color: #f4511e;
+    font-size: 100px;
+}
+.logo {
+    color: #f4511e;
+    font-size: 200px;
+}
+.bold {
+  font-weight: 900;
+}

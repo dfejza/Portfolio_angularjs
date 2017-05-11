@@ -53,7 +53,7 @@ $(document).ready(function(){
         var d = new Date();
 
         var formInput = {
-          date :  d.getHours() + ":" + d.getMinutes() + " - " + (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear(),
+          date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
           ip : data.ip,
           name : $("#name").val(),
           email : $("#email").val(),
@@ -140,6 +140,9 @@ function loadPage(pageNum){
   if(currentPage=='page2'){
     formatAboutMe();
   }
+  if(currentPage=='page3'){
+    formatLogin();
+  }
 }
 
 function formatPageHome(){
@@ -214,6 +217,31 @@ function formatAboutMe(){
   // Lets load the specified page into body
   $("#main").load("aboutme.html", function(){
 
+  });
+}
+
+function formatLogin(){
+  // Lets view a chart
+  $("#main").load("login.html", function(){
+    //create the template
+    var template = $("#tableTemplate").html();
+
+    // Fetch the table
+    $.get("https://api.mlab.com/api/1/databases/portfolio/collections/message?apiKey=cSTPcc7WxJ2mIKW1gH6xdo63QlWYvfBc", function(dbData, status){
+      $.each(dbData, function(key,rowData){
+        var view = { ip: rowData.ip,
+        date: rowData.date,
+        name: rowData.name,
+        email: rowData.email,
+        message: rowData.message};
+
+        // Create specialized object
+        var rendered = Mustache.render(template, view);
+  
+        // Add the object
+        $("#tableBody").append(rendered);
+      });
+    });
   });
 }
 
