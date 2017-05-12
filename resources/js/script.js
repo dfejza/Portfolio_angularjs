@@ -99,7 +99,7 @@ $(document).ready(function(){
   });
 
   // Click listener for the page selection
-  $('ul').on('click', 'li.fake-link', function(){
+  $('ul').on('click', 'li.navbar', function(){
     loadPage(this.id);
   });
 
@@ -108,27 +108,25 @@ $(document).ready(function(){
 // No matter the page, the header should remain the same
 function formatPageHeader() {
   // Cycle through the navigation bar and change the language
-  $('.navigationPages li').each(function(i,e){
-    $(e).text(json.navigation[i][selectedLanguage]);
+  $('#pageBar li').each(function(i,e){
+    $(e).html("<a>" + json.navigation[i][selectedLanguage] + "</a>");
   });
 
 }
 
 // Make everything dynamic.
 // Parse the json file and enumerate the page based off it's specs
-function loadPage(pageNum){
+function loadPage(pageNum){ 
   // remove the selected class
   $('#'+ currentPage).removeClass('active');
   // Show which page is selected by adding the css to the pageselection
   $('#'+ pageNum).last().addClass('active');
-  
+
   // Global var keeping track of the page we are on
   currentPage = pageNum;
 
   // Set the language
   formatPageHeader();
-
-
 
   // Check which page. Goto specified formatting function
   if(currentPage=='page0'){

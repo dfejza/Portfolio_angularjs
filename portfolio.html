@@ -1,31 +1,33 @@
-<div class="container">
+<div class="container-fluid gitUserStuff">
 	<div class="row" id="portfolio">
-		<div class="portfolioHeader1 col-sm-5">
+		<div class="portfolioHeader1 col-sm-6" >
 			<a id="imgLink1" href="">
-				<img class="content_pic gitDetails" id="icon" src="/resources/images/github.png" height="80" width="80">
+				<img class="content_pic img-rounded gitDetails" id="icon" src="/resources/images/github.png" height="80" width="80">
 			</a>
 			<a href="" id="username"></a>
 			<h5 id="repoCount" class="gitDetails"></h5>
 			<h5 id="followers" class="gitDetails"></h5>
 			<h5 id="following" class="gitDetails"></h5>
+			<hr class="hidden-lg">
 		</div>
 
 
-		<div class="portfolioHeader2 col-sm-5">
-			<a id="imgLink2" href="" >
-				<img class="content_pic gitDetails" id="icon" src="/resources/images/bitbucket.png" height="80" width="80">
+		<div class="portfolioHeader1 col-sm-6">
+			<a id="imgLink1" href="{{json.page3.bitB.usernameLink}}">
+				<img class="content_pic img-rounded gitDetails" id="icon" src="/resources/images/bitbucket.png" height="80" width="80">
 			</a>
 			<a href="" id="username"></a>
 			<h5 id="repoCount" class="gitDetails"></h5>
 			<h5 id="followers" class="gitDetails"></h5>
 			<h5 id="following" class="gitDetails"></h5>
+			<hr class="hidden-lg">
 		</div>
+
 	</div>
 </div>
 
-
-
 <div id="projects" class="media">
+<hr>
 	<script id="projTemplate" type="text/template">
 		<a id="{{name}}" href="{{link}}" class="media-left">
 			<img class="projectIcon media-object" id="icon" src="{{image}}" style="width:200px">

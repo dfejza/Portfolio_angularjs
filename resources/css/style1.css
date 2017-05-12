@@ -1,34 +1,15 @@
 
 /*----- Header Bar --------*/
-.headerBar {
- padding:0.5em;
- height: 40;
-}
-
-.navigationLeft{
-  float : left;
-}
-
 .navigationRight{
   float : right;
 }
 
-.navigationPages{
-  margin-right:10px;
-  display: inline;
-}
-
-.fake-link {
-    color: green;
-    text-decoration: underline;
-    display:inline-block;
+.navbar:hover {
     cursor: pointer;
-    padding: 8px 16px;
 }
 
-.fake-link:hover {
-    background-color: #555;
-    color: white;
+#pageBar, #langBar {
+  display:inline-block
 }
 
 #langSelect {
@@ -40,25 +21,23 @@
     color: white;
 }
 
-.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
 /*----- Generic Body Spacing --------*/
 #main {
- margin-top: 200;
+ margin-top: 100;
    margin-left: auto ;
   margin-right: auto ;
 }
 
 
 /*----- Portfolio Page --------*/
-.container{
-  margin-top: -180;
+.gitUserStuff{
+  margin-top: -80;
   padding-bottom: 150;
 }
 
+#portfolioHeader1{
+  background-color: #f6f6f6;
+}
 
 .content_pic {
    float : left;
@@ -67,7 +46,7 @@
 }
 
 .gitDetails {
-  line-height: 5px; 
+  line-height: 10px; 
   font-size: 12px;
   margin-left: 5px;
 }
