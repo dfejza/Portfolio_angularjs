@@ -181,7 +181,7 @@ function formatPagePortfoilio(){
       // Fill in template
       var view = { name:        data.name,
        link:        data.link,
-       image:       "",
+       image:       data.image,
        fullname:    data.name,
        description: data.description,
        collapseId:  "collapse" + collapseCounter,
@@ -217,7 +217,7 @@ function formatPagePortfoilio(){
 
     // Cleanup work due to being generated genericaly
     // Need to add the class 'in' to the first element, in order for the accordian effect to work
-    //$("#collapse1.panel-collapse").addClass("in");
+   $ ("#collapse1.panel-collapse").addClass("in");
   });
 }
 
