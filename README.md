@@ -21,5 +21,3 @@ Going forward, I want this to serve as a baseline for future projects by expandi
 - Provide an interface for other JS projects (games, applications, ect) that can easily be accessed
 
 ### This page was generated from the README.md file of the git repository, converted from markdown to HTML using NodeJS, and fed here using JS.
-
-![](https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/websitedemo.gif)
