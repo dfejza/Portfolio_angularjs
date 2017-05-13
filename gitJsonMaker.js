@@ -34,8 +34,8 @@
 	};
 
 	// README URLS
-	var engReadme = "https://raw.githubusercontent.com/dfejza/portfolio/master/README.md";
-	var jpReadme = "https://raw.githubusercontent.com/dfejza/portfolio/master/READMEJP.md"
+	var engReadme = "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/README.md";
+	var jpReadme = "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/READMEJP.md"
 
 
 
@@ -99,7 +99,7 @@
 				jsonFile.page3.git.repos.push({
 					name : value.name,
 					link : value.html_url,
-					image : "",
+					image : "https://raw.githubusercontent.com/dfejza/" + value.name + "/master/demo.gif",
 					fullname : value.fullname,
 					description : value.description
 				});
