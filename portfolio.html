@@ -12,8 +12,8 @@
 		</div>
 
 
-		<div class="portfolioHeader1 col-sm-6">
-			<a id="imgLink1" href="{{json.page3.bitB.usernameLink}}">
+		<div class="portfolioHeader2 col-sm-6">
+			<a id="imgLink1" href="">
 				<img class="content_pic img-rounded gitDetails" id="icon" src="/resources/images/bitbucket.png" height="80" width="80">
 			</a>
 			<a href="" id="username"></a>
@@ -26,17 +26,29 @@
 	</div>
 </div>
 
-<div id="projects" class="media">
-<hr>
-	<script id="projTemplate" type="text/template">
-		<a id="{{name}}" href="{{link}}" class="media-left">
-			<img class="projectIcon media-object" id="icon" src="{{image}}" style="width:200px">
-		</a>
-		<div class="media-body">
-			<h1 class="media-heading">{{fullname}}</h4>
-				<p id="media-txt">{{description}}</p>
+<div id="projects" class="media container">
+	<hr>
+	<h2>Summary of each repository, generated using their API</h2>
+	<div class="panel-group" id="accordion">
+		<script id="projTemplate" type="text/template">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="{{collapseIdHref}}">{{name}}</a>
+					</h4>
+				</div>
+				<div id="{{collapseId}}" class="panel-collapse collapse">
+					<div class="panel-body">
+						<a id="{{name}}" href="{{link}}" class="media-left">
+							<img class="projectIcon media-object" id="icon" src="{{image}}" style="width:200px">
+						</a>
+						<div class="media-body">
+							<h1 class="media-heading">{{fullname}}</h1>
+							<p id="media-txt">{{description}}</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<br />
-	</script>
+		</script>
+	</div>
 </div>

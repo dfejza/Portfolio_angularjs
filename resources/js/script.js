@@ -151,10 +151,12 @@ function formatPageHome(){
 
 // Override to format the portfolio page
 // Exercises GET
+// TODO make a popover on more details for each git project
 function formatPagePortfoilio(){
 
   $("#main").load("portfolio.html", function(){
     // Create a template using mustache
+    var collapseCounter = 1; //bootstrap variable needs a number suffixed to the ID. Since eat repo is generated, we need to track the count
     var template = $("#projTemplate").html();    // Template for git proj
 
     // Format the HTML according to the JSON's Git User
@@ -181,15 +183,17 @@ function formatPagePortfoilio(){
        link:        data.link,
        image:       "",
        fullname:    data.name,
-       description: data.description};
+       description: data.description,
+       collapseId:  "collapse" + collapseCounter,
+       collapseIdHref:  "#collapse" + collapseCounter};
 
       // Create specialized object
       var rendered = Mustache.render(template, view);
 
       // Add the object
       $("#projects").append(rendered);
+      collapseCounter++;
     });
-
 
     // Fetch each project BITBUCKET
     // Iterate through the array returned
@@ -199,15 +203,21 @@ function formatPagePortfoilio(){
        link:        "",
        image:       "",
        fullname:    data.name,
-       description: data.description};
+       description: data.description,
+       collapseId:  "collapse" + collapseCounter,
+       collapseIdHref:  "#collapse" + collapseCounter};
 
       // Create specialized object
       var rendered = Mustache.render(template, view);
 
       // Add the object
       $("#projects").append(rendered);
+      collapseCounter++;
     });
 
+    // Cleanup work due to being generated genericaly
+    // Need to add the class 'in' to the first element, in order for the accordian effect to work
+    //$("#collapse1.panel-collapse").addClass("in");
   });
 }
 
