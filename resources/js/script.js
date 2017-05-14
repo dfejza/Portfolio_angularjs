@@ -35,47 +35,64 @@ $(document).ready(function(){
         selectedLanguage = language.ENGLISH;
         loadPage(currentPage)
       }
+  });
+
+  $("#main").on("click", '.btn.login', function (e) {
+    formInput = {
+      login : $("#email").val(),
+      pass : $("#pwd").val()
+    }
+
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      data: JSON.stringify(formInput),
+      contentType: "application/json"
+    }).done(function( msg ) {
+      console.log(msg);
+      if(msg !="NO")
+      {
+        formatData(msg);
+      }
+    });
+  });
+
+  //##### send add record Ajax request to response.php #########
+  $("#main").on("click", '#FormSubmit.btn', function (e) {
+    e.preventDefault();
+    if($("#comments").val()==='')
+    {
+      alert("Please enter some text!");
+      return false;
+    }
+  // Get the IP of the user
+  // $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+  //   console.log(JSON.stringify(data, null, 2));
+  // });
+    // Get the date
+    var d = new Date();
+
+    var formInput = {
+      date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
+      ip : "placeholder",
+      name : $("#name").val(),
+      email : $("#email").val(),
+      message : $("#comments").val()
+    };
+
+    $.ajax({
+      url: "/sendtodb",
+      type: "POST",
+      data: JSON.stringify(formInput),
+      contentType: "application/json"
+    }).done(function( msg ) {
+      console.log(msg);
     });
 
-      //##### send add record Ajax request to response.php #########
-      $("#main").on("click", '.btn', function (e) {
-        e.preventDefault();
-        if($("#comments").val()==='')
-        {
-          alert("Please enter some text!");
-          return false;
-        }
-      // Get the IP of the user
-      $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
-        console.log(JSON.stringify(data, null, 2));
-
-        // Get the date
-        var d = new Date();
-
-        var formInput = {
-          date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
-          ip : data.ip,
-          name : $("#name").val(),
-          email : $("#email").val(),
-          message : $("#comments").val()
-        };
-
-        $.ajax({
-          url: "https://api.mlab.com/api/1/databases/portfolio/collections/message?apiKey=cSTPcc7WxJ2mIKW1gH6xdo63QlWYvfBc",
-          type: "POST",
-          data: JSON.stringify(formInput),
-          contentType: "application/json"
-        }).done(function( msg ) {
-          console.log(msg);
-        });
-
-      });
-
-
-      $("#FormSubmit").hide(); //hide submit button
-      $("#LoadingImage").show(); //show loading image
-      
-    });
+  $("#FormSubmit").hide(); //hide submit button
+  $("#LoadingImage").show(); //show loading image
+  
+});
 
   // Change text of the language select based off user lanuage
   $('#langSelect').on('change', function() {
@@ -231,24 +248,29 @@ function formatAboutMe(){
 function formatLogin(){
   // Lets view a chart
   $("#main").load("login.html", function(){
-    //create the template
+
+  });
+}
+
+function formatData(obj){
+  // Lets view a chart
+  $("#main").load("table.html", function(){
+    //create the templates
     var template = $("#tableTemplate").html();
 
-    // Fetch the table
-    $.get("https://api.mlab.com/api/1/databases/portfolio/collections/message?apiKey=cSTPcc7WxJ2mIKW1gH6xdo63QlWYvfBc", function(dbData, status){
-      $.each(dbData, function(key,rowData){
-        var view = { ip: rowData.ip,
-        date: rowData.date,
-        name: rowData.name,
-        email: rowData.email,
-        message: rowData.message};
+    //Fetch the table
+    $.each(obj, function(key,rowData){
+      var view = { ip: rowData.ip,
+      date: rowData.date,
+      name: rowData.name,
+      email: rowData.email,
+      message: rowData.message};
 
-        // Create specialized object
-        var rendered = Mustache.render(template, view);
-  
-        // Add the object
-        $("#tableBody").append(rendered);
-      });
+      // Create specialized object
+      var rendered = Mustache.render(template, view);
+
+      // Add the object
+      $("#tableBody").append(rendered);
     });
   });
 }

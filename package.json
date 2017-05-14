@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/dfejza/Website-Portfolio#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "jQuery": "^1.7.4",
+    "jsdom": "^10.1.0",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.4",
+    "xmlhttprequest": "^1.8.0"
   }
 }

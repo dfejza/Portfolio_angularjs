@@ -1,26 +1,29 @@
 <div class="container">
-  <h2>Database information</h2>
-  <p>Public for now. Will implement login function</p>
-  <table id="table" class="table table-striped">
-    <thead>
-      <tr>
-        <th>IP</th>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Message</th>
-      </tr>
-    </thead>
-    <tbody id="tableBody">
-    <script id="tableTemplate" type="text/template">
-        <tr>
-          <td>{{ip}}</td>
-          <td>{{date}}</td>
-          <td>{{name}}</td>
-          <td>{{email}}</td>
-          <td>{{message}}</td>
-        </tr>  
-      </script>
-    </tbody>
-  </table>
+<h2>You probably shouldn't be here</h2>
+  <form class="form-horizontal" action="/action_page.php">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default login">Submit</button>
+      </div>
+    </div>
+  </form>
 </div>

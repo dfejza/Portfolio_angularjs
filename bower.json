@@ -8,6 +8,7 @@
     "angular": "^1.6.4",
     "jquery": "^3.2.1",
     "showdown": "^1.6.4",
-    "request": "^2.81.1"
+    "request": "^2.81.1",
+    "mustache.js": "mustache#^2.3.0"
   }
 }
