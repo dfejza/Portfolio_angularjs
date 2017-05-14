@@ -4,7 +4,8 @@
   "description": "Website",
   "main": "gitJsonMaker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/dfejza/Website-Portfolio/issues"
   },
+
   "homepage": "https://github.com/dfejza/Website-Portfolio#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -23,6 +25,10 @@
     "jsdom": "^10.1.0",
     "mustache": "^2.3.0",
     "mustache-express": "^1.2.4",
+    "nodemon": "^1.11.0",
     "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
