@@ -1,0 +1,13 @@
+{
+  "name": "website",
+  "description": "Website",
+  "main": "gitJsonMaker.js",
+  "license": "ISC",
+  "homepage": "https://github.com/dfejza/Website-Portfolio",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "jquery": "^3.2.1",
+    "showdown": "^1.6.4",
+    "request": "^2.81.1"
+  }
+}

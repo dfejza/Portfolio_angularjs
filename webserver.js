@@ -1,8 +1,8 @@
 // A very basic web server in node.js
 // Stolen from: Node.js for Front-End Developers by Garann Means (p. 9-10)
 
-var port = 8000;
-var serverUrl = "192.168.1.18";
+var port = 8080;
+var serverUrl = "localhost";
 
 var http = require("http");
 var path = require("path");
