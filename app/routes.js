@@ -14,9 +14,9 @@ module.exports = function(app) {
 		if(postData.login == "admin1" && postData.pass == "admin1")
 		{
 			// Connect to the db
-			MongoClient.connect("mongodb://admin:admin@ds133961.mlab.com:33961/portfolio", function(err, db) {
+			MongoClient.connect("mongodb://localhost:27017/portfolio", function(err, db) {
 				if(!err) {
-					var core = db.collection('message');
+					var core = db.collection('userinfo');
 					core.find().toArray(function(err, items) {
 						res.json(items); 
 					});
@@ -41,13 +41,54 @@ module.exports = function(app) {
 			message : req.body.message
 		}
 		// Connect to the db
-		MongoClient.connect("mongodb://admin:admin@ds133961.mlab.com:33961/portfolio", function(err, db) {
+		MongoClient.connect("mongodb://localhost:27017/portfolio", function(err, db) {
 			if(!err) {
 				console.log("We are connected");
-				var core = db.collection('message');
+				var core = db.collection('userinfo');
 				core.insert(postData, function(err,results){
 					if(err) throw err;
 				})
+			}
+		});
+	});
+
+	// update chat -------------------------------------------------------------
+	app.get('/updatechat', function(req, res) {
+		// Connect to the db
+		MongoClient.connect("mongodb://localhost:27017/portfolio", function(err, db) {
+			if(!err) {
+				var core = db.collection('chat');
+				core.find().toArray(function(err, items) {
+					res.json(items); 
+				});
+			}
+		});
+	});
+
+	// update chat -------------------------------------------------------------
+	app.post('/insertchat', function(req, res) {
+		var postData = {
+			time : req.body.time,
+			id : req.body.id,
+			msg : req.body.msg,
+		}
+		// Connect to the db
+		MongoClient.connect("mongodb://localhost:27017/portfolio", function(err, db) {
+			if(!err) {
+				var core = db.collection('chat');
+				core.insert(postData, function(err,results){
+					if(err) throw err;
+				})
+			}
+		});
+	});
+
+	// clear chat -------------------------------------------------------------
+	app.post('/clearchat', function(req, res) {
+		// Connect to the db
+		MongoClient.connect("mongodb://localhost:27017/portfolio", function(err, db) {
+			if(!err) {
+				db.collection('chat').remove();
 			}
 		});
 	});

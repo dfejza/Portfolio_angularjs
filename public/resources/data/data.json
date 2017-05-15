@@ -1,1 +1,100 @@
-{"navigation":[["Home","ホーム"],["Projects","プロジェクト"],["About Me","紹介"],["Login","Login"]],"page0":{"contentRaw":["mainENG.html","mainJPN.html"]},"page1":{"followers":["Followers","フォロワー"],"following":["Following","フォロー"],"projects":[[]],"repoCount":["Repositories","リポジトリ"]},"page2":{"repoCount":["Repositories","リポジトリ"]},"page3":{"bitB":{"followers":"NA","following":"NA","repoCount":"2","username":"dfejza","usernameLink":"https://bitbucket.org/dfejza/","repos":[{"name":"SlideshowMaker","image":"","description":"slideshowmaker"},{"name":"ePortfolio","image":"","description":"eportfolio"}]},"git":{"followers":1,"following":1,"icon":"https://avatars2.githubusercontent.com/u/15079960?v=3","repoCount":2,"username":"dfejza","usernameLink":"https://github.com/dfejza","repos":[{"name":"Challonger","link":"https://github.com/dfejza/Challonger","image":"https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif","description":"Tournament bracket simulator using REST API"},{"name":"Website-Portfolio","link":"https://github.com/dfejza/Website-Portfolio","image":"https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif","description":"An interface to strengthen my understanding of various web development languages."}]}},"selectorText":["Language: ","言語: "]}
+{
+  "navigation": [
+    [
+      "Home",
+      "ホーム"
+    ],
+    [
+      "Projects",
+      "プロジェクト"
+    ],
+    [
+      "About Me",
+      "紹介"
+    ],
+    [
+      "Login",
+      "Login"
+    ],
+    [
+      "Chat",
+      "Chat"
+    ]
+  ],
+  "page0": {
+    "contentRaw": [
+      "mainENG.html",
+      "mainJPN.html"
+    ]
+  },
+  "page1": {
+    "followers": [
+      "Followers",
+      "フォロワー"
+    ],
+    "following": [
+      "Following",
+      "フォロー"
+    ],
+    "projects": [
+      []
+    ],
+    "repoCount": [
+      "Repositories",
+      "リポジトリ"
+    ]
+  },
+  "page2": {
+    "repoCount": [
+      "Repositories",
+      "リポジトリ"
+    ]
+  },
+  "page3": {
+    "bitB": {
+      "followers": "NA",
+      "following": "NA",
+      "repoCount": "2",
+      "repos": [
+        {
+          "description": "slideshowmaker",
+          "image": "",
+          "name": "SlideshowMaker"
+        },
+        {
+          "description": "eportfolio",
+          "image": "",
+          "name": "ePortfolio"
+        }
+      ],
+      "username": "dfejza",
+      "usernameLink": "https://bitbucket.org/dfejza/"
+    },
+    "git": {
+      "followers": 1,
+      "following": 1,
+      "icon": "https://avatars2.githubusercontent.com/u/15079960?v=3",
+      "repoCount": 2,
+      "repos": [
+        {
+          "description": "Tournament bracket simulator using REST API",
+          "image": "https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif",
+          "link": "https://github.com/dfejza/Challonger",
+          "name": "Challonger"
+        },
+        {
+          "description": "An interface to strengthen my understanding of various web development languages.",
+          "image": "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif",
+          "link": "https://github.com/dfejza/Website-Portfolio",
+          "name": "Website-Portfolio"
+        }
+      ],
+      "username": "dfejza",
+      "usernameLink": "https://github.com/dfejza"
+    }
+  },
+  "selectorText": [
+    "Language: ",
+    "言語: "
+  ]
+}

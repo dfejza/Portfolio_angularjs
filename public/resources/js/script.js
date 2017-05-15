@@ -5,6 +5,7 @@ var gitRepouri = 'https://api.github.com/users/dfejza';
 var bitbucketRepouri = "https://api.bitbucket.org/2.0/users/dfejza";
 var bitbucketRepouriRepo = "https://api.bitbucket.org/2.0/repositories/dfejza";
 var json;
+var interval = null;
 language = {
   ENGLISH : 0,
   JAPANESE : 1
@@ -54,7 +55,41 @@ $(document).ready(function(){
       {
         formatData(msg);
       }
+      else
+      {
+        loadPage("page0");
+        alert("Invalid login");
+      }
     });
+  });
+
+  $("#main").on("click", ".btn#sendchat", function(e){
+    var d = new Date();
+    formInput = {
+      time : (d.getHours() + ":" + d.getMinutes()),
+      id : $("#user").val(),
+      msg : $("#msg").val()
+    }
+    $.ajax({
+      url: "/insertchat",
+      type: "POST",
+      data: JSON.stringify(formInput),
+      contentType: "application/json"
+    }).done(function( msg ) {
+      // clear msg box
+    });
+    $("#msg").val("");
+  });
+
+    $("#main").on("click", ".btn#clearChat", function(e){
+      $.ajax({
+        url: "/clearchat",
+        type: "POST",
+        data: null,
+        contentType: "application/json"
+      }).done(function( msg ) {
+        //do nothing for now
+      });
   });
 
   //##### send add record Ajax request to response.php #########
@@ -139,6 +174,12 @@ function loadPage(pageNum){
   // Show which page is selected by adding the css to the pageselection
   $('#'+ pageNum).last().addClass('active');
 
+  //Check for chat interval. Remove if is
+  if(interval != null)
+  {
+    clearInterval(interval);
+  }
+
   // Global var keeping track of the page we are on
   currentPage = pageNum;
 
@@ -157,6 +198,9 @@ function loadPage(pageNum){
   }
   if(currentPage=='page3'){
     formatLogin();
+  }
+  if(currentPage=='page4'){
+    formatChat();
   }
 }
 
@@ -273,6 +317,32 @@ function formatData(obj){
       $("#tableBody").append(rendered);
     });
   });
+}
+
+function formatChat(){
+  $("#main").load("/chat.html", function(){
+    // update the chatbox every second
+    updateChat($('#convobox'));
+    interval = setInterval(function(){
+        updateChat($('#convobox')) // this will run after every 5 seconds
+    }, 5000);
+  });
+}
+
+//todo terrible implementation
+function updateChat(chatbox){
+  //clear the chat
+  chatbox.empty();
+  //update it
+  $.getJSON('/updatechat', function(data) {
+    $.each(data, function(key,rowData){
+      var line = rowData.time + " - " + rowData.id + " : " + rowData.msg + "\n";
+      //chatbox.val(chatbox.val()+line); 
+      chatbox.append('<b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
+    });
+    chatbox.scrollTop(chatbox[0].scrollHeight);
+  });
+
 }
 
 
