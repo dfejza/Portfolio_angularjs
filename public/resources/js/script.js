@@ -228,6 +228,8 @@ function formatPagePortfoilio(){
     var collapseCounter = 1; //bootstrap variable needs a number suffixed to the ID. Since eat repo is generated, we need to track the count
     var template = $("#projTemplate").html();    // Template for git proj
 
+    $('#repoHeader').append(json.page2.repoHeader[selectedLanguage]);
+
     // Format the HTML according to the JSON's Git User
     $('.portfolioHeader1 #username').append(json.page3.git.username);
     $('.portfolioHeader1 #username').attr('href', json.page3.git.usernameLink);

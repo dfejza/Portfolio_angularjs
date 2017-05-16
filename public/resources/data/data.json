@@ -45,6 +45,8 @@
     ]
   },
   "page2": {
+    "repoHeader" : [ "Summary of each repository, generated using their API" ,
+    "夫れ夫れのリポジトリの大筋です. GitのAPIを使ってリストが作りました"],
     "repoCount": [
       "Repositories",
       "リポジトリ"
