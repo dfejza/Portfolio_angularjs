@@ -331,15 +331,22 @@ function formatChat(){
 
 //todo terrible implementation
 function updateChat(chatbox){
-  //clear the chat
-  chatbox.empty();
+  var temp = "";
+  // //clear the chat
+  // chatbox.empty();
   //update it
   $.getJSON('/updatechat', function(data) {
     $.each(data, function(key,rowData){
       var line = rowData.time + " - " + rowData.id + " : " + rowData.msg + "\n";
       //chatbox.val(chatbox.val()+line); 
-      chatbox.append(rowData.time +' <b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
+      temp += (rowData.time +' <b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
     });
+    if(temp != chatbox.html())
+    {
+      var testva = chatbox.html();
+      chatbox.empty();
+      chatbox.append(temp);
+    }
     chatbox.scrollTop(chatbox[0].scrollHeight);
   });
 
