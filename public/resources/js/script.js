@@ -295,7 +295,14 @@ function formatPagePortfoilio(){
 function formatAboutMe(){
   // Lets load the specified page into body
   $("#main").load("aboutme.html", function(){
-
+    ("#name").append(json.page3.name[selectedLanguage]);
+    ("#summary").append(json.page3.summary[selectedLanguage]);
+    ("#languageheader").append(json.page3.languageheader[selectedLanguage]);
+    ("#contactheader").append(json.page3.contact.header[selectedLanguage]);
+    ("#contactquestion").append(json.page3.contact.question[selectedLanguage]);
+    ("#contactname").append(json.page3.contact.name[selectedLanguage]);
+    ("#contactemail").append(json.page3.contact.email[selectedLanguage]);
+    ("#contactcomment").append(json.page3.contact.comment[selectedLanguage]);
   });
 }
 

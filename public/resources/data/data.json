@@ -1,1 +1,133 @@
-{"navigation":[["Home","ホーム"],["Projects","プロジェクト"],["About Me","紹介"],["Login","Login"],["Chat","Chat"]],"page0":{"contentRaw":["mainENG.html","mainJPN.html"]},"page1":{"followers":["Followers","フォロワー"],"following":["Following","フォロー"],"projects":[[]],"repoCount":["Repositories","リポジトリ"]},"page2":{"repoHeader":["Summary of each repository, generated using their API","夫れ夫れのリポジトリの大筋です. GitのAPIを使ってリストが作りました"],"repoCount":["Repositories","リポジトリ"]},"page3":{"bitB":{"followers":"NA","following":"NA","repoCount":"2","username":"dfejza","usernameLink":"https://bitbucket.org/dfejza/","repos":[{"name":"SlideshowMaker","image":"","description":"slideshowmaker"},{"name":"ePortfolio","image":"","description":"eportfolio"}]},"git":{"followers":1,"following":1,"icon":"https://avatars2.githubusercontent.com/u/15079960?v=3","repoCount":3,"username":"dfejza","usernameLink":"https://github.com/dfejza","repos":[{"name":"Challonger","link":"https://github.com/dfejza/Challonger","image":"https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif","description":"Tournament bracket simulator using REST API"},{"name":"ePortfolio-Creator","link":"https://github.com/dfejza/ePortfolio-Creator","image":"https://raw.githubusercontent.com/dfejza/ePortfolio-Creator/master/demo.gif","description":"Java application to create your own Portfolio website, using a strait forward GUI. Has a live preview and ability to export to HTML,CSS andJS format."},{"name":"Website-Portfolio","link":"https://github.com/dfejza/Website-Portfolio","image":"https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif","description":"An interface to strengthen my understanding of various web development languages."}]}},"selectorText":["Language: ","言語: "]}
+{
+   "navigation":[
+      [
+         "Home",
+         "ホーム"
+      ],
+      [
+         "Projects",
+         "プロジェクト"
+      ],
+      [
+         "About Me",
+         "紹介"
+      ],
+      [
+         "Login",
+         "ログイン"
+      ],
+      [
+         "Chat",
+         "チャット"
+      ]
+   ],
+   "page0":{
+      "contentRaw":[
+         "mainENG.html",
+         "mainJPN.html"
+      ]
+   },
+   "page1":{
+      "followers":[
+         "Followers",
+         "フォロワー"
+      ],
+      "following":[
+         "Following",
+         "フォロー"
+      ],
+      "projects":[
+         [
+
+         ]
+      ],
+      "repoCount":[
+         "Repositories",
+         "リポジトリ"
+      ]
+   },
+   "page2":{
+      "repoHeader":[
+         "Summary of each repository, generated using their API",
+         "夫れ夫れのリポジトリの大筋です. GitのAPIを使ってリストが作りました"
+      ],
+      "repoCount":[
+         "Repositories",
+         "リポジトリ"
+      ]
+   },
+   "page3":{
+      "name":[
+         "Dardan Fejza",
+         "Dardan Fejza <br> ダーダン フェーザー"
+      ],
+      "summary":[
+         "24 year old Computer Engineer whom graduated from Stony Brook University with a Bachelors of Science, Major in Computer Engineering and Minor in Computer Science. <br> Since I was little there has been a passion residing in all things elections, be it software or hardware. An unquenchable desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love. <br> This website has served as an instrument of learning. What has started off as a simple front-end application has led me to learning full-stack technologies.",
+         "todo"
+      ],
+      "languageheader":[
+        "Programming Languages",
+        "プログラミング言語"
+      ],
+      "contact":
+      {
+        "header" :["Contact","連絡"],
+        "question" : ["Have a question?", "質問ありますか？"],
+        "name" : ["Name","名前"],
+        "email" : ["Email","メールアドレス"],
+        "comment" : ["Comment","コメント"]
+      },
+
+      "bitB":{
+         "followers":"NA",
+         "following":"NA",
+         "repoCount":"2",
+         "username":"dfejza",
+         "usernameLink":"https://bitbucket.org/dfejza/",
+         "repos":[
+            {
+               "name":"SlideshowMaker",
+               "image":"",
+               "description":"slideshowmaker"
+            },
+            {
+               "name":"ePortfolio",
+               "image":"",
+               "description":"eportfolio"
+            }
+         ]
+      },
+      "git":{
+         "followers":1,
+         "following":1,
+         "icon":"https://avatars2.githubusercontent.com/u/15079960?v=3",
+         "repoCount":3,
+         "username":"dfejza",
+         "usernameLink":"https://github.com/dfejza",
+         "repos":[
+            {
+               "name":"Challonger",
+               "link":"https://github.com/dfejza/Challonger",
+               "image":"https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif",
+               "description":"Tournament bracket simulator using REST API"
+            },
+            {
+               "name":"ePortfolio-Creator",
+               "link":"https://github.com/dfejza/ePortfolio-Creator",
+               "image":"https://raw.githubusercontent.com/dfejza/ePortfolio-Creator/master/demo.gif",
+               "description":"Java application to create your own Portfolio website, using a strait forward GUI. Has a live preview and ability to export to HTML,CSS andJS format."
+            },
+            {
+               "name":"Website-Portfolio",
+               "link":"https://github.com/dfejza/Website-Portfolio",
+               "image":"https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif",
+               "description":"An interface to strengthen my understanding of various web development languages."
+            }
+         ]
+      }
+   },
+   "selectorText":[
+      "Language: ",
+      "言語: "
+   ]
+}
