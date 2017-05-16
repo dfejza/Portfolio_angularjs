@@ -63,6 +63,14 @@ $(document).ready(function(){
     });
   });
 
+
+
+  $("#main").on('keyup', "#msg", function (e) {
+    if (e.keyCode == 13) {
+        $(".btn#sendchat").click();
+    }
+  });
+
   $("#main").on("click", ".btn#sendchat", function(e){
     var d = new Date();
     formInput = {
