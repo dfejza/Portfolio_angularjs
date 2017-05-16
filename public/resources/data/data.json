@@ -75,7 +75,8 @@
         "question" : ["Have a question?", "質問ありますか？"],
         "name" : ["Name","名前"],
         "email" : ["Email","メールアドレス"],
-        "comment" : ["Comment","コメント"]
+        "comment" : ["Comment","コメント"],
+        "FormSubmit" : ["Send","送る"]
       },
 
       "bitB":{

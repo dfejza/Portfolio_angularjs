@@ -300,9 +300,10 @@ function formatAboutMe(){
     $("#languageheader").append(json.page3.languageheader[selectedLanguage]);
     $("#contactheader").append(json.page3.contact.header[selectedLanguage]);
     $("#contactquestion").append(json.page3.contact.question[selectedLanguage]);
-    $("#contactname").append(json.page3.contact.name[selectedLanguage]);
-    $("#contactemail").append(json.page3.contact.email[selectedLanguage]);
-    $("#contactcomment").append(json.page3.contact.comment[selectedLanguage]);
+    $("#contactname").attr('placeholder', json.page3.contact.name[selectedLanguage]);
+    $("#contactemail").attr('placeholder', json.page3.contact.email[selectedLanguage]);
+    $("#contactcomment").attr('placeholder', json.page3.contact.comment[selectedLanguage]);
+    $("#FormSubmit").append(json.page3.contact.FormSubmit[selectedLanguage]);
   });
 }
 
