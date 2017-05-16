@@ -325,7 +325,7 @@ function formatChat(){
     updateChat($('#convobox'));
     interval = setInterval(function(){
         updateChat($('#convobox')) // this will run after every 5 seconds
-    }, 5000);
+    }, 2500);
   });
 }
 
@@ -338,7 +338,7 @@ function updateChat(chatbox){
     $.each(data, function(key,rowData){
       var line = rowData.time + " - " + rowData.id + " : " + rowData.msg + "\n";
       //chatbox.val(chatbox.val()+line); 
-      chatbox.append('<b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
+      chatbox.append(rowData.time +' <b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
     });
     chatbox.scrollTop(chatbox[0].scrollHeight);
   });
