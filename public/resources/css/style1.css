@@ -91,6 +91,10 @@ zoom: 200%;
     border-color: #f4511e;
 }
 
+.thumbnail {
+  border : 0px;
+}
+
 .carousel-indicators li.active {
     background-color: #f4511e;
 }
