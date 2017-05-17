@@ -1,37 +1,33 @@
 <div class="container aboutme">
 	<div class="container-fluid bg-grey">
-		<h1>Dardan Fejza</h1> 
-		<h4 id="katakana">ダーダン   フェーザー</h4> 
-
 		<div class="row">
 			<div class="col-sm-4">
 				<img class="img-responsive" src="./resources/images/me.jpg" alt="Chania" width="460" height="345">  
 			</div>
 			<div class="col-sm-8">
-				<h2>Our Values</h2>
-				<h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4> 
-				<p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
+				<h1 id="name"></h1> 
+				<p id="summary"></p>
 			</div>
 		</div>
 	</div>
 	<div class="container-fluid text-center">
-		<h1><strong>Programming Languages</strong></h1>
+		<h1 id="languageheader"><strong></strong></h1>
 		<br><br>
 		<div class="row">
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-heart logo-small"></span>
 				<h4 class="bold">C++</h4>
-				<p>My goto language. 4 years and counting</p>
+				<p id="glyphicon0"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-phone logo-small"></span>
 				<h4 class="bold">Java</h4>
-				<p>Desktop/Android 4 years</p>
+				<p id="glyphicon1"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-lock logo-small"></span>
 				<h4 class="bold">C</h4>
-				<p>Uhmmmm</p>
+				<p id="glyphicon2"></p>
 			</div>
 		</div>
 		<br><br><br><br>
@@ -39,17 +35,17 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-comment logo-small"></span>
 				<h4 class="bold">JS/JQuery/<br />AngularJS</h4>
-				<p>Take a look at the source of this!</p>
+				<p id="glyphicon3"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-home logo-small"></span>
-				<h4 class="bold">HTML</h4>
-				<p>Right click -> View Source</p>
+				<h4 class="bold">HTML/CSS/Bootstrap</h4>
+				<p id="glyphicon4"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4 class="bold">CSS/Bootstrap</h4>
-				<p>This too</p>
+				<h4 class="bold">MongoDB/Express</h4>
+				<p id="glyphicon5"></p>
 			</div>
 		</div>
 		<br><br><br><br>
@@ -57,47 +53,47 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-leaf logo-small"></span>
 				<h4 class="bold">Assembly</h4>
-				<p>Non-C based MIPS and ATMEGA16</p>
+				<p id="glyphicon6"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-console logo-small"></span>
 				<h4 class="bold">NodeJS</h4>
-				<p>Beginner but getting there!</p>
+				<p id="glyphicon7"></p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-stats logo-small"></span>
 				<h4 class="bold">MATlab</h4>
-				<p>Image processing</p>
+				<p id="glyphicon8"></p>
 			</div>
 		</div>
 	</div>
 
-<div class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACT</h2>
-  <div class="row">
-    <div class="col-sm-5">
-      <p>Have a question?</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Lindenhurst, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +1-631-957-2405</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> dardan.fejza@gmail.com</p> 
-    </div>
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="message" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" id="FormSubmit" type="submit">Send</button>
-        </div>
-      </div> 
-    </div>
-    <img src="./resources/images/Thanks.png" class="img-responsive" id="LoadingImage" style="display:none" />
-  </div>
-</div>
+	<div class="container-fluid bg-grey">
+		<h2 id="contactheader" class="text-center"></h2>
+		<div class="row">
+			<div class="col-sm-5">
+				<p id="contactquestion" ></p>
+				<p><span class="glyphicon glyphicon-map-marker"></span> Lindenhurst, US</p>
+				<p><span class="glyphicon glyphicon-phone"></span> +1-631-957-2405</p>
+				<p><span class="glyphicon glyphicon-envelope"></span> dardan.fejza@gmail.com</p> 
+			</div>
+			<div class="col-sm-7">
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="contactname" name="name" placeholder="" type="text" required>
+					</div>
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="contactemail" name="email" placeholder="" type="email" required>
+					</div>
+				</div>
+				<textarea class="form-control" id="contactcomment" name="message" placeholder="" rows="5"></textarea><br>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<button class="btn btn-default pull-right" id="FormSubmit" type="submit"></button>
+					</div>
+				</div> 
+			</div>
+			<img src="./resources/images/Thanks.png" class="img-responsive" id="LoadingImage" style="display:none" />
+		</div>
+	</div>
 </div>

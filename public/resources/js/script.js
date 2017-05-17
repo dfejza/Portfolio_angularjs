@@ -36,7 +36,7 @@ $(document).ready(function(){
         selectedLanguage = language.ENGLISH;
         loadPage(currentPage)
       }
-  });
+    });
 
   $("#main").on("click", '.btn.login', function (e) {
     formInput = {
@@ -67,7 +67,7 @@ $(document).ready(function(){
 
   $("#main").on('keyup', "#msg", function (e) {
     if (e.keyCode == 13) {
-        $(".btn#sendchat").click();
+      $(".btn#sendchat").click();
     }
   });
 
@@ -89,13 +89,13 @@ $(document).ready(function(){
     $("#msg").val("");
   });
 
-    $("#main").on("click", ".btn#clearChat", function(e){
-      $.ajax({
-        url: "/clearchat",
-        type: "POST",
-        data: null,
-        contentType: "application/json"
-      }).done(function( msg ) {
+  $("#main").on("click", ".btn#clearChat", function(e){
+    $.ajax({
+      url: "/clearchat",
+      type: "POST",
+      data: null,
+      contentType: "application/json"
+    }).done(function( msg ) {
         //do nothing for now
       });
   });
@@ -108,29 +108,30 @@ $(document).ready(function(){
       alert("Please enter some text!");
       return false;
     }
-  // Get the IP of the user
-  // $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
-  //   console.log(JSON.stringify(data, null, 2));
-  // });
-    // Get the date
-    var d = new Date();
+    // Get the IP of the user
+    $.getJSON('freegeoip.net/json/?callback=?', function(data) {
 
-    var formInput = {
-      date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
-      ip : "placeholder",
-      name : $("#name").val(),
-      email : $("#email").val(),
-      message : $("#comments").val()
-    };
+      // Get the date
+      var d = new Date();
 
-    $.ajax({
-      url: "/sendtodb",
-      type: "POST",
-      data: JSON.stringify(formInput),
-      contentType: "application/json"
-    }).done(function( msg ) {
-      console.log(msg);
+      var formInput = {
+        date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
+        ip : data.ip,
+        name : $("#name").val(),
+        email : $("#email").val(),
+        message : $("#comments").val()
+      };
+
+      $.ajax({
+        url: "/sendtodb",
+        type: "POST",
+        data: JSON.stringify(formInput),
+        contentType: "application/json"
+      }).done(function( msg ) {
+        console.log(msg);
+      });
     });
+
 
   $("#FormSubmit").hide(); //hide submit button
   $("#LoadingImage").show(); //show loading image
@@ -228,6 +229,8 @@ function formatPagePortfoilio(){
     var collapseCounter = 1; //bootstrap variable needs a number suffixed to the ID. Since eat repo is generated, we need to track the count
     var template = $("#projTemplate").html();    // Template for git proj
 
+    $('#repoHeader').append(json.page2.repoHeader[selectedLanguage]);
+
     // Format the HTML according to the JSON's Git User
     $('.portfolioHeader1 #username').append(json.page3.git.username);
     $('.portfolioHeader1 #username').attr('href', json.page3.git.usernameLink);
@@ -262,38 +265,29 @@ function formatPagePortfoilio(){
       // Add the object
       $("#projects").append(rendered);
       collapseCounter++;
-    });
-
-    // Fetch each project BITBUCKET
-    // Iterate through the array returned
-    $.each(json.page3.bitB.repos, function(key, data){
-      // Fill in template
-      var view = { name:        data.name,
-       link:        "",
-       image:       "",
-       fullname:    data.name,
-       description: data.description,
-       collapseId:  "collapse" + collapseCounter,
-       collapseIdHref:  "#collapse" + collapseCounter};
-
-      // Create specialized object
-      var rendered = Mustache.render(template, view);
-
-      // Add the object
-      $("#projects").append(rendered);
-      collapseCounter++;
-    });
+    });http://www.screentogif.com/screenshots/Editor-Empty.png
 
     // Cleanup work due to being generated genericaly
     // Need to add the class 'in' to the first element, in order for the accordian effect to work
-   $ ("#collapse1.panel-collapse").addClass("in");
+    $ ("#collapse1.panel-collapse").addClass("in");
   });
 }
 
 function formatAboutMe(){
   // Lets load the specified page into body
   $("#main").load("aboutme.html", function(){
-
+    $("#name").append(json.page3.name[selectedLanguage]);
+    $("#summary").append(json.page3.summary[selectedLanguage]);
+    $.each(json.page3.glyphicons, function(key,data){
+      $("#glyphicon"+key).append(data[selectedLanguage]);
+    });
+    $("#languageheader").append(json.page3.languageheader[selectedLanguage]);
+    $("#contactheader").append(json.page3.contact.header[selectedLanguage]);
+    $("#contactquestion").append(json.page3.contact.question[selectedLanguage]);
+    $("#contactname").attr('placeholder', json.page3.contact.name[selectedLanguage]);
+    $("#contactemail").attr('placeholder', json.page3.contact.email[selectedLanguage]);
+    $("#contactcomment").attr('placeholder', json.page3.contact.comment[selectedLanguage]);
+    $("#FormSubmit").append(json.page3.contact.FormSubmit[selectedLanguage]);
   });
 }
 
@@ -313,10 +307,10 @@ function formatData(obj){
     //Fetch the table
     $.each(obj, function(key,rowData){
       var view = { ip: rowData.ip,
-      date: rowData.date,
-      name: rowData.name,
-      email: rowData.email,
-      message: rowData.message};
+        date: rowData.date,
+        name: rowData.name,
+        email: rowData.email,
+        message: rowData.message};
 
       // Create specialized object
       var rendered = Mustache.render(template, view);
@@ -333,7 +327,7 @@ function formatChat(){
     updateChat($('#convobox'));
     interval = setInterval(function(){
         updateChat($('#convobox')) // this will run after every 5 seconds
-    }, 2500);
+      }, 2500);
   });
 }
 

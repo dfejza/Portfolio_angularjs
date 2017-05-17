@@ -21,7 +21,7 @@ module.exports = function(app) {
 		}
 		else
 		{
-			res.send("NO");
+			res.send("NOooo");
 		}
 		
 	});
