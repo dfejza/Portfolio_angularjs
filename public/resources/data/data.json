@@ -143,7 +143,7 @@
 },
 "page6" : {
    "header" : ["Manga Reader v.01","マンガを読む v.01"],
-   "selection" : [["Naruto","ナルト"],["Tokyo Ghoul","東京喰種"],["",""]]
+   "selection" : [["Naruto","ナルト"],["Tokyo Ghoul","東京喰種"],["Lucifer and the Biscuit Hammer","惑星のさみだれ"]]
 },
 "selectorText":[
    "Language: ",

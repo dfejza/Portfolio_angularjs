@@ -339,7 +339,7 @@ function formatManga(){
     $("#header").append(json.page6.header[selectedLanguage]);
     $("#manga0").append(json.page6.selection[0][selectedLanguage]);
     $("#manga1").append(json.page6.selection[1][selectedLanguage]);
-    //$("#manga2").append(json.page6.selection[2][selectedLanguage]);
+    $("#manga2").append(json.page6.selection[2][selectedLanguage]);
   });
 }
 
