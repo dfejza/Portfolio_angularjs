@@ -211,6 +211,9 @@ function loadPage(pageNum){
   if(currentPage=='page4'){
     formatChat();
   }
+  if(currentPage=='page5'){
+    formatManga();
+  }
 }
 
 function formatPageHome(){
@@ -328,6 +331,15 @@ function formatChat(){
     interval = setInterval(function(){
         updateChat($('#convobox')) // this will run after every 5 seconds
       }, 2500);
+  });
+}
+
+function formatManga(){
+  $("#main").load("/manga.html", function(){
+    $("#header").append(json.page6.header[selectedLanguage]);
+    $("#manga0").append(json.page6.selection[0][selectedLanguage]);
+    $("#manga1").append(json.page6.selection[1][selectedLanguage]);
+    //$("#manga2").append(json.page6.selection[2][selectedLanguage]);
   });
 }
 
