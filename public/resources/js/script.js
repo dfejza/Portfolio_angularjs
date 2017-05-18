@@ -5,16 +5,17 @@ var gitRepouri = 'https://api.github.com/users/dfejza';
 var bitbucketRepouri = "https://api.bitbucket.org/2.0/users/dfejza";
 var bitbucketRepouriRepo = "https://api.bitbucket.org/2.0/repositories/dfejza";
 var json;
+var pageCount;
 var interval = null;
 language = {
   ENGLISH : 0,
   JAPANESE : 1
 }
 
-// Startup function
+// Startup function ==================================================
 $(document).ready(function(){
 
-  $.getJSON("/resources/data/data.json", function(result){
+  $.getJSON("./resources/data/data.json", function(result){
     json = result;
   })
   .done( function() {
@@ -64,7 +65,7 @@ $(document).ready(function(){
   });
 
 
-
+  // ===Chat callbacks==================================================
   $("#main").on('keyup', "#msg", function (e) {
     if (e.keyCode == 13) {
       $(".btn#sendchat").click();
@@ -100,7 +101,30 @@ $(document).ready(function(){
       });
   });
 
-  //##### send add record Ajax request to response.php #########
+  // Manga book callback ==================================================
+  $("#main").on("click", ".mangaselection", function(e){
+    pageCount = 1;
+    loadManga(this.hash.substr(1));
+  });
+
+  $("#main").on("click", ".mangapagereader", function(e){
+    console.log(e);
+    var $this = $(this);
+    var x = e.offsetX;
+    var width = $(this).width();
+
+
+    if ( x<= width/2 && pageCount>1 ) {
+      pageCount--;
+      $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
+    }
+    if ( x > (width/2)) {
+      pageCount++;
+      $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
+    }  
+  });
+
+  //##### send add record Ajax request to response.php ######### =============
   $("#main").on("click", '#FormSubmit.btn', function (e) {
     e.preventDefault();
     if($("#comments").val()==='')
@@ -335,11 +359,18 @@ function formatChat(){
 }
 
 function formatManga(){
-  $("#main").load("/manga.html", function(){
+  $("#main").load("/mangaSelection.html", function(){
     $("#header").append(json.page6.header[selectedLanguage]);
     $("#manga0").append(json.page6.selection[0][selectedLanguage]);
     $("#manga1").append(json.page6.selection[1][selectedLanguage]);
     $("#manga2").append(json.page6.selection[2][selectedLanguage]);
+  });
+}
+
+function loadManga(mangaHash){
+  $("#mangaBody").load("/mangaTemplate.html", function(){
+    $("#mangapage").attr('alt', mangaHash);
+    $("#mangapage").attr('src', "/resources/data/manga/" + mangaHash + "/volume1/y " + "("+pageCount+").jpg");
   });
 }
 
@@ -363,7 +394,6 @@ function updateChat(chatbox){
     }
     chatbox.scrollTop(chatbox[0].scrollHeight);
   });
-
 }
 
 
