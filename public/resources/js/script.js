@@ -160,7 +160,7 @@ $(document).ready(function(){
   });
 
   // Click listener for the page selection
-  $('ul').on('click', 'li.navbar', function(){
+  $('.nav').on('click', 'li.navbar', function(){
     loadPage(this.id);
   });
 
@@ -169,8 +169,8 @@ $(document).ready(function(){
 // No matter the page, the header should remain the same
 function formatPageHeader() {
   // Cycle through the navigation bar and change the language
-  $('#pageBar li').each(function(i,e){
-    $(e).html("<a>" + json.navigation[i][selectedLanguage] + "</a>");
+  $('.nav li').each(function(i,e){
+    $("#page"+i).html("<a>" + json.navigation[i][selectedLanguage] + "</a>");
   });
 
 }

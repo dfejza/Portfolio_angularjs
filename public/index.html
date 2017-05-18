@@ -12,29 +12,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 </head>
 
-<div class="topbar container">
-  <ul id="pageBar" class="nav nav-pills">
-    <li class="navbar" id="page0"></li>
-    <li class="navbar" id="page1"></li>
-    <li class="navbar" id="page2"></li>
-    <li class="navbar" id="page3"></li>
-    <li class="navbar" id="page4"></li>
-    <li class="navbar" id="page5"></li>
-  </ul>
-  <div class="navigationRight">
-    <select class="topright navigationRight" id="langSelect">
-      <option id="english" value="english">English</option>
-      <option id="japanese" value="japanese">日本語</option>
-    </select>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse nav navbar-collapse" id="myNavbar">
+      <ul id="pageBar" class="nav navbar-nav">
+        <li id="page0" class="navbar"></li>
+        <li id="page1" class="navbar"></li>
+        <li id="page2" class="navbar"></li>
+        <li id="page4" class="navbar"></li>
+        <li id="page5" class="navbar"></li>
+      </ul>
+      <div class="nav navbar-nav navbar-right">
+        <li id="page3" class="navbar"><span class="glyphicon glyphicon-log-in"></span></li>
+        <select class="topright navigationRight" id="langSelect">
+          <option id="english" value="english">English</option>
+          <option id="japanese" value="japanese">日本語</option>
+        </select>
+      </div>
+    </div>
   </div>
+</nav>
+
+<div id="main" class="content container animated bounceinleft">
+
+
 </div>
 
 
-  <div id="main" class="content container animated bounceinleft">
-
-
-  </div>
-
-
-  <div class="footer">
-  </div>
+<div class="footer">
+</div>
