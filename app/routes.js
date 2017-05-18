@@ -3,6 +3,11 @@
 // application -------------------------------------------------------------
 // expose the routes to our app with module.exports
 module.exports = function(app) {
+	// application -------------------------------------------------------------
+	app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
+
 	// login -------------------------------------------------------------
 	app.post('/login', function(req,res) {
 		var postData = {
@@ -71,8 +76,26 @@ module.exports = function(app) {
 		req.db.collection('chat').remove();
 	});
 
-	// application -------------------------------------------------------------
-    app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
+	// MANGA DB ---------------------------------------------------------------
+
+	app.get('/manga/:manganame/:pagenum', function (req, res, next) {
+		var options = {
+			root: __dirname + '/public/',
+			dotfiles: 'deny',
+			headers: {
+				'x-timestamp': Date.now(),
+				'x-sent': true
+			}
+		};
+
+		var fileName = req.params.name;
+		res.sendFile(fileName, options, function (err) {
+			if (err) {
+				next(err);
+			} else {
+				console.log('Sent:', fileName);
+			}
+		});
+
+	});
 };
