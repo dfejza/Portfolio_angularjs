@@ -1,12 +1,12 @@
-<div class="container aboutme">
+<div class="container aboutme" ng-controller="aboutmeController">
 	<div class="container-fluid bg-grey aboutme">
 		<div class="row">
 			<div class="col-sm-4">
 				<img class="img-responsive" src="./resources/images/me.jpg" alt="Chania" width="460" height="345">  
 			</div>
 			<div class="col-sm-8">
-				<h1 id="name"></h1> 
-				<p id="summary"></p>
+				<h1 id="name">{{data.name[0]}}</h1> 
+				<p id="summary">{{data.summary[0]}}</p>
 			</div>
 		</div>
 	</div>
@@ -17,17 +17,17 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-heart logo-small"></span>
 				<h4 class="bold">C++</h4>
-				<p id="glyphicon0"></p>
+				<p id="glyphicon0">{{data.glyphicons[0][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-phone logo-small"></span>
 				<h4 class="bold">Java</h4>
-				<p id="glyphicon1"></p>
+				<p id="glyphicon1">{{data.glyphicons[1][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-lock logo-small"></span>
 				<h4 class="bold">C</h4>
-				<p id="glyphicon2"></p>
+				<p id="glyphicon2">{{data.glyphicons[2][0]}}</p>
 			</div>
 		</div>
 		<br><br><br><br>
@@ -35,17 +35,17 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-comment logo-small"></span>
 				<h4 class="bold">JS/JQuery/<br />AngularJS</h4>
-				<p id="glyphicon3"></p>
+				<p id="glyphicon3">{{data.glyphicons[3][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-home logo-small"></span>
 				<h4 class="bold">HTML/CSS/Bootstrap</h4>
-				<p id="glyphicon4"></p>
+				<p id="glyphicon4">{{data.glyphicons[4][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-user logo-small"></span>
 				<h4 class="bold">MongoDB/Express</h4>
-				<p id="glyphicon5"></p>
+				<p id="glyphicon5">{{data.glyphicons[5][0]}}</p>
 			</div>
 		</div>
 		<br><br><br><br>
@@ -53,26 +53,26 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-leaf logo-small"></span>
 				<h4 class="bold">Assembly</h4>
-				<p id="glyphicon6"></p>
+				<p id="glyphicon6">{{data.glyphicons[6][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-console logo-small"></span>
 				<h4 class="bold">NodeJS</h4>
-				<p id="glyphicon7"></p>
+				<p id="glyphicon7">{{data.glyphicons[7][0]}}</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-stats logo-small"></span>
 				<h4 class="bold">MATlab</h4>
-				<p id="glyphicon8"></p>
+				<p id="glyphicon8">{{data.glyphicons[8][0]}}</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="container-fluid bg-grey">
-		<h2 id="contactheader" class="text-center"></h2>
+		<h2 id="contactheader" class="text-center">{{data.contact.header[0]}}</h2>
 		<div class="row">
 			<div class="col-sm-5">
-				<p id="contactquestion" ></p>
+				<p id="contactquestion">{{data.contact.question[0]}}</p>
 				<p><span class="glyphicon glyphicon-map-marker"></span> Lindenhurst, US</p>
 				<p><span class="glyphicon glyphicon-phone"></span> +1-631-957-2405</p>
 				<p><span class="glyphicon glyphicon-envelope"></span> dardan.fejza@gmail.com</p> 
@@ -80,16 +80,16 @@
 			<div class="col-sm-7">
 				<div class="row">
 					<div class="col-sm-6 form-group">
-						<input class="form-control" id="contactname" name="name" placeholder="" type="text" required>
+						<input class="form-control" id="contactname" name="name" placeholder="{{data.contact.name[0]}}" type="text" required>
 					</div>
 					<div class="col-sm-6 form-group">
-						<input class="form-control" id="contactemail" name="email" placeholder="" type="email" required>
+						<input class="form-control" id="contactemail" name="email" placeholder="{{data.contact.email[0]}}" type="email" required>
 					</div>
 				</div>
-				<textarea class="form-control" id="contactcomment" name="message" placeholder="" rows="5"></textarea><br>
+				<textarea class="form-control" id="contactcomment" name="message" placeholder="{{data.contact.comment[0]}}" rows="5"></textarea><br>
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" id="FormSubmit" type="submit"></button>
+						<button class="btn btn-default pull-right" id="FormSubmit" type="submit">{{data.contact.FormSubmit[0]}}</button>
 					</div>
 				</div> 
 			</div>

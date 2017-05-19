@@ -1,51 +1,51 @@
 <head>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="./resources/js/script.js"></script>
+  <script src="./resources/js/script.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
   <link rel="stylesheet" href="./resources/css/style1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ animate.css/3.5.2/animate.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
 
   <!-- Mustache js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 </head>
 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div class="collapse nav navbar-collapse" id="myNavbar">
-      <ul id="pageBar" class="nav navbar-nav">
-        <li id="page0" class="navbar"></li>
-        <li id="page1" class="navbar"></li>
-        <li id="page2" class="navbar"></li>
-        <li id="page4" class="navbar"></li>
-        <li id="page5" class="navbar"></li>
-      </ul>
-      <div class="nav navbar-nav navbar-right">
-        <li id="page3" class="navbar"><span class="glyphicon glyphicon-log-in"></span></li>
-        <select class="topright navigationRight" id="langSelect">
-          <option id="english" value="english">English</option>
-          <option id="japanese" value="japanese">日本語</option>
-        </select>
+<div ng-app="myApp" ng-controller="NavController">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse nav navbar-collapse" id="myNavbar">
+        <ul id="pageBar" class="nav navbar-nav">
+          <li id="page0" class="navbar"><a href="#/">{{nav[0][0]}}</a></li>
+          <li id="page1" class="navbar"><a href="#portfolio">{{nav[1][0]}}</a></li>
+          <li id="page2" class="navbar"><a href="#aboutme">{{nav[2][0]}}</a></li>
+          <li id="page4" class="navbar"><a href="#chat">{{nav[4][0]}}</a></li>
+          <li id="page5" class="navbar"><a href="#manga">{{nav[5][0]}}</a></li>
+        </ul>
+        <div class="nav navbar-nav navbar-right">
+          <li id="page3" class="navbar"><a href="#login">{{nav[3][0]}}<span class="glyphicon glyphicon-log-in"></span></a></li>
+          <select class="topright navigationRight" id="langSelect">
+            <option id="english" value="english">English</option>
+            <option id="japanese" value="japanese">日本語</option>
+          </select>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div id="main" class="content container animated bounceinleft">
-
-
+  <div ng-view class="content container animated bounceinleft"></div>
+  <!-- <div id="main" class="content container animated bounceinleft"> -->
 </div>
 
 

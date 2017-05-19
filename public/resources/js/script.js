@@ -12,183 +12,252 @@ language = {
   JAPANESE : 1
 }
 
-// Startup function ==================================================
-$(document).ready(function(){
+var myApp = angular.module('myApp', ['ngRoute']);
 
-  $.getJSON("./resources/data/data.json", function(result){
-    json = result;
+myApp.factory('loadjson', function($http) {
+  return {
+    getItems: function () {
+      return  $http.get('/resources/data/data.json');
+    }
+  }
+})
+.controller('NavController', function($scope, $http,loadjson) {
+  loadjson.getItems().then(function(response) { 
+    json = response.data;
+    $scope.nav = json.navigation;
+  });
+})
+.controller('portfolioController', function($scope, $http,loadjson) {
+  loadjson.getItems().then(function(response) { 
+    $scope.data = json.page1;
+    $scope.repos = json.page1.git.repos;
+
+  });
+})
+.controller('aboutmeController', function($scope, $http,loadjson) {
+  loadjson.getItems().then(function(response) { 
+    $scope.data = json.page2;
+  });
+
+})
+.controller('loginController', function($scope, $http,loadjson) {
+
+})
+.controller('chatController', function($scope, $http,loadjson) {
+
+})
+.controller('mangaController', function($scope, $http,loadjson) {
+
+})
+
+myApp.config(['$routeProvider', function ($routeProvider) {
+  /**
+  * $routeProvider
+  */
+  $routeProvider
+  .when('/portfolio', {
+    templateUrl: 'portfolio.html',
+    controller  : 'portfolioController'
   })
-  .done( function() {
-      //Load the cookies, remembering the last user seetting
-      if(langaugeCookie== 'english')
-      {
-        $('#langSelect').val('english');
-        selectedLanguage = language.ENGLISH;
-        loadPage(currentPage);
-      }
-      else if(langaugeCookie== 'japanese')
-      {
-        $('#langSelect').val('japanese');
-        selectedLanguage = language.JAPANESE;
-        loadPage(currentPage);
-      }
-      else
-      {
-        selectedLanguage = language.ENGLISH;
-        loadPage(currentPage)
-      }
-    });
-
-  $("#main").on("click", '.btn.login', function (e) {
-    formInput = {
-      login : $("#email").val(),
-      pass : $("#pwd").val()
-    }
-
-    $.ajax({
-      url: "/login",
-      type: "POST",
-      data: JSON.stringify(formInput),
-      contentType: "application/json"
-    }).done(function( msg ) {
-      console.log(msg);
-      if(msg !="NO")
-      {
-        formatData(msg);
-      }
-      else
-      {
-        loadPage("page0");
-        alert("Invalid login");
-      }
-    });
+  .when('/aboutme', {
+    templateUrl: 'aboutme.html',
+    controller  : 'aboutmeController'
+  })
+  .when('/login', {
+    templateUrl: 'login.html',
+    controller  : 'loginController'
+  })
+  .when('/chat', {
+    templateUrl: 'chat.html',
+    controller  : 'chatController'
+  })
+  .when('/manga', {
+    templateUrl: 'mangaSelection.html',
+    controller  : 'mangaController'
+  })
+  .when('/', {
+    templateUrl: 'mainENG.html'
   });
+}]);
 
 
-  // ===Chat callbacks==================================================
-  $("#main").on('keyup', "#msg", function (e) {
-    if (e.keyCode == 13) {
-      $(".btn#sendchat").click();
-    }
-  });
+// // Startup function ==================================================
+// $(document).ready(function(){
 
-  $("#main").on("click", ".btn#sendchat", function(e){
-    var d = new Date();
-    formInput = {
-      time : (d.getHours() + ":" + d.getMinutes()),
-      id : $("#user").val(),
-      msg : $("#msg").val()
-    }
-    $.ajax({
-      url: "/insertchat",
-      type: "POST",
-      data: JSON.stringify(formInput),
-      contentType: "application/json"
-    }).done(function( msg ) {
-      // clear msg box
-    });
-    $("#msg").val("");
-  });
+//   $.getJSON("./resources/data/data.json", function(result){
+//     json = result;
+//   })
+//   .done( function() {
+//       //Load the cookies, remembering the last user seetting
+//       if(langaugeCookie== 'english')
+//       {
+//         $('#langSelect').val('english');
+//         selectedLanguage = language.ENGLISH;
+//         loadPage(currentPage);
+//       }
+//       else if(langaugeCookie== 'japanese')
+//       {
+//         $('#langSelect').val('japanese');
+//         selectedLanguage = language.JAPANESE;
+//         loadPage(currentPage);
+//       }
+//       else
+//       {
+//         selectedLanguage = language.ENGLISH;
+//         loadPage(currentPage)
+//       }
+//     });
 
-  $("#main").on("click", ".btn#clearChat", function(e){
-    $.ajax({
-      url: "/clearchat",
-      type: "POST",
-      data: null,
-      contentType: "application/json"
-    }).done(function( msg ) {
-        //do nothing for now
-      });
-  });
+//   $("#main").on("click", '.btn.login', function (e) {
+//     formInput = {
+//       login : $("#email").val(),
+//       pass : $("#pwd").val()
+//     }
 
-  // Manga book callback ==================================================
-  $("#main").on("click", ".mangaselection", function(e){
-    pageCount = 1;
-    loadManga(this.hash.substr(1));
-  });
-
-  $("#main").on("click", ".mangapagereader", function(e){
-    console.log(e);
-    var $this = $(this);
-    var x = e.offsetX;
-    var width = $(this).width();
-
-
-    if ( x<= width/2 && pageCount>1 ) {
-      pageCount--;
-      $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
-    }
-    if ( x > (width/2)) {
-      pageCount++;
-      $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
-    }  
-  });
-
-  //##### send add record Ajax request to response.php ######### =============
-  $("#main").on("click", '#FormSubmit.btn', function (e) {
-    e.preventDefault();
-    if($("#comments").val()==='')
-    {
-      alert("Please enter some text!");
-      return false;
-    }
-    // Get the IP of the user
-    $.getJSON('freegeoip.net/json/?callback=?', function(data) {
-
-      // Get the date
-      var d = new Date();
-
-      var formInput = {
-        date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
-        ip : data.ip,
-        name : $("#name").val(),
-        email : $("#email").val(),
-        message : $("#comments").val()
-      };
-
-      $.ajax({
-        url: "/sendtodb",
-        type: "POST",
-        data: JSON.stringify(formInput),
-        contentType: "application/json"
-      }).done(function( msg ) {
-        console.log(msg);
-      });
-    });
+//     $.ajax({
+//       url: "/login",
+//       type: "POST",
+//       data: JSON.stringify(formInput),
+//       contentType: "application/json"
+//     }).done(function( msg ) {
+//       console.log(msg);
+//       if(msg !="NO")
+//       {
+//         formatData(msg);
+//       }
+//       else
+//       {
+//         loadPage("page0");
+//         alert("Invalid login");
+//       }
+//     });
+//   });
 
 
-  $("#FormSubmit").hide(); //hide submit button
-  $("#LoadingImage").show(); //show loading image
-  
-});
+//   // ===Chat callbacks==================================================
+//   $("#main").on('keyup', "#msg", function (e) {
+//     if (e.keyCode == 13) {
+//       $(".btn#sendchat").click();
+//     }
+//   });
 
-  // Change text of the language select based off user lanuage
-  $('#langSelect').on('change', function() {
+//   $("#main").on("click", ".btn#sendchat", function(e){
+//     var d = new Date();
+//     formInput = {
+//       time : (d.getHours() + ":" + d.getMinutes()),
+//       id : $("#user").val(),
+//       msg : $("#msg").val()
+//     }
+//     $.ajax({
+//       url: "/insertchat",
+//       type: "POST",
+//       data: JSON.stringify(formInput),
+//       contentType: "application/json"
+//     }).done(function( msg ) {
+//       // clear msg box
+//     });
+//     $("#msg").val("");
+//   });
 
-    //on change set cookie and...
-    setCookie('language', this.value, 365);
+//   $("#main").on("click", ".btn#clearChat", function(e){
+//     $.ajax({
+//       url: "/clearchat",
+//       type: "POST",
+//       data: null,
+//       contentType: "application/json"
+//     }).done(function( msg ) {
+//         //do nothing for now
+//       });
+//   });
 
-    var sel = $('#langSelect').val();
+//   // Manga book callback ==================================================
+//   $("#main").on("click", ".mangaselection", function(e){
+//     pageCount = 1;
+//     loadManga(this.hash.substr(1));
+//   });
 
-    if (sel == 'english') {
-      selectedLanguage = language.ENGLISH;
-      // Change the JS object pointer to english
-      loadPage(currentPage);
+//   $("#main").on("click", ".mangapagereader", function(e){
+//     console.log(e);
+//     var $this = $(this);
+//     var x = e.offsetX;
+//     var width = $(this).width();
 
-    } else if (sel == 'japanese') {
-      selectedLanguage = language.JAPANESE;
-      // Change the JS object pointer to japanese
-      loadPage(currentPage);
 
-    }
-  });
+//     if ( x<= width/2 && pageCount>1 ) {
+//       pageCount--;
+//       $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
+//     }
+//     if ( x > (width/2)) {
+//       pageCount++;
+//       $(this).attr('src', "/resources/data/manga/" + $(this).attr("alt") + "/volume1/y " + "("+pageCount+").jpg");
+//     }  
+//   });
 
-  // Click listener for the page selection
-  $('.nav').on('click', 'li.navbar', function(){
-    loadPage(this.id);
-  });
+//   //##### send add record Ajax request to response.php ######### =============
+//   $("#main").on("click", '#FormSubmit.btn', function (e) {
+//     e.preventDefault();
+//     if($("#comments").val()==='')
+//     {
+//       alert("Please enter some text!");
+//       return false;
+//     }
+//     // Get the IP of the user
+//     $.getJSON('freegeoip.net/json/?callback=?', function(data) {
 
-});
+//       // Get the date
+//       var d = new Date();
+
+//       var formInput = {
+//         date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
+//         ip : data.ip,
+//         name : $("#name").val(),
+//         email : $("#email").val(),
+//         message : $("#comments").val()
+//       };
+
+//       $.ajax({
+//         url: "/sendtodb",
+//         type: "POST",
+//         data: JSON.stringify(formInput),
+//         contentType: "application/json"
+//       }).done(function( msg ) {
+//         console.log(msg);
+//       });
+//     });
+
+
+//   $("#FormSubmit").hide(); //hide submit button
+//   $("#LoadingImage").show(); //show loading image
+
+// });
+
+//   // Change text of the language select based off user lanuage
+//   $('#langSelect').on('change', function() {
+
+//     //on change set cookie and...
+//     setCookie('language', this.value, 365);
+
+//     var sel = $('#langSelect').val();
+
+//     if (sel == 'english') {
+//       selectedLanguage = language.ENGLISH;
+//       // Change the JS object pointer to english
+//       loadPage(currentPage);
+
+//     } else if (sel == 'japanese') {
+//       selectedLanguage = language.JAPANESE;
+//       // Change the JS object pointer to japanese
+//       loadPage(currentPage);
+
+//     }
+//   });
+
+//   // Click listener for the page selection
+//   $('.nav').on('click', 'li.navbar', function(){
+//     loadPage(this.id);
+//   });
+
+// });
 
 // No matter the page, the header should remain the same
 function formatPageHeader() {
