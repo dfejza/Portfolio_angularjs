@@ -39,11 +39,100 @@ myApp.factory('loadjson', function($http) {
     $scope.data = json.page2;
   });
 
+  //form details
+  $scope.formDetails = {
+    name : "",
+    email : "",
+    message : ""
+  }
+
+  $scope.submitForm = function() {
+    // Get the IP of the user
+    $http({
+      method: 'GET',
+      url: 'www.freegeoip.net/json/?callback=?'
+    }).then(function successCallback(response) {
+      // Get the date
+      var d = new Date();
+
+      var formInput = {
+        date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
+        ip : response.data.ip,
+        name : $scope.formDetails.name,
+        email : $scope.formDetails.email,
+        message : $scope.formDetails.message
+      };
+
+      $.ajax({
+        url: "/sendtodb",
+        type: "POST",
+        data: JSON.stringify(formInput),
+        contentType: "application/json"
+      }).done(function( msg ) {
+        console.log(msg);
+      });
+    });
+  }
 })
 .controller('loginController', function($scope, $http,loadjson) {
 
 })
-.controller('chatController', function($scope, $http,loadjson) {
+.controller('chatController', function($scope, $sce, $interval, $http,loadjson) {
+  //form details
+  $scope.formDetails = {
+    id : "",
+    msg : ""
+  }
+
+  $scope.submitMessage = function () {
+    var d = new Date();
+    $scope.formDetails.time = (d.getHours() + ":" + d.getMinutes());
+    $http({
+      url: "/insertchat",
+      method: "POST",
+      data: JSON.stringify($scope.formDetails)
+    }).then(function successCallback( msg ) {
+      console.log(msg);
+    });
+  }
+
+  $scope.clearChat = function() {
+    $http({
+      url : "/clearchat",
+      method : "POST"
+    })
+  }
+
+  $scope.deliberatelyTrustDangerousSnippet = function() {
+   return $sce.trustAsHtml($scope.chatbox);
+ };
+
+ var updateChat = function() {
+    //update it
+    $http({
+      url : '/updatechat',
+      method : 'GET',
+    }).then(function successCallback(data){
+      var temp = "";
+      $.each(data.data, function(key,rowData){
+        var line = rowData.time + " - " + rowData.id + " : " + rowData.msg + "\n";
+        temp += (rowData.time +' <b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
+      });
+      if(temp != $scope.chatbox)
+      {
+        $scope.chatbox = temp;
+        $scope.deliberatelyTrustDangerousSnippet();
+      }
+      //chatbox.scrollTop(chatbox[0].scrollHeight);
+    });
+  };
+
+  $scope.useInterval = function() {
+    //Call update once a section
+    $interval(updateChat, 2000);
+    $scope.deliberatelyTrustDangerousSnippet();
+  };
+
 
 })
 .controller('mangaController', function($scope, $http,loadjson) {

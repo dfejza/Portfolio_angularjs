@@ -80,16 +80,17 @@
 			<div class="col-sm-7">
 				<div class="row">
 					<div class="col-sm-6 form-group">
-						<input class="form-control" id="contactname" name="name" placeholder="{{data.contact.name[0]}}" type="text" required>
+						<input class="form-control" ng-model="formDetails.name" id="contactname" name="name" placeholder="{{data.contact.name[0]}}" type="text" required>
 					</div>
 					<div class="col-sm-6 form-group">
-						<input class="form-control" id="contactemail" name="email" placeholder="{{data.contact.email[0]}}" type="email" required>
+						<input class="form-control" ng-model="formDetails.email" id="contactemail" name="email" placeholder="{{data.contact.email[0]}}" type="email" required>
 					</div>
 				</div>
-				<textarea class="form-control" id="contactcomment" name="message" placeholder="{{data.contact.comment[0]}}" rows="5"></textarea><br>
+				<textarea class="form-control" ng-model="formDetails.message" id="contactcomment" name="message" placeholder="{{data.contact.comment[0]}}" rows="5"></textarea>
+				<br>
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" id="FormSubmit" type="submit">{{data.contact.FormSubmit[0]}}</button>
+						<button ng-click="submitForm()" class="btn btn-default pull-right" id="FormSubmit" type="submit">{{data.contact.FormSubmit[0]}}</button>
 					</div>
 				</div> 
 			</div>
