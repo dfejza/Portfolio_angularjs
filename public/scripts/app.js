@@ -1,7 +1,7 @@
 var langaugeCookie = readCookie('language');
 var selectedLanguage;
 var currentPage = "page0";
-var json;
+var json = null;
 var pageCount;
 var interval = null;
 language = {
@@ -19,17 +19,17 @@ angular.module('myApp').factory('loadjson', function($http) {
     }
   }
 });
-angular.module('myApp').controller('NavController', function($scope, $http,loadjson) {
+angular.module('myApp').controller('NavController', function($scope, $http, $window, loadjson) {
   loadjson.getItems().then(function(response) { 
-    json = response.data;
-    $scope.nav = json.navigation;
+    $scope.nav = response.data.navigation;
+    $window.json = response.data; //global json file
   });
 });
 
 
 
 
-angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
+angular.module('myApp').config(function ($routeProvider, $locationProvider) {
   /**
   * $routeProvider
   */
@@ -54,10 +54,28 @@ angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
     templateUrl: '/views/mangaSelection.html',
     controller  : 'mangaController'
   })
+  .when('/manga/:mangaId', {
+    templateUrl: '/views/mangaViewer.html',
+    controller  : 'mangaViewerController'
+  })
+  .when('/manga/:mangaId/:volume/:pagenum', {
+    templateUrl: '/views/mangaViewer.html',
+    controller  : 'mangaViewerController'
+  })
   .when('/', {
-    templateUrl: '/views/mainENG.html'
+    templateUrl: '/views/mainENG.html',
+    controller  : 'NavController'
+  })
+  .otherwise({
+   redirectTo: '/'
+ });
+
+    // turn on the angular html5 push state, which should scrub any hash bangs:
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
   });
-}]);
 
 
 // // Startup function ==================================================

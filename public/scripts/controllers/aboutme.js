@@ -1,7 +1,15 @@
-angular.module('myApp').controller('aboutmeController', function($scope, $http,loadjson) {
-  loadjson.getItems().then(function(response) { 
-    $scope.data = json.page2;
-  });
+angular.module('myApp').controller('aboutmeController', function($scope, $window, $http, loadjson) {
+  if($window.json==null){
+    loadjson.getItems().then(function(response) { 
+          $window.json = response.data; //global json file
+          $scope.data = $window.json.page2;
+        });
+  }
+  else
+  {
+    $scope.data = $window.json.page2;
+  }
+  
 
   //form details
   $scope.formDetails = {

@@ -1,4 +1,10 @@
-angular.module('myApp').controller('chatController', function($scope, $sce, $interval, $http,loadjson) {
+angular.module('myApp').controller('chatController', function($scope, $window, $http, $sce, $interval, loadjson) {
+  if($window.json==null){
+    loadjson.getItems().then(function(response) { 
+          $window.json = response.data; //global json file
+        });
+  }
+
   //form details
   $scope.formDetails = {
     id : "",

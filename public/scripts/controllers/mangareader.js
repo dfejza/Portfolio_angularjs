@@ -1,10 +1,19 @@
+angular.module('myApp').controller('mangaController', function($scope, $http,$window, loadjson) {
+	if($window.json==null){
+		loadjson.getItems().then(function(response) { 
+          $window.json = response.data; //global json file
+          $scope.data = $window.json.page6;
+      });
+	}
+	else
+	{
+		$scope.data = $window.json.page6;
+	}
 
-angular.module('myApp').controller('mangaController', function($scope, $http,loadjson) {
 	$http({
-		url : '/api/mangaList',
-		method : 'GET',
+		url : '/api/getMangaList',
+		method : 'GET'
 	}).then(function successCallback(data){
-		var temp = data.data;
-		var temp = data.data;
+		$scope.mangaInfo = data.data;
 	});
 });

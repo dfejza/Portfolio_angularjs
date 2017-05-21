@@ -3,11 +3,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- JS google -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-touch.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-touch.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
   <script type="text/javascript" src="./scripts/vendors/ui-bootstrap-tpls-2.5.0.min.js"></script>
   <!-- Other online dependencies -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,12 +16,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Local client scripts -->
   <script type="text/javascript" src="./scripts/app.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
+  <script type="text/javascript" src="./scripts/controllers/mangaviewer.js"></script>
   <script type="text/javascript" src="./scripts/controllers/aboutme.js"></script>
   <script type="text/javascript" src="./scripts/controllers/chat.js"></script>
   <script type="text/javascript" src="./scripts/controllers/login.js"></script>
   <script type="text/javascript" src="./scripts/controllers/main.js"></script>
   <script type="text/javascript" src="./scripts/controllers/mangareader.js"></script>
   <script type="text/javascript" src="./scripts/controllers/portfolio.js"></script>
+  
   <!-- Local client styles -->
   <link rel="stylesheet" href="./styles/style1.css">
 </head>
@@ -37,14 +40,14 @@
       </div>
       <div class="collapse nav navbar-collapse" id="myNavbar">
         <ul id="pageBar" class="nav navbar-nav">
-          <li id="page0" class="navbar"><a href="#/">{{nav[0][0]}}</a></li>
-          <li id="page1" class="navbar"><a href="#portfolio">{{nav[1][0]}}</a></li>
-          <li id="page2" class="navbar"><a href="#aboutme">{{nav[2][0]}}</a></li>
-          <li id="page4" class="navbar"><a href="#chat">{{nav[4][0]}}</a></li>
-          <li id="page5" class="navbar"><a href="#manga">{{nav[5][0]}}</a></li>
+          <li id="page0" class="navbar"><a href="/">{{nav[0][0]}}</a></li>
+          <li id="page1" class="navbar"><a href="/portfolio">{{nav[1][0]}}</a></li>
+          <li id="page2" class="navbar"><a href="/aboutme">{{nav[2][0]}}</a></li>
+          <li id="page4" class="navbar"><a href="/chat">{{nav[4][0]}}</a></li>
+          <li id="page5" class="navbar"><a href="/manga">{{nav[5][0]}}</a></li>
         </ul>
         <div class="nav navbar-nav navbar-right">
-          <li id="page3" class="navbar"><a href="#login">{{nav[3][0]}}<span class="glyphicon glyphicon-log-in"></span></a></li>
+          <li id="page3" class="navbar"><a href="/login">{{nav[3][0]}}<span class="glyphicon glyphicon-log-in"></span></a></li>
           <select class="topright navigationRight" id="langSelect">
             <option id="english" value="english">English</option>
             <option id="japanese" value="japanese">日本語</option>
@@ -54,7 +57,7 @@
     </div>
   </nav>
 
-  <div ng-view class="content container animated bounceinleft"></div>
+  <div ng-view class="content container"></div>
   <!-- <div id="main" class="content container animated bounceinleft"> -->
 </div>
 
