@@ -1,0 +1,25 @@
+<div class="container">
+	<h2 class="text-center" id="header"></h2>
+	<hr>
+	<div id="mangaBody">
+		<div style="height: 305px">
+			<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+				<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+					<img ng-src="{{slide.image}}" style="margin:auto;">
+					<div class="carousel-caption">
+						<h4>Slide {{slide.id}}</h4>
+						<p>{{slide.text}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!-- 		<img src="/assets/images/yotsubatocover.jpg" style="width:70%">
+
+		<img src="/assets/images/tokyoghoulcover.jpg" style="width:70%">
+
+		<img src="/assets/images/hoshicover.jpg" style="width:70%"> -->
+
+		<hr>
+	</div>
+</div>

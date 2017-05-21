@@ -1,0 +1,155 @@
+{
+ "navigation":[
+  [
+   "Home",
+   "ホーム"
+ ],
+  [
+   "Projects",
+   "プロジェクト"
+ ],
+  [
+   "About Me",
+   "紹介"
+ ],
+  [
+   "Login",
+   "ログイン"
+ ],
+  [
+   "Chat",
+   "チャット"
+ ],
+  [
+   "Manga Reader",
+   "マンガを読む"
+ ]
+],
+ "page0":{
+  "contentRaw":[
+   "mainENG.html",
+   "mainJPN.html"
+ ]
+},
+"page1":{
+  "followers":[
+   "Followers",
+   "フォロワー"
+ ],
+  "following":[
+   "Following",
+   "フォロー"
+ ],
+  "projects":[
+   [
+
+   ]
+ ],
+  "repoCount":[
+   "Repositories",
+   "リポジトリ"
+ ],
+  "repoHeader":[
+   "Summary of each repository, generated using their API",
+   "夫れ夫れのリポジトリの大筋です. GitのAPIを使ってリストが作りました"
+ ],
+  "repoCount":[
+   "Repositories",
+   "リポジトリ"
+ ],
+  "bitB":{
+   "followers":"NA",
+   "following":"NA",
+   "repoCount":"2",
+   "username":"dfejza",
+   "usernameLink":"https://bitbucket.org/dfejza/",
+   "repos":[
+    {
+     "name":"SlideshowMaker",
+     "image":"",
+     "description":"slideshowmaker"
+   },
+   {
+     "name":"ePortfolio",
+     "image":"",
+     "description":"eportfolio"
+   }
+ ]
+ },
+ "git":{
+   "followers":1,
+   "following":1,
+   "icon":"https://avatars2.githubusercontent.com/u/15079960?v=3",
+   "repoCount":3,
+   "username":"dfejza",
+   "usernameLink":"https://github.com/dfejza",
+   "repos":[
+    {
+     "index" : 1,
+     "name":"Challonger",
+     "link":"https://github.com/dfejza/Challonger",
+     "image":"https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif",
+     "description":"Tournament bracket simulator using REST API"
+   },
+   {
+     "index" : 2,
+     "name":"ePortfolio-Creator",
+     "link":"https://github.com/dfejza/ePortfolio-Creator",
+     "image":"https://raw.githubusercontent.com/dfejza/ePortfolio-Creator/master/demo.gif",
+     "description":"Java application to create your own Portfolio website, using a strait forward GUI. Has a live preview and ability to export to HTML,CSS andJS format."
+   },
+   {
+     "index" : 3,
+     "name":"Website-Portfolio",
+     "link":"https://github.com/dfejza/Website-Portfolio",
+     "image":"https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif",
+     "description":"An interface to strengthen my understanding of various web development languages."
+   }
+ ]
+ }
+},
+"page2":{
+  "name":[
+   "Dardan Fejza",
+   "Dardan Fejza <br> ダーダン フェーザー"
+ ],
+  "summary":[
+   "24-year-old Computer Engineer whom graduated from Stony Brook University with a Bachelor’s of Science, Major in Computer Engineering and Minor in Computer Science. <br><br> I've always had a passion residing in all things electronics, be it software or hardware. An unquenchable desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love. <br><br>  This website has served as an instrument of learning. What has started off as a simple front-end application has led me to learning full-stack technologies.",
+   "ストーニーブルック大学を卒業し、理学士、コンピュータ工学専攻、コンピュータ科学専攻を卒業した24歳のコンピュータエンジニア。 <br><br>私がほとんどなかったので、すべてのものの選挙に住んでいる情熱があった、それはソフトウェアかハードウェアである。私は、プログラミング言語から実際の言語学習に至るまで、どんなものであれ、学び、創造し、改善するように努力してきました。ソフトウェアエンジニアとしてのフルタイムの仕事の後でも、私は自由な時間にプログラミングに没頭しています。それはあなたが愛するものの美しさです。  <br><br>このウェブサイトは学習の道具として役立っています。シンプルなフロントエンドアプリケーションとして始まったことは、私がフルスタック技術を学ぶことにつながりました。"
+ ],
+  "languageheader":[
+    "Programming Languages",
+    "プログラミング言語"
+  ],
+  "contact":
+  {
+    "header" :["Contact","連絡"],
+    "question" : ["Have a question?", "質問ありますか？"],
+    "name" : ["Name","名前"],
+    "email" : ["Email","メールアドレス"],
+    "comment" : ["Comment","コメント"],
+    "FormSubmit" : ["Send","送る"]
+  },
+  "glyphicons" : [["Favorite languages","好きな言語"],
+    ["My first language","最初の言語"],
+    ["Light and strong","軽くて強い"],
+    ["Take a look at the source!","ソースを見てみましょう！"],
+    ["Right click -> View Source","右クリック - >ソース表示"],
+    ["Backend beginner","バックエンドの初心者"],
+    ["Non-C based MIPS and ATMEGA16","MIPSやATMEGA16"],
+    ["Server infrastructure","サーバーインフラストラクチャ"],
+    ["Image processing","画像処理"]
+  ]
+},
+"page3":{
+
+},
+"page6" : {
+ "header" : ["Manga Reader v.01","マンガを読む v.01"],
+ "selection" : [["Naruto","ナルト"],["Tokyo Ghoul","東京喰種"],["Lucifer and the Biscuit Hammer","惑星のさみだれ"]]
+},
+"selectorText":[
+ "Language: ",
+ "言語: "
+]
+}

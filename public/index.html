@@ -1,19 +1,28 @@
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- JS google -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-touch.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+  <script type="text/javascript" src="./scripts/vendors/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <!-- Other online dependencies -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="./resources/js/script.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
-  <link rel="stylesheet" href="./resources/css/style1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-  <!-- Mustache js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+  <!-- Local client scripts -->
+  <script type="text/javascript" src="./scripts/app.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
+  <script type="text/javascript" src="./scripts/controllers/aboutme.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/chat.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/login.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/main.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/mangareader.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/portfolio.js"></script>
+  <!-- Local client styles -->
+  <link rel="stylesheet" href="./styles/style1.css">
 </head>
 
 <div ng-app="myApp" ng-controller="NavController">

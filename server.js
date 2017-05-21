@@ -13,6 +13,7 @@ var fs = require('fs');
 var http = require('http');
 var mustacheExpress = require('mustache');
 
+
 var port     = process.env.PORT || 8080; // set the port
 // configuration ===============================================================
 app.use(express.static(__dirname + '/public'));// set the static files location /public/img will be /img for users

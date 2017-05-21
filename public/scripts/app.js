@@ -1,9 +1,6 @@
 var langaugeCookie = readCookie('language');
 var selectedLanguage;
 var currentPage = "page0";
-var gitRepouri = 'https://api.github.com/users/dfejza';
-var bitbucketRepouri = "https://api.bitbucket.org/2.0/users/dfejza";
-var bitbucketRepouriRepo = "https://api.bitbucket.org/2.0/repositories/dfejza";
 var json;
 var pageCount;
 var interval = null;
@@ -12,160 +9,53 @@ language = {
   JAPANESE : 1
 }
 
-var myApp = angular.module('myApp', ['ngRoute']);
+angular.module('myApp', ['ngRoute','ui.bootstrap']);
 
-myApp.factory('loadjson', function($http) {
+//todo get from server
+angular.module('myApp').factory('loadjson', function($http) {
   return {
     getItems: function () {
-      return  $http.get('/resources/data/data.json');
+      return  $http.get('/assets/data/data.json');
     }
   }
-})
-.controller('NavController', function($scope, $http,loadjson) {
+});
+angular.module('myApp').controller('NavController', function($scope, $http,loadjson) {
   loadjson.getItems().then(function(response) { 
     json = response.data;
     $scope.nav = json.navigation;
   });
-})
-.controller('portfolioController', function($scope, $http,loadjson) {
-  loadjson.getItems().then(function(response) { 
-    $scope.data = json.page1;
-    $scope.repos = json.page1.git.repos;
-
-  });
-})
-.controller('aboutmeController', function($scope, $http,loadjson) {
-  loadjson.getItems().then(function(response) { 
-    $scope.data = json.page2;
-  });
-
-  //form details
-  $scope.formDetails = {
-    name : "",
-    email : "",
-    message : ""
-  }
-
-  $scope.submitForm = function() {
-    // Get the IP of the user
-    $http({
-      method: 'GET',
-      url: 'www.freegeoip.net/json/?callback=?'
-    }).then(function successCallback(response) {
-      // Get the date
-      var d = new Date();
-
-      var formInput = {
-        date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
-        ip : response.data.ip,
-        name : $scope.formDetails.name,
-        email : $scope.formDetails.email,
-        message : $scope.formDetails.message
-      };
-
-      $.ajax({
-        url: "/sendtodb",
-        type: "POST",
-        data: JSON.stringify(formInput),
-        contentType: "application/json"
-      }).done(function( msg ) {
-        console.log(msg);
-      });
-    });
-  }
-})
-.controller('loginController', function($scope, $http,loadjson) {
-
-})
-.controller('chatController', function($scope, $sce, $interval, $http,loadjson) {
-  //form details
-  $scope.formDetails = {
-    id : "",
-    msg : ""
-  }
-
-  $scope.submitMessage = function () {
-    var d = new Date();
-    $scope.formDetails.time = (d.getHours() + ":" + d.getMinutes());
-    $http({
-      url: "/insertchat",
-      method: "POST",
-      data: JSON.stringify($scope.formDetails)
-    }).then(function successCallback( msg ) {
-      console.log(msg);
-    });
-  }
-
-  $scope.clearChat = function() {
-    $http({
-      url : "/clearchat",
-      method : "POST"
-    })
-  }
-
-  $scope.deliberatelyTrustDangerousSnippet = function() {
-   return $sce.trustAsHtml($scope.chatbox);
- };
-
- var updateChat = function() {
-    //update it
-    $http({
-      url : '/updatechat',
-      method : 'GET',
-    }).then(function successCallback(data){
-      var temp = "";
-      $.each(data.data, function(key,rowData){
-        var line = rowData.time + " - " + rowData.id + " : " + rowData.msg + "\n";
-        temp += (rowData.time +' <b>'+rowData.id + ':</b> ' + rowData.msg + '<br>');
-      });
-      if(temp != $scope.chatbox)
-      {
-        $scope.chatbox = temp;
-        $scope.deliberatelyTrustDangerousSnippet();
-      }
-      //chatbox.scrollTop(chatbox[0].scrollHeight);
-    });
-  };
-
-  $scope.useInterval = function() {
-    //Call update once a section
-    $interval(updateChat, 2000);
-    $scope.deliberatelyTrustDangerousSnippet();
-  };
+});
 
 
-})
-.controller('mangaController', function($scope, $http,loadjson) {
 
-})
 
-myApp.config(['$routeProvider', function ($routeProvider) {
+angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
   /**
   * $routeProvider
   */
   $routeProvider
   .when('/portfolio', {
-    templateUrl: 'portfolio.html',
+    templateUrl: '/views/portfolio.html',
     controller  : 'portfolioController'
   })
   .when('/aboutme', {
-    templateUrl: 'aboutme.html',
+    templateUrl: '/views/aboutme.html',
     controller  : 'aboutmeController'
   })
   .when('/login', {
-    templateUrl: 'login.html',
+    templateUrl: '/views/login.html',
     controller  : 'loginController'
   })
   .when('/chat', {
-    templateUrl: 'chat.html',
+    templateUrl: '/views/chat.html',
     controller  : 'chatController'
   })
   .when('/manga', {
-    templateUrl: 'mangaSelection.html',
+    templateUrl: '/views/mangaSelection.html',
     controller  : 'mangaController'
   })
   .when('/', {
-    templateUrl: 'mainENG.html'
+    templateUrl: '/views/mainENG.html'
   });
 }]);
 

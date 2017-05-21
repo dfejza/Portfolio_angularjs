@@ -26,7 +26,7 @@ module.exports = function(app) {
 		}
 		else
 		{
-			res.send("NOooo");
+			res.send("NO");
 		}
 		
 	});
@@ -77,6 +77,17 @@ module.exports = function(app) {
 	});
 
 	// MANGA DB ---------------------------------------------------------------
+	app.get('/api/mangaList', function (req, res, next) {
+		console.log("getting api")
+			// Poll "\public\assets\manga" for list of folders
+			// return an array of names, and cover image location, number of volumes
+			fs.readdir("/public/assets/manga", (err, files) => {
+				files.forEach(file => {
+					
+				});
+				res.json(files);
+			})
+		});
 
 	app.get('/manga/:manganame/:pagenum', function (req, res, next) {
 		var options = {
