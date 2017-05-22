@@ -9,7 +9,7 @@ language = {
   JAPANESE : 1
 }
 
-angular.module('myApp', ['ngRoute','ui.bootstrap']);
+angular.module('myApp', ['ngRoute','ui.bootstrap', 'ngAnimate']);
 
 //todo get from server
 angular.module('myApp').factory('loadjson', function($http) {

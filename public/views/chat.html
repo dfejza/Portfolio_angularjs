@@ -11,7 +11,7 @@
         <input class="form-control" id="user" ng-model="formDetails.id" type="text" placeholder="name">
       </div>
       <div class="col-xs-6">
-        <input class="form-control" ng-bind="formDetails.msg" ng-model="formDetails.msg" id="msg" type="text" placeholder="message">
+        <input class="form-control" ng-model="formDetails.msg" ng-keypress="myFunct($event)"  id="msg" type="text" placeholder="message">
       </div>
       <button id="sendchat" ng-click="submitMessage()" class="btn btn-default" type="submit">Send</button>
     </div>

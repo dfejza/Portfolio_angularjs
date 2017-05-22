@@ -25,6 +25,11 @@ angular.module('myApp').controller('chatController', function($scope, $window, $
     $scope.formDetails.msg = '';
   }
 
+  $scope.myFunct = function(keyEvent) {
+    if (keyEvent.which === 13)
+      $scope.submitMessage();
+  }
+
   $scope.clearChat = function() {
     $http({
       url : "/clearchat",
