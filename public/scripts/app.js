@@ -9,7 +9,7 @@ language = {
   JAPANESE : 1
 }
 
-angular.module('myApp', ['ngRoute','ui.bootstrap', 'ngAnimate']);
+angular.module('myApp', ['ui.router','ui.bootstrap', 'ngAnimate']);
 
 //todo get from server
 angular.module('myApp').factory('loadjson', function($http) {
@@ -28,54 +28,67 @@ angular.module('myApp').controller('NavController', function($scope, $http, $win
 
 
 
+angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 
-angular.module('myApp').config(function ($routeProvider, $locationProvider) {
-  /**
-  * $routeProvider
-  */
-  $routeProvider
-  .when('/portfolio', {
-    templateUrl: '/views/portfolio.html',
-    controller  : 'portfolioController'
-  })
-  .when('/aboutme', {
-    templateUrl: '/views/aboutme.html',
-    controller  : 'aboutmeController'
-  })
-  .when('/login', {
-    templateUrl: '/views/login.html',
-    controller  : 'loginController'
-  })
-  .when('/chat', {
-    templateUrl: '/views/chat.html',
-    controller  : 'chatController'
-  })
-  .when('/manga', {
-    templateUrl: '/views/mangaSelection.html',
-    controller  : 'mangaController'
-  })
-  .when('/manga/:mangaId', {
-    templateUrl: '/views/mangaViewer.html',
-    controller  : 'mangaViewerController'
-  })
-  .when('/manga/:mangaId/:volume/:pagenum', {
-    templateUrl: '/views/mangaViewer.html',
-    controller  : 'mangaViewerController'
-  })
-  .when('/', {
+  var homeState = {
+    name: 'home',
+    url: '/',
     templateUrl: '/views/mainENG.html',
-    controller  : 'NavController'
-  })
-  .otherwise({
-   redirectTo: '/'
- });
+    controller: 'NavController'
+  }
+  var portfolioState = {
+    name: 'portfolio',
+    url: '/portfolio',
+    templateUrl: '/views/portfolio.html',
+    controller: 'portfolioController'
+  }
+  var aboutMeState = {
+    name: 'aboutme',
+    url: '/aboutme',
+    templateUrl: '/views/aboutme.html',
+    controller: 'aboutmeController'
+  }
+  var loginState = {
+    name: 'login',
+    url: '/login',
+    templateUrl: '/views/login.html',
+    controller: 'loginController'
+  }
+  var chatState = {
+    name: 'chat',
+    url: '/chat',
+    templateUrl: '/views/chat.html',
+    controller: 'chatController'
+  }
+  var mangaSelectionState = {
+    name: 'mangaSelection',
+    url: '/manga',
+    templateUrl: '/views/mangaSelection.html',
+    controller: 'mangaController'
+  }
+  var mangaViewer = {
+    name: 'mangaViewer',
+    url: '/manga/:mangaId',
+    templateUrl: '/views/mangaViewer.html',
+    controller: 'mangaViewerController'
+  }
+  var mangaViewerPage = {
+    name: 'mangaViewerPage',
+    url: '/manga/:mangaId/:volume/:pagenum',
+    templateUrl: '/views/mangaViewer.html',
+    controller: 'mangaViewerController'
+  }
 
-    // turn on the angular html5 push state, which should scrub any hash bangs:
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
-  });
+  $stateProvider.state(homeState);
+  $stateProvider.state(portfolioState);
+  $stateProvider.state(aboutMeState);
+  $stateProvider.state(loginState);
+  $stateProvider.state(chatState);
+  $stateProvider.state(mangaSelectionState);
+  $stateProvider.state(mangaViewer);
+  $stateProvider.state(mangaViewerPage);
+  $urlRouterProvider.otherwise('/');
+});
 
 
 // // Startup function ==================================================
@@ -318,9 +331,9 @@ function formatPageHome(){
 function formatPagePortfoilio(){
 
   $("#main").load("portfolio.html", function(){
-    // Create a template using mustache
+    // Create a templateUrl using mustache
     var collapseCounter = 1; //bootstrap variable needs a number suffixed to the ID. Since eat repo is generated, we need to track the count
-    var template = $("#projTemplate").html();    // Template for git proj
+    var templateUrl = $("#projtemplateUrl").html();    // templateUrl for git proj
 
     $('#repoHeader').append(json.page2.repoHeader[selectedLanguage]);
 
@@ -343,7 +356,7 @@ function formatPagePortfoilio(){
     // Fetch each project GITHUB
     // Format the HTML according to the JSON's Git's repos
     $.each(json.page3.git.repos, function(key, data){
-      // Fill in template
+      // Fill in templateUrl
       var view = { name:        data.name,
        link:        data.link,
        image:       data.image,
@@ -353,7 +366,7 @@ function formatPagePortfoilio(){
        collapseIdHref:  "#collapse" + collapseCounter};
 
       // Create specialized object
-      var rendered = Mustache.render(template, view);
+      var rendered = Mustache.render(templateUrl, view);
 
       // Add the object
       $("#projects").append(rendered);
@@ -394,8 +407,8 @@ function formatLogin(){
 function formatData(obj){
   // Lets view a chart
   $("#main").load("table.html", function(){
-    //create the templates
-    var template = $("#tableTemplate").html();
+    //create the templateUrls
+    var templateUrl = $("#tabletemplateUrl").html();
 
     //Fetch the table
     $.each(obj, function(key,rowData){
@@ -406,7 +419,7 @@ function formatData(obj){
         message: rowData.message};
 
       // Create specialized object
-      var rendered = Mustache.render(template, view);
+      var rendered = Mustache.render(templateUrl, view);
 
       // Add the object
       $("#tableBody").append(rendered);
@@ -434,7 +447,7 @@ function formatManga(){
 }
 
 function loadManga(mangaHash){
-  $("#mangaBody").load("/mangaTemplate.html", function(){
+  $("#mangaBody").load("/mangatemplateUrl.html", function(){
     $("#mangapage").attr('alt', mangaHash);
     $("#mangapage").attr('src', "/resources/data/manga/" + mangaHash + "/volume1/y " + "("+pageCount+").jpg");
   });
