@@ -5,7 +5,7 @@
 		<div style="height: 305px">
 			<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
 				<div uib-slide ng-repeat="slide in mangaInfo track by slide.name" index="$index">
-					<a ui-sref="mangaViewer({mangaId : slide.name})""><img ng-src="{{slide.coverPage}}" style="width:70%;"></a>
+					<a ui-sref="mangaViewerPage({mangaId : slide.name, volume : '1', pagenum : '1'})""><img ng-src="{{slide.coverPage}}" style="width:70%;"></a>
 				</div>
 			</div>
 			<hr>
