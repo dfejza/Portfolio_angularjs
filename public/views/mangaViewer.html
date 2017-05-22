@@ -1,5 +1,5 @@
 <div class="container" ng-controller="mangaViewerController">
-	<a href="/manga/{{data.name}}/{{data.volume}}/{{data.pagenum}}">
+	<a ui-sref="mangaViewerPage({mangaId : data.name, volume : data.volume,pagenum : data.pagenum)}">
 		<img ng-src="/assets/manga/{{data.name}}/volume{{data.volume}}/y ({{data.pagenum}}).jpg" style="width:90%;">
 	</a>
 </div>
