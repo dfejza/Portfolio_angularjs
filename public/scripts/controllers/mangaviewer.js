@@ -4,6 +4,7 @@ angular.module('myApp').controller('mangaViewerController', function($scope, $st
           $window.json = response.data; //global json file
       });
 	}
+	$scope.language = $window.selectedLanguage;
 
 	$scope.data = {
 		name : $stateParams.mangaId,

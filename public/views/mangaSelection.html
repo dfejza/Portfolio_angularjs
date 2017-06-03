@@ -1,14 +1,16 @@
-<div class="container animated bounceinleft">
-	<h2 class="text-center" id="header">{{data.header[0]}}</h2>
-	<hr>
-	<div id="mangaBody">
-		<div style="height: 305px">
-			<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-				<div uib-slide ng-repeat="slide in mangaInfo track by slide.name" index="$index">
-					<a ui-sref="mangaViewerPage({mangaId : slide.name, volume : '1', pagenum : '0'})""><img ng-src="{{slide.coverPage}}" style="width:70%;"></a>
+<div class="container" >
+	<div ng-show="condition" ng-cloak>
+		<h2 class="text-center" id="header">{{data.header[language]}}</h2>
+		<hr>
+		<div id="mangaBody">
+			<div style="height: 305px">
+				<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+					<div uib-slide ng-repeat="slide in mangaInfo track by slide.name" index="$index">
+						<a ui-sref="mangaViewerPage({mangaId : slide.name, volume : '1', pagenum : '0'})""><img ng-src="{{slide.coverPage}}" style="width:70%;"></a>
+					</div>
 				</div>
+				<hr>
 			</div>
-			<hr>
 		</div>
 	</div>
 </div>

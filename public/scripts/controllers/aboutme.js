@@ -9,6 +9,7 @@ angular.module('myApp').controller('aboutmeController', function($scope, $window
   {
     $scope.data = $window.json.page2;
   }
+  $scope.language = $window.selectedLanguage;
   
 
   //form details

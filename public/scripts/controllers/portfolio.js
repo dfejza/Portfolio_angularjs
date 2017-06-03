@@ -11,5 +11,6 @@ angular.module('myApp').controller('portfolioController', function($scope, $wind
 		$scope.data = $window.json.page1;
 		$scope.repos = $window.json.page1.git.repos;
 	}
+	$scope.language = $window.selectedLanguage;
 
 });

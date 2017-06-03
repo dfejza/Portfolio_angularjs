@@ -4,6 +4,7 @@ angular.module('myApp').controller('chatController', function($scope, $window, $
           $window.json = response.data; //global json file
         });
   }
+  $scope.language = $window.selectedLanguage;
 
   //form details
   $scope.formDetails = {
