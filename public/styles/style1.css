@@ -118,3 +118,8 @@ padding: 8px 16px;
 .item span {
   font-style: normal;
 }
+
+/*Preserve line breaks in angularjs*/
+.white-space-pre-line {
+  white-space: pre-line;
+}

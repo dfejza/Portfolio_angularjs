@@ -17,6 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Local client scripts -->
   <script type="text/javascript" src="./scripts/app.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/navbar.js"></script>
   <script type="text/javascript" src="./scripts/controllers/mangaviewer.js"></script>
   <script type="text/javascript" src="./scripts/controllers/aboutme.js"></script>
   <script type="text/javascript" src="./scripts/controllers/chat.js"></script>
@@ -25,6 +26,7 @@
   <script type="text/javascript" src="./scripts/controllers/mangareader.js"></script>
   <script type="text/javascript" src="./scripts/controllers/portfolio.js"></script>
   <script type="text/javascript" src="./scripts/controllers/success.js"></script>
+  <script type="text/javascript" src="./scripts/services/sendform.js"></script>
   
   <!-- Local client styles -->
   <link rel="stylesheet" href="./styles/style1.css">
@@ -42,14 +44,14 @@
       </div>
       <div class="collapse nav navbar-collapse" id="myNavbar">
         <ul id="pageBar" class="nav navbar-nav">
-          <li id="page0" class="navbar"><a ui-sref="home" ui-sref-active="active">{{nav[0]}}</a></li>
-          <li id="page1" class="navbar"><a ui-sref="portfolio" ui-sref-active="active">{{nav[1]}}</a></li>
-          <li id="page2" class="navbar"><a ui-sref="aboutme" ui-sref-active="active">{{nav[2]}}</a></li>
-          <li id="page4" class="navbar"><a ui-sref="chat" ui-sref-active="active">{{nav[4]}}</a></li>
-          <li id="page5" class="navbar"><a ui-sref="mangaSelection" ui-sref-active="active">{{nav[5]}}</a></li>
+          <li id="page0" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="home" ui-sref-active="active">{{nav[0]}}</a></li>
+          <li id="page1" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="portfolio" ui-sref-active="active">{{nav[1]}}</a></li>
+          <li id="page2" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="aboutme" ui-sref-active="active">{{nav[2]}}</a></li>
+          <li id="page4" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="chat" ui-sref-active="active">{{nav[4]}}</a></li>
+          <li id="page5" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="mangaSelection" ui-sref-active="active">{{nav[5]}}</a></li>
         </ul>
         <div class="nav navbar-nav navbar-right">
-          <li id="page3" class="navbar"><a ui-sref="login" ui-sref-active="active">{{nav[3]}}<span class="glyphicon glyphicon-log-in"></span></a></li>
+          <li id="page3" class="navbar"><a data-toggle="collapse" data-target=".navbar-collapse" ui-sref="login" ui-sref-active="active">{{nav[3]}}<span class="glyphicon glyphicon-log-in"></span></a></li>
           <select ng-model="langModel" ng-options="template.value as template.label for template in languages" class="topright navigationRight" ng-change="changeLanguage()"  id="langSelect">
           </select>
         </div>
@@ -60,7 +62,6 @@
   <div class="content">
     <ui-view></ui-view>
   </div>
-  <!-- <div id="main" class="content container animated bounceinleft"> -->
 </div>
 
 

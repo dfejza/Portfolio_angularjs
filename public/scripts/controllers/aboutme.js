@@ -1,4 +1,4 @@
-angular.module('myApp').controller('aboutmeController', function($scope, $window, $http, loadjson) {
+angular.module('myApp').controller('aboutmeController', function($scope, $window, $http, loadjson, sendFormService) {
   if($window.json==null){
     loadjson.getItems().then(function(response) { 
           $window.json = response.data; //global json file
@@ -23,7 +23,7 @@ angular.module('myApp').controller('aboutmeController', function($scope, $window
     // Get the IP of the user
     $http({
       method: 'GET',
-      url: 'www.freegeoip.net/json/?callback=?'
+      url: '//freegeoip.net/json/'
     }).then(function successCallback(response) {
       // Get the date
       var d = new Date();
@@ -36,13 +36,27 @@ angular.module('myApp').controller('aboutmeController', function($scope, $window
         message : $scope.formDetails.message
       };
 
-      $.ajax({
-        url: "/sendtodb",
-        type: "POST",
-        data: JSON.stringify(formInput),
-        contentType: "application/json"
-      }).done(function( msg ) {
-        console.log(msg);
+      sendFormService.createPost(formInput)
+      .then(function(response) {
+        $scope.formDetails = {};
+        $scope.$setPristine(true);
+      });
+
+    }, function errorCallback(response) {
+      var d = new Date();
+
+      var formInput = {
+        date :  (d.getMonth()+1) + "/" + d.getDate() +"/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes(),
+        ip : "adblocker used",
+        name : $scope.formDetails.name,
+        email : $scope.formDetails.email,
+        message : $scope.formDetails.message
+      };
+
+      sendFormService.createPost(formInput)
+      .then(function(response) {
+        $scope.formDetails = {};
+        $scope.$setPristine(true);
       });
     });
   }

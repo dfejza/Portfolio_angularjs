@@ -18,27 +18,7 @@ angular.module('myApp').controller('loginController',  function($scope, $state, 
 			if(msg.data !="NO")
 			{
 				$state.go("success",{passedData : msg});
-				// formatData(msg);
 			}
 		});
 	}
 });
-
-
-//     $.ajax({
-//       url: "/login",
-//       type: "POST",
-//       data: JSON.stringify(formInput),
-//       contentType: "application/json"
-//     }).done(function( msg ) {
-//       console.log(msg);
-//       if(msg !="NO")
-//       {
-//         formatData(msg);
-//       }
-//       else
-//       {
-//         loadPage("page0");
-//         alert("Invalid login");
-//       }
-//     });
