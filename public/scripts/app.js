@@ -80,6 +80,13 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
     templateUrl: '/views/login.html',
     controller: 'loginController'
   }
+  var successState = {
+    name: 'success',
+    url: '/success',
+    templateUrl: '/views/table.html',
+    controller: 'successController',
+    params : { passedData: null}
+  }
   var chatState = {
     name: 'chat',
     url: '/chat',
@@ -113,5 +120,6 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider.state(mangaSelectionState);
   $stateProvider.state(mangaViewer);
   $stateProvider.state(mangaViewerPage);
+  $stateProvider.state(successState);
   $urlRouterProvider.otherwise('/');
 });

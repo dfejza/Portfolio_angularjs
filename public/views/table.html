@@ -9,14 +9,12 @@
     </tr>
   </thead>
   <tbody id="tableBody">
-    <script id="tableTemplate" type="text/template">
-      <tr>
-        <td>{{ip}}</td>
-        <td>{{date}}</td>
-        <td>{{name}}</td>
-        <td>{{email}}</td>
-        <td>{{message}}</td>
-      </tr>  
-    </script>
+    <tr ng-repeat="x in tableData">
+      <td>{{x.ip}}</td>
+      <td>{{x.date}}</td>
+      <td>{{x.name}}</td>
+      <td>{{x.email}}</td>
+      <td>{{x.message}}</td>
+    </tr>  
   </tbody>
 </table>
