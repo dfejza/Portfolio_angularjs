@@ -21,6 +21,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-mongo-db": "^2.0.3",
+    "fs-readdir-promise": "^1.0.1",
     "jQuery": "^1.7.4",
     "jsdom": "^10.1.0",
     "mustache": "^2.3.0",

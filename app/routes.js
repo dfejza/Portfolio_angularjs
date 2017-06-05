@@ -1,13 +1,8 @@
-
+var fs = require('fs');
 // routes ======================================================================  
 // application -------------------------------------------------------------
 // expose the routes to our app with module.exports
 module.exports = function(app) {
-	// application -------------------------------------------------------------
-	app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
-
 	// login -------------------------------------------------------------
 	app.post('/login', function(req,res) {
 		var postData = {
@@ -26,7 +21,7 @@ module.exports = function(app) {
 		}
 		else
 		{
-			res.send("NOooo");
+			res.send("NO");
 		}
 		
 	});
@@ -77,25 +72,42 @@ module.exports = function(app) {
 	});
 
 	// MANGA DB ---------------------------------------------------------------
-
-	app.get('/manga/:manganame/:pagenum', function (req, res, next) {
-		var options = {
-			root: __dirname + '/public/',
-			dotfiles: 'deny',
-			headers: {
-				'x-timestamp': Date.now(),
-				'x-sent': true
-			}
-		};
-
-		var fileName = req.params.name;
-		res.sendFile(fileName, options, function (err) {
-			if (err) {
-				next(err);
-			} else {
-				console.log('Sent:', fileName);
-			}
+	app.get('/api/updateMangaList', function (req, res, next) {
+		mangaDB = [];
+		var core = req.db.collection('manga');
+		//////////////////
+		fs.readdir("./public/assets/manga", (err, files) => {
+			files.forEach(function(data,indexk){
+				mangaModule = {
+					name : data,
+					path : "./assets/manga/"+data,
+					coverPage : "",
+					volumes : "0",
+					index : indexk
+				};
+				mangaDB.push(mangaModule)
+			});
+			/////////////////////////////
+			mangaDB.forEach(function(manga, index) {
+				fs.readdir("./public/assets/manga/" + manga.name, (err, mangaPath) => {
+					manga.volumes = mangaPath.length-1;
+					manga.coverPage = manga.path + "/" + manga.name + ".jpg";
+					core.update(manga, manga, {upsert:true})
+				});	
+			});
 		});
-
+		res.send("updated")
 	});
+
+	app.get('/api/getMangaList', function (req, res, next) {
+		var core = req.db.collection('manga');
+		core.find().toArray(function(err, items) {
+			res.json(items); 
+		});
+	});
+
+	// application -------------------------------------------------------------
+	app.use(function(req, res) {
+    	res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
 };

@@ -9,9 +9,9 @@ app.use(expressMongoDb('mongodb://localhost:27017/portfolio'));
 var path = require('path');
 var request = require('request');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var http = require('http');
 var mustacheExpress = require('mustache');
+
 
 var port     = process.env.PORT || 8080; // set the port
 // configuration ===============================================================

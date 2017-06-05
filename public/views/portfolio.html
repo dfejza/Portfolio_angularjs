@@ -1,0 +1,45 @@
+<div class="container container-fluid gitUserStuff animated bounceinleft">
+	<div class="row" id="portfolio">
+		<div class="portfolioHeader1 col-sm-6" >
+			<a id="imgLink1" href="">
+				<img class="content_pic img-rounded gitDetails" id="icon" src="/assets/images/github.png" height="80" width="80">
+			</a>
+			<a href="{{data.git.usernameLink}}" id="username">{{data.git.username}}</a>
+			<h5 id="repoCount" class="gitDetails">{{data.repoCount[language]}} : {{data.git.repoCount}}</h5>
+			<h5 id="followers" class="gitDetails">{{data.followers[language]}} : {{data.git.followers}}</h5>
+			<h5 id="following" class="gitDetails">{{data.following[language]}} : {{data.git.following}}</h5>
+			<hr class="hidden-lg">
+		</div>
+
+
+		<div class="portfolioHeader2 col-sm-6">
+			<a id="imgLink1" href="">
+				<img class="content_pic img-rounded gitDetails" id="icon" src="/assets/images/bitbucket.png" height="80" width="80">
+			</a>
+			<a href="{{data.bitB.usernameLink}}" id="username">{{data.bitB.username}}</a>
+			<h5 id="repoCount" class="gitDetails">{{data.repoCount[language]}} : {{data.bitB.repoCount}}</h5>
+			<h5 id="followers" class="gitDetails">{{data.followers[language]}} : {{data.bitB.followers}}</h5>
+			<h5 id="following" class="gitDetails">{{data.following[language]}} : {{data.bitB.following}}</h5>
+			<hr class="hidden-lg">
+		</div>
+
+	</div>
+</div>
+
+<div id="projects" class="media container" ng-controller="portfolioController">
+	<hr>
+	<h2 id="repoHeader">{{data.repoHeader[language]}}</h2>
+	<uib-accordion close-others="true">
+		<div uib-accordion-group class="panel-default" heading="{{x.name}}" ng-repeat="x in repos">
+			<div class="row">
+				<a id="{{x.name}}" href="{{x.link}}" class="col-sm-5">
+					<img class="img-responsive" id="icon" src="{{x.image}}">
+				</a>
+				<div class="col-sm-6">
+					<h1 class="media-heading"><a href="{{link}}">{{x.name}}</a></h1>
+					<p id="media-txt">{{x.description}}</p>
+				</div>
+			</div>
+		</div>
+	</uib-accordion>
+</div>
