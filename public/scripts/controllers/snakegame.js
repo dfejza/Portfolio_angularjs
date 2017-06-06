@@ -21,6 +21,8 @@ angular.module('myApp').controller('snakegameController', function($scope, $http
 	snakeSize = 5;
 	// Walls
 	walls=false;
+	// Make sure only 1 change in velocity per tick
+	jobdone = false;
 	// food
 	foodPos = {};
 
@@ -72,41 +74,45 @@ angular.module('myApp').controller('snakegameController', function($scope, $http
 	
 	function keyPush(event){
 		// Second conditional ensures the user cant do a 180deg turn
-		if(event.keyCode == 37 && xvel != 1)
+		if(event.keyCode == 37 && xvel != 1 && !jobdone)
 		{
 			//left arrow
 			xvel = -1;
 			yvel = 0;
+			jobdone = true;
 		}
-		else if(event.keyCode == 38 && yvel != -1)
+		else if(event.keyCode == 38 && yvel != -1 && !jobdone)
 		{
 			//up arrow
 			xvel = 0;
 			yvel = 1;
+			jobdone = true;
 		}
-		else if(event.keyCode == 39 && xvel != -1)
+		else if(event.keyCode == 39 && xvel != -1 && !jobdone)
 		{ 
 			//right arrow
 			xvel = 1;
 			yvel = 0;
+			jobdone = true;
 		}
-		else if(event.keyCode == 40 && yvel != 1)
+		else if(event.keyCode == 40 && yvel != 1 && !jobdone)
 		{
 			 //down arrow
 			 xvel = 0;
 			 yvel = -1;
+			 jobdone = true;
+			}
 		}
-	}
 
-	function spawnFood(){
-		xposition = Math.floor((Math.random() * xmax));
-		yposition = Math.floor((Math.random() * ymax));
+		function spawnFood(){
+			xposition = Math.floor((Math.random() * xmax));
+			yposition = Math.floor((Math.random() * ymax));
 
-		foodPos.x = xposition;
-		foodPos.y = yposition;
-	}
+			foodPos.x = xposition;
+			foodPos.y = yposition;
+		}
 
-	function resetGame(){
+		function resetGame(){
 		// Play start location
 		xpos = ypos = 10;
 		// Direction
@@ -125,6 +131,9 @@ angular.module('myApp').controller('snakegameController', function($scope, $http
 	}
 
 	function gameLoop(){
+		// Allow user input again
+		jobdone = false;
+		
 		// Fill brackground
 		ctx.fillStyle = "#000000";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
