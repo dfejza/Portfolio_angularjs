@@ -51,6 +51,12 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
     templateUrl: '/views/chat.html',
     controller: 'chatController'
   }
+  var snakegameState = {
+    name: 'snakegame',
+    url: '/snakegame',
+    templateUrl: '/views/snakegame.html',
+    controller: 'snakegameController'
+  }
   var mangaSelectionState = {
     name: 'mangaSelection',
     url: '/manga',
@@ -79,5 +85,6 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
   $stateProvider.state(mangaViewer);
   $stateProvider.state(mangaViewerPage);
   $stateProvider.state(successState);
+  $stateProvider.state(snakegameState);
   $urlRouterProvider.otherwise('/');
 });
