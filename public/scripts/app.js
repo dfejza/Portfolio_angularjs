@@ -65,13 +65,13 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
   }
   var mangaViewer = {
     name: 'mangaViewer',
-    url: '/manga/:mangaId',
+    url: '/manga/mangaId',
     templateUrl: '/views/mangaViewer.html',
     controller: 'mangaViewerController'
   }
   var mangaViewerPage = {
     name: 'mangaViewerPage',
-    url: '/manga/:mangaId/:volume/:pagenum',
+    url: '/manga/:mangaId/{volume:int}/{pagenum:int}',
     templateUrl: '/views/mangaViewer.html',
     controller: 'mangaViewerController'
   }
