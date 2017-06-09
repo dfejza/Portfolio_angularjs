@@ -1,10 +1,10 @@
 <div ng-controller="mangaViewerController">
 	<ul class="pager">
-		<li class="previous"><a ui-sref="mangaViewerPage({mangaId : data.name, volume : data.volume,pagenum : data.pagenum-1})">← Previous</a></li>
+		<li ng-if="data.pagenum>1" class="previous" is-disabled=true><a ui-sref="mangaViewerPage({mangaId : data.name, volume : data.volume,pagenum : data.pagenum-1})">← Previous</a></li>
 
 		<!-- Volume Selection -->
 		<div class="btn-group" uib-dropdown>
-			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
 				Volume {{data.volume}}<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menuMANGA" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -15,7 +15,7 @@
 		</div>
 		<!-- Page Selection -->
 		<div class="btn-group" uib-dropdown>
-			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
 				Page {{data.pagenum}}<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menuMANGA" uib-dropdown-menu role="menu" aria-labelledby="single-button">
