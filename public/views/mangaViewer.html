@@ -8,8 +8,8 @@
 				Volume {{data.volume}}<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menuMANGA" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-				<li ng-repeat="choice in [1]"">
-					<a ui-sref="mangaViewerPage({mangaId : data.name, volume : choice,pagenum : 1})">{{choice}}</a>
+				<li ng-repeat="choice in filteredTodosVolume"">
+					<a ui-sref="mangaViewerPage({mangaId : data.name, volume : choice.volume, pagenum : 1})">Volume {{choice.volume}}</a>
 				</li>
 			</ul>
 		</div>
@@ -26,7 +26,7 @@
 		</div>
 
 
-		<li class="next"><a ui-sref="mangaViewerPage({mangaId : data.name, volume : data.volume,pagenum : data.pagenum+1})">Next →</a></li>
+		<li ng-if="data.pagenum < data.pageCount" class="next"><a ui-sref="mangaViewerPage({mangaId : data.name, volume : data.volume,pagenum : data.pagenum+1})">Next →</a></li>
 	</ul>
 
 	<hr>

@@ -1,24 +1,32 @@
+#!/usr/bin/python3
 import os   # parse through directories
 import json # read json
 import requests # RESTful
+import markdown # markdown conversion
+import htmlmin # we need to minify the HTML to fit in a json object
+
 
 ## Generate the information required for the manga reader
 baseDir = './public/assets/manga'
+coverDir = './assets/manga'
 jsonDir = './public/assets/data/data.json'
 gitUserInfo = 'https://api.github.com/users/dfejza'
 gitUserRepos = 'https://api.github.com/users/dfejza/repos'
+engReadme = "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/README.md";
+jpReadme = "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/READMEJP.md"
 
-mangaList = [];
+
 
 ##########################################################
 ## STEP 1
 ## MANGA RELATED STUFF
 #lets read the directory, for manga information generatio
+mangaList = [];
 mangaListRaw = os.listdir(baseDir)
 for manga in mangaListRaw:
 	mangaData = {}
 	mangaData["name"] = manga
-	mangaData["coverPage"] = baseDir + "/" + manga + "/" + manga + ".jpg"
+	mangaData["coverPage"] = coverDir + "/" + manga + "/" + manga + ".jpg"
 	mangaData["volumeCount"] =  len(os.listdir(baseDir + "/" +manga))-1 
 	mangaData["volumePageCountList"] = []
 	#crawl each volume folder for the page count
@@ -62,19 +70,40 @@ for x in resp.json():
 ##########################################################
 ## STEP 3
 ## INDEX MARKDOWN TO HTML STUFF
+# Get the eng
+engReadmeReq = requests.get(engReadme)
+if engReadmeReq.status_code != 200:
+    # This means something went wrong.
+    raise ApiError('GET /tasks/ {}'.format(resp.status_code))
+# Get the jp 
+jpReadmeReq = requests.get(jpReadme)
+if jpReadmeReq.status_code != 200:
+    # This means something went wrong.
+    raise ApiError('GET /tasks/ {}'.format(resp.status_code))
 
+#print(jpReadmeReq.text)
+# GET the raw readmin. Convert from markdown to html. Minify the HTML
+htmlENG = htmlmin.minify(markdown.markdown(engReadmeReq.text))
+htmlJP = htmlmin.minify(markdown.markdown(jpReadmeReq.text))
 
 ##########################################################
 ## STEP 4
 ## Write to the json file used by the website
 ## Database modify
 d = []
+print(d)
 # Read the db
 with open(jsonDir, 'r',encoding='utf8') as json_data:
     d = json.load(json_data)
-# Append the Manga info to the db
-d["mangaDb"] = mangaList;
-d["page1"]["git"] = git    
+# Overwrite manga info to the db
+d["mangaDb"] = mangaList
+# Overwrite git info to the db
+d["page1"]["git"] = git
+# Overwrite core content to the db
+d["page0"]["contentRaw"] = []
+d["page0"]["contentRaw"].append(htmlENG)
+d["page0"]["contentRaw"].append(htmlJP)
+
 # Write to the db
 os.remove(jsonDir)
 with open(jsonDir, 'w') as json_data:
