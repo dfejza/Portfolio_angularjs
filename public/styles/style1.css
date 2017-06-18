@@ -12,10 +12,17 @@ float : right;
   cursor: pointer;
 }
 
-
-/*#pageBar, #langBar {
-display:inline-block
-}*/
+/* When in mobile view the heigh of 40px is unsightly*/
+@media screen and (max-width: 600px) {
+  #pageBar, #langBar {
+    height: auto;
+  }
+}
+@media screen and (min-width: 600px) {
+  #pageBar, #langBar {
+    height: 40px;
+  }
+}
 
 /*#langSelect {
 padding: 8px 16px;
@@ -66,7 +73,7 @@ padding: 8px 16px;
 /*------ About Me ------*/
 .aboutme {
   margin-left: 0;
-  padding: 60px 50px;
+  padding: 20px 20px;
 }
 
 .bg-grey {

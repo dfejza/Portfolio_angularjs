@@ -1,65 +1,4 @@
 {
-    "page3": {},
-    "mangaDb": [
-        {
-            "volumePageCountList": [
-                212
-            ],
-            "volumeCount": 1,
-            "coverPage": "./assets/manga/hoshinosamidare/hoshinosamidare.jpg",
-            "name": "hoshinosamidare"
-        },
-        {
-            "volumePageCountList": [
-                224
-            ],
-            "volumeCount": 1,
-            "coverPage": "./assets/manga/tokyoghoul/tokyoghoul.jpg",
-            "name": "tokyoghoul"
-        },
-        {
-            "volumePageCountList": [
-                248,
-                240
-            ],
-            "volumeCount": 2,
-            "coverPage": "./assets/manga/vagabond/vagabond.jpg",
-            "name": "vagabond"
-        },
-        {
-            "volumePageCountList": [
-                224
-            ],
-            "volumeCount": 1,
-            "coverPage": "./assets/manga/yotsubato/yotsubato.jpg",
-            "name": "yotsubato"
-        },
-        {
-            "volumePageCountList": [
-                227,
-                202,
-                204,
-                195,
-                199
-            ],
-            "volumeCount": 5,
-            "coverPage": "./assets/manga/shigatsu/shigatsu.jpg",
-            "name": "shigatsu"
-        },
-        {
-            "volumePageCountList": [
-                184,
-                197
-            ],
-            "volumeCount": 2,
-            "coverPage": "./assets/manga/sakamoto/sakamoto.jpg",
-            "name": "sakamoto"
-        }
-    ],
-    "selectorText": [
-        "Language: ",
-        "\u8a00\u8a9e: "
-    ],
     "navigation": [
         [
             "Home",
@@ -90,15 +29,130 @@
             "\u30d8\u30d3\u30b2\u30fc\u30e0"
         ]
     ],
+    "selectorText": [
+        "Language: ",
+        "\u8a00\u8a9e: "
+    ],
+    "page0": {
+        "contentRaw": [
+            "<h1>ePortfolio</h1> <h2>Summary</h2> <p>I wanted to create a seemless, bi-langual website to provide a learning experince for myself and a demonstration of ability for potential employers.</p> <p>Going into this project, I had a basic understanding of the three main languages (JS, CSS, &amp; HTML). I am beleiver of learning from examples, and thus attempted to create a portfolio website from scratch. I primarily wanted a seemless experince of a bilangual website, and am satisfied with the result.</p> <h2>Languages</h2> <p>-Frontend: Javascript, JQuery, Angular JS, CSS, Bootstrap, and HTML</p> <p>-Backend: Node JS and JSON</p> <h2>Dynamics</h2> <p>There is a JSON file which contains all the text found on the front end. The two language options are stored in this JSON, English and Japanese. Based off the user selection, JS will parse the specified field in the specified language, and Angular will load it into the front end.</p> <p>NodeJS will periodically call both the Github and Bitbucket's API to request my account information and repositories, and write them in a local JSON file. By doing so, the \"Portfolio\" page will always be updated. This job is schedualed daily.</p> <h2>Future Plans</h2> <p>Going forward, I want this to serve as a baseline for future projects by expanding the functionality of this portfolio. - Expand the backend - Expand the front end - Provide an interface for other JS projects (games, applications, ect) that can easily be accessed</p> <h3>This page was generated from the README.md file of the git repository, converted from markdown to HTML using NodeJS, and fed here using JS.</h3>",
+            "<h1>e\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa</h1> <h2>\u8981\u7d04</h2> <p>\u79c1\u306f\u81ea\u5206\u306e\u305f\u3081\u306b\u5b66\u7fd2\u7d4c\u9a13\u3092\u63d0\u4f9b\u3057\u3001\u6f5c\u5728\u7684\u306a\u96c7\u7528\u4e3b\u306e\u305f\u3081\u306e\u80fd\u529b\u306e\u5b9f\u8a3c\u3092\u63d0\u4f9b\u3059\u308b\u305f\u3081\u306b\u3001\u30b7\u30f3\u30d7\u30eb\u3067\u3001\u53cc\u65b9\u5411\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u3092\u4f5c\u308a\u305f\u304c\u3063\u3066\u3044\u307e\u3057\u305f\u3002</p> <p>\u3053\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306b\u306f\u30013\u3064\u306e\u4e3b\u8981\u8a00\u8a9e\uff08JS\u3001CSS\u3001HTML\uff09\u306e\u57fa\u672c\u7684\u306a\u7406\u89e3\u304c\u3042\u308a\u307e\u3057\u305f\u3002\u79c1\u306f\u4f8b\u304b\u3089\u5b66\u3076\u3053\u3068\u306b\u6075\u307e\u308c\u3001\u6700\u521d\u304b\u3089\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u3092\u4f5c\u6210\u3057\u3088\u3046\u3068\u3057\u307e\u3057\u305f\u3002\u79c1\u306f\u4e3b\u306b\u3001\u4e8c\u56fd\u9593\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306e\u7121\u95a2\u5fc3\u306a\u7d4c\u9a13\u3092\u671b\u3093\u3067\u304a\u308a\u3001\u305d\u306e\u7d50\u679c\u306b\u6e80\u8db3\u3057\u3066\u3044\u307e\u3059\u3002</p> <h2>\u8a00\u8a9e</h2> <p>-Frontend\uff1aJavascript\u3001JQuery\u3001Angular JS\u3001CSS\u3001Bootstrap\u3001HTML</p> <p>-Backend\uff1a\u30ce\u30fc\u30c9JS\u3068JSON</p> <h2>\u30c0\u30a4\u30ca\u30df\u30af\u30b9</h2> <p>\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u306b\u3042\u308b\u3059\u3079\u3066\u306e\u30c6\u30ad\u30b9\u30c8\u3092\u542b\u3080JSON\u30d5\u30a1\u30a4\u30eb\u304c\u3042\u308a\u307e\u3059\u3002 2\u3064\u306e\u8a00\u8a9e\u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u3001\u3053\u306eJSON\u3001\u82f1\u8a9e\u3068\u65e5\u672c\u8a9e\u306b\u683c\u7d0d\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306e\u9078\u629e\u306b\u57fa\u3065\u3044\u3066\u3001JS\u306f\u6307\u5b9a\u3055\u308c\u305f\u8a00\u8a9e\u3067\u6307\u5b9a\u3055\u308c\u305f\u30d5\u30a3\u30fc\u30eb\u30c9\u3092\u89e3\u6790\u3057\u3001Angular\u306f\u305d\u308c\u3092\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u306b\u8aad\u307f\u8fbc\u307f\u307e\u3059\u3002</p> <p>NodeJS\u306f\u5b9a\u671f\u7684\u306bGithub\u3068Bitbucket\u306e\u4e21\u65b9\u306eAPI\u3092\u547c\u3073\u51fa\u3057\u3066\u30a2\u30ab\u30a6\u30f3\u30c8\u60c5\u5831\u3068\u30ea\u30dd\u30b8\u30c8\u30ea\u3092\u30ea\u30af\u30a8\u30b9\u30c8\u3057\u3001\u305d\u308c\u3089\u3092\u30ed\u30fc\u30ab\u30eb\u306eJSON\u30d5\u30a1\u30a4\u30eb\u306b\u66f8\u304d\u51fa\u3057\u307e\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u300c\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u300d\u30da\u30fc\u30b8\u304c\u5e38\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u3053\u306e\u4ed5\u4e8b\u306f\u6bce\u65e5schedualed\u3055\u308c\u307e\u3059\u3002</p> <h2>\u4eca\u5f8c\u306e\u8a08\u753b</h2> <p>\u4eca\u5f8c\u306f\u3001\u3053\u306e\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u306e\u6a5f\u80fd\u3092\u62e1\u5f35\u3059\u308b\u3053\u3068\u3067\u3001\u5c06\u6765\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u30d9\u30fc\u30b9\u30e9\u30a4\u30f3\u3068\u3057\u3066\u6a5f\u80fd\u3055\u305b\u3066\u3044\u304d\u305f\u3044\u3068\u8003\u3048\u3066\u3044\u307e\u3059\u3002 - \u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u3092\u62e1\u5f35\u3059\u308b - \u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u3092\u62e1\u5f35\u3059\u308b - \u7c21\u5358\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u308b\u4ed6\u306eJS\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\uff08\u30b2\u30fc\u30e0\u3001\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u306a\u3069\uff09\u306e\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9\u3092\u63d0\u4f9b\u3059\u308b</p> <h3>Google\u3092\u4f7f\u7528\u3057\u3066\u751f\u6210\u3055\u308c\u307e\u3059\u3002\u30da\u30fc\u30b8\u304c\u6700\u7d42\u7684\u306a\u3068\u304d\u306b\u624b\u4f5c\u696d\u3067\u7ffb\u8a33\u3059\u308b</h3>"
+        ]
+    },
+    "page3": {},
+    "page1": {
+        "followers": [
+            "Followers",
+            "\u30d5\u30a9\u30ed\u30ef\u30fc"
+        ],
+        "git": {
+            "followers": 1,
+            "repos": [
+                {
+                    "image": "https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif",
+                    "name": "Challonger",
+                    "link": "https://github.com/dfejza/Challonger",
+                    "description": "Tournament bracket simulator using REST API, C++  QT",
+                    "fullname": "dfejza/Challonger"
+                },
+                {
+                    "image": "https://raw.githubusercontent.com/dfejza/ePortfolio-Creator/master/demo.gif",
+                    "name": "ePortfolio-Creator",
+                    "link": "https://github.com/dfejza/ePortfolio-Creator",
+                    "description": "Java application to create your own Portfolio website, using a strait forward GUI. Has a live preview and ability to export to HTML,CSS andJS format.",
+                    "fullname": "dfejza/ePortfolio-Creator"
+                },
+                {
+                    "image": "https://raw.githubusercontent.com/dfejza/snake/master/demo.gif",
+                    "name": "snake",
+                    "link": "https://github.com/dfejza/snake",
+                    "description": "Simple game of snake, written in pure Javascript. No guides followed.",
+                    "fullname": "dfejza/snake"
+                },
+                {
+                    "image": "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif",
+                    "name": "Website-Portfolio",
+                    "link": "https://github.com/dfejza/Website-Portfolio",
+                    "description": "An interface to strengthen my understanding of various web development languages.",
+                    "fullname": "dfejza/Website-Portfolio"
+                }
+            ],
+            "following": 2,
+            "usernameLink": "https://github.com/dfejza",
+            "username": "dfejza",
+            "icon": "https://avatars2.githubusercontent.com/u/15079960?v=3",
+            "repoCount": 4
+        },
+        "following": [
+            "Following",
+            "\u30d5\u30a9\u30ed\u30fc"
+        ],
+        "bitB": {
+            "following": "NA",
+            "repos": [
+                {
+                    "image": "",
+                    "name": "SlideshowMaker",
+                    "description": "slideshowmaker"
+                },
+                {
+                    "image": "",
+                    "name": "ePortfolio",
+                    "description": "eportfolio"
+                }
+            ],
+            "followers": "NA",
+            "usernameLink": "https://bitbucket.org/dfejza/",
+            "username": "dfejza",
+            "repoCount": "2"
+        },
+        "repoHeader": [
+            "Summary of each repository, generated using their API",
+            "\u592b\u308c\u592b\u308c\u306e\u30ea\u30dd\u30b8\u30c8\u30ea\u306e\u5927\u7b4b\u3067\u3059. Git\u306eAPI\u3092\u4f7f\u3063\u3066\u30ea\u30b9\u30c8\u304c\u4f5c\u308a\u307e\u3057\u305f"
+        ],
+        "projects": [
+            []
+        ],
+        "repoCount": [
+            "Repositories",
+            "\u30ea\u30dd\u30b8\u30c8\u30ea"
+        ]
+    },
     "page2": {
-        "languageheader": [
-            "Programming Languages",
-            "\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u8a00\u8a9e"
+        "summary": [
+            "24-year-old Computer Engineer whom graduated from Stony Brook University with a Bachelor\u2019s of Science, Major in Computer Engineering and Minor in Computer Science. \n\n I've always had a passion residing in all things electronics, be it software or hardware. An unquenchable desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love. \n\n  This website has served as an instrument of learning. What has started off as a simple front-end application has led me to learning full-stack technologies.",
+            "\u30b9\u30c8\u30fc\u30cb\u30fc\u30d6\u30eb\u30c3\u30af\u5927\u5b66\u3092\u5352\u696d\u3057\u3001\u7406\u5b66\u58eb\u3001\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u5de5\u5b66\u5c02\u653b\u3001\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u79d1\u5b66\u5c02\u653b\u3092\u5352\u696d\u3057\u305f24\u6b73\u306e\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u30a8\u30f3\u30b8\u30cb\u30a2\u3002 \n\n\u79c1\u304c\u307b\u3068\u3093\u3069\u306a\u304b\u3063\u305f\u306e\u3067\u3001\u3059\u3079\u3066\u306e\u3082\u306e\u306e\u9078\u6319\u306b\u4f4f\u3093\u3067\u3044\u308b\u60c5\u71b1\u304c\u3042\u3063\u305f\u3001\u305d\u308c\u306f\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u304b\u30cf\u30fc\u30c9\u30a6\u30a7\u30a2\u3067\u3042\u308b\u3002\u79c1\u306f\u3001\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u8a00\u8a9e\u304b\u3089\u5b9f\u969b\u306e\u8a00\u8a9e\u5b66\u7fd2\u306b\u81f3\u308b\u307e\u3067\u3001\u3069\u3093\u306a\u3082\u306e\u3067\u3042\u308c\u3001\u5b66\u3073\u3001\u5275\u9020\u3057\u3001\u6539\u5584\u3059\u308b\u3088\u3046\u306b\u52aa\u529b\u3057\u3066\u304d\u307e\u3057\u305f\u3002\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u30d5\u30eb\u30bf\u30a4\u30e0\u306e\u4ed5\u4e8b\u306e\u5f8c\u3067\u3082\u3001\u79c1\u306f\u81ea\u7531\u306a\u6642\u9593\u306b\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u306b\u6ca1\u982d\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u308c\u306f\u3042\u306a\u305f\u304c\u611b\u3059\u308b\u3082\u306e\u306e\u7f8e\u3057\u3055\u3067\u3059\u3002  \n\n\u3053\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306f\u5b66\u7fd2\u306e\u9053\u5177\u3068\u3057\u3066\u5f79\u7acb\u3063\u3066\u3044\u307e\u3059\u3002\u30b7\u30f3\u30d7\u30eb\u306a\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u3068\u3057\u3066\u59cb\u307e\u3063\u305f\u3053\u3068\u306f\u3001\u79c1\u304c\u30d5\u30eb\u30b9\u30bf\u30c3\u30af\u6280\u8853\u3092\u5b66\u3076\u3053\u3068\u306b\u3064\u306a\u304c\u308a\u307e\u3057\u305f\u3002"
         ],
-        "japName": [
-            "",
-            "\u30c0\u30fc\u30c0\u30f3 \u30d5\u30a7\u30fc\u30b6\u30fc"
+        "name": [
+            "Dardan Fejza",
+            "Dardan Fejza"
         ],
+        "contact": {
+            "name": [
+                "Name",
+                "\u540d\u524d"
+            ],
+            "FormSubmit": [
+                "Send",
+                "\u9001\u308b"
+            ],
+            "header": [
+                "Contact",
+                "\u9023\u7d61"
+            ],
+            "question": [
+                "Have a question?",
+                "\u8cea\u554f\u3042\u308a\u307e\u3059\u304b\uff1f"
+            ],
+            "email": [
+                "Email",
+                "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9"
+            ],
+            "comment": [
+                "Comment",
+                "\u30b3\u30e1\u30f3\u30c8"
+            ]
+        },
         "glyphicons": [
             [
                 "Favorite languages",
@@ -137,52 +191,16 @@
                 "\u753b\u50cf\u51e6\u7406"
             ]
         ],
-        "summary": [
-            "24-year-old Computer Engineer whom graduated from Stony Brook University with a Bachelor\u2019s of Science, Major in Computer Engineering and Minor in Computer Science. \n\n I've always had a passion residing in all things electronics, be it software or hardware. An unquenchable desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love. \n\n  This website has served as an instrument of learning. What has started off as a simple front-end application has led me to learning full-stack technologies.",
-            "\u30b9\u30c8\u30fc\u30cb\u30fc\u30d6\u30eb\u30c3\u30af\u5927\u5b66\u3092\u5352\u696d\u3057\u3001\u7406\u5b66\u58eb\u3001\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u5de5\u5b66\u5c02\u653b\u3001\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u79d1\u5b66\u5c02\u653b\u3092\u5352\u696d\u3057\u305f24\u6b73\u306e\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u30a8\u30f3\u30b8\u30cb\u30a2\u3002 \n\n\u79c1\u304c\u307b\u3068\u3093\u3069\u306a\u304b\u3063\u305f\u306e\u3067\u3001\u3059\u3079\u3066\u306e\u3082\u306e\u306e\u9078\u6319\u306b\u4f4f\u3093\u3067\u3044\u308b\u60c5\u71b1\u304c\u3042\u3063\u305f\u3001\u305d\u308c\u306f\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u304b\u30cf\u30fc\u30c9\u30a6\u30a7\u30a2\u3067\u3042\u308b\u3002\u79c1\u306f\u3001\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u8a00\u8a9e\u304b\u3089\u5b9f\u969b\u306e\u8a00\u8a9e\u5b66\u7fd2\u306b\u81f3\u308b\u307e\u3067\u3001\u3069\u3093\u306a\u3082\u306e\u3067\u3042\u308c\u3001\u5b66\u3073\u3001\u5275\u9020\u3057\u3001\u6539\u5584\u3059\u308b\u3088\u3046\u306b\u52aa\u529b\u3057\u3066\u304d\u307e\u3057\u305f\u3002\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u30d5\u30eb\u30bf\u30a4\u30e0\u306e\u4ed5\u4e8b\u306e\u5f8c\u3067\u3082\u3001\u79c1\u306f\u81ea\u7531\u306a\u6642\u9593\u306b\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u306b\u6ca1\u982d\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u308c\u306f\u3042\u306a\u305f\u304c\u611b\u3059\u308b\u3082\u306e\u306e\u7f8e\u3057\u3055\u3067\u3059\u3002  \n\n\u3053\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306f\u5b66\u7fd2\u306e\u9053\u5177\u3068\u3057\u3066\u5f79\u7acb\u3063\u3066\u3044\u307e\u3059\u3002\u30b7\u30f3\u30d7\u30eb\u306a\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u3068\u3057\u3066\u59cb\u307e\u3063\u305f\u3053\u3068\u306f\u3001\u79c1\u304c\u30d5\u30eb\u30b9\u30bf\u30c3\u30af\u6280\u8853\u3092\u5b66\u3076\u3053\u3068\u306b\u3064\u306a\u304c\u308a\u307e\u3057\u305f\u3002"
+        "japName": [
+            "",
+            "\u30c0\u30fc\u30c0\u30f3 \u30d5\u30a7\u30fc\u30b6\u30fc"
         ],
-        "contact": {
-            "question": [
-                "Have a question?",
-                "\u8cea\u554f\u3042\u308a\u307e\u3059\u304b\uff1f"
-            ],
-            "header": [
-                "Contact",
-                "\u9023\u7d61"
-            ],
-            "email": [
-                "Email",
-                "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9"
-            ],
-            "comment": [
-                "Comment",
-                "\u30b3\u30e1\u30f3\u30c8"
-            ],
-            "name": [
-                "Name",
-                "\u540d\u524d"
-            ],
-            "FormSubmit": [
-                "Send",
-                "\u9001\u308b"
-            ]
-        },
-        "name": [
-            "Dardan Fejza",
-            "Dardan Fejza"
-        ]
-    },
-    "page0": {
-        "contentRaw": [
-            "<h1>ePortfolio</h1> <h2>Summary</h2> <p>I wanted to create a seemless, bi-langual website to provide a learning experince for myself and a demonstration of ability for potential employers.</p> <p>Going into this project, I had a basic understanding of the three main languages (JS, CSS, &amp; HTML). I am beleiver of learning from examples, and thus attempted to create a portfolio website from scratch. I primarily wanted a seemless experince of a bilangual website, and am satisfied with the result.</p> <h2>Languages</h2> <p>-Frontend: Javascript, JQuery, Angular JS, CSS, Bootstrap, and HTML</p> <p>-Backend: Node JS and JSON</p> <h2>Dynamics</h2> <p>There is a JSON file which contains all the text found on the front end. The two language options are stored in this JSON, English and Japanese. Based off the user selection, JS will parse the specified field in the specified language, and Angular will load it into the front end.</p> <p>NodeJS will periodically call both the Github and Bitbucket's API to request my account information and repositories, and write them in a local JSON file. By doing so, the \"Portfolio\" page will always be updated. This job is schedualed daily.</p> <h2>Future Plans</h2> <p>Going forward, I want this to serve as a baseline for future projects by expanding the functionality of this portfolio. - Expand the backend - Expand the front end - Provide an interface for other JS projects (games, applications, ect) that can easily be accessed</p> <h3>This page was generated from the README.md file of the git repository, converted from markdown to HTML using NodeJS, and fed here using JS.</h3>",
-            "<h1>e\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa</h1> <h2>\u8981\u7d04</h2> <p>\u79c1\u306f\u81ea\u5206\u306e\u305f\u3081\u306b\u5b66\u7fd2\u7d4c\u9a13\u3092\u63d0\u4f9b\u3057\u3001\u6f5c\u5728\u7684\u306a\u96c7\u7528\u4e3b\u306e\u305f\u3081\u306e\u80fd\u529b\u306e\u5b9f\u8a3c\u3092\u63d0\u4f9b\u3059\u308b\u305f\u3081\u306b\u3001\u30b7\u30f3\u30d7\u30eb\u3067\u3001\u53cc\u65b9\u5411\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u3092\u4f5c\u308a\u305f\u304c\u3063\u3066\u3044\u307e\u3057\u305f\u3002</p> <p>\u3053\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306b\u306f\u30013\u3064\u306e\u4e3b\u8981\u8a00\u8a9e\uff08JS\u3001CSS\u3001HTML\uff09\u306e\u57fa\u672c\u7684\u306a\u7406\u89e3\u304c\u3042\u308a\u307e\u3057\u305f\u3002\u79c1\u306f\u4f8b\u304b\u3089\u5b66\u3076\u3053\u3068\u306b\u6075\u307e\u308c\u3001\u6700\u521d\u304b\u3089\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u3092\u4f5c\u6210\u3057\u3088\u3046\u3068\u3057\u307e\u3057\u305f\u3002\u79c1\u306f\u4e3b\u306b\u3001\u4e8c\u56fd\u9593\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306e\u7121\u95a2\u5fc3\u306a\u7d4c\u9a13\u3092\u671b\u3093\u3067\u304a\u308a\u3001\u305d\u306e\u7d50\u679c\u306b\u6e80\u8db3\u3057\u3066\u3044\u307e\u3059\u3002</p> <h2>\u8a00\u8a9e</h2> <p>-Frontend\uff1aJavascript\u3001JQuery\u3001Angular JS\u3001CSS\u3001Bootstrap\u3001HTML</p> <p>-Backend\uff1a\u30ce\u30fc\u30c9JS\u3068JSON</p> <h2>\u30c0\u30a4\u30ca\u30df\u30af\u30b9</h2> <p>\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u306b\u3042\u308b\u3059\u3079\u3066\u306e\u30c6\u30ad\u30b9\u30c8\u3092\u542b\u3080JSON\u30d5\u30a1\u30a4\u30eb\u304c\u3042\u308a\u307e\u3059\u3002 2\u3064\u306e\u8a00\u8a9e\u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u3001\u3053\u306eJSON\u3001\u82f1\u8a9e\u3068\u65e5\u672c\u8a9e\u306b\u683c\u7d0d\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306e\u9078\u629e\u306b\u57fa\u3065\u3044\u3066\u3001JS\u306f\u6307\u5b9a\u3055\u308c\u305f\u8a00\u8a9e\u3067\u6307\u5b9a\u3055\u308c\u305f\u30d5\u30a3\u30fc\u30eb\u30c9\u3092\u89e3\u6790\u3057\u3001Angular\u306f\u305d\u308c\u3092\u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u306b\u8aad\u307f\u8fbc\u307f\u307e\u3059\u3002</p> <p>NodeJS\u306f\u5b9a\u671f\u7684\u306bGithub\u3068Bitbucket\u306e\u4e21\u65b9\u306eAPI\u3092\u547c\u3073\u51fa\u3057\u3066\u30a2\u30ab\u30a6\u30f3\u30c8\u60c5\u5831\u3068\u30ea\u30dd\u30b8\u30c8\u30ea\u3092\u30ea\u30af\u30a8\u30b9\u30c8\u3057\u3001\u305d\u308c\u3089\u3092\u30ed\u30fc\u30ab\u30eb\u306eJSON\u30d5\u30a1\u30a4\u30eb\u306b\u66f8\u304d\u51fa\u3057\u307e\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u300c\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u300d\u30da\u30fc\u30b8\u304c\u5e38\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u3053\u306e\u4ed5\u4e8b\u306f\u6bce\u65e5schedualed\u3055\u308c\u307e\u3059\u3002</p> <h2>\u4eca\u5f8c\u306e\u8a08\u753b</h2> <p>\u4eca\u5f8c\u306f\u3001\u3053\u306e\u30dd\u30fc\u30c8\u30d5\u30a9\u30ea\u30aa\u306e\u6a5f\u80fd\u3092\u62e1\u5f35\u3059\u308b\u3053\u3068\u3067\u3001\u5c06\u6765\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u30d9\u30fc\u30b9\u30e9\u30a4\u30f3\u3068\u3057\u3066\u6a5f\u80fd\u3055\u305b\u3066\u3044\u304d\u305f\u3044\u3068\u8003\u3048\u3066\u3044\u307e\u3059\u3002 - \u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u3092\u62e1\u5f35\u3059\u308b - \u30d5\u30ed\u30f3\u30c8\u30a8\u30f3\u30c9\u3092\u62e1\u5f35\u3059\u308b - \u7c21\u5358\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u308b\u4ed6\u306eJS\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\uff08\u30b2\u30fc\u30e0\u3001\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u306a\u3069\uff09\u306e\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9\u3092\u63d0\u4f9b\u3059\u308b</p> <h3>Google\u3092\u4f7f\u7528\u3057\u3066\u751f\u6210\u3055\u308c\u307e\u3059\u3002\u30da\u30fc\u30b8\u304c\u6700\u7d42\u7684\u306a\u3068\u304d\u306b\u624b\u4f5c\u696d\u3067\u7ffb\u8a33\u3059\u308b</h3>"
+        "languageheader": [
+            "Programming Languages",
+            "\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u8a00\u8a9e"
         ]
     },
     "page6": {
-        "volume": [
-            "",
-            ""
-        ],
         "header": [
             "Manga Reader v.01",
             "\u30de\u30f3\u30ac\u3092\u8aad\u3080 v.01"
@@ -204,84 +222,66 @@
                 "Lucifer and the Biscuit Hammer",
                 "\u60d1\u661f\u306e\u3055\u307f\u3060\u308c"
             ]
+        ],
+        "volume": [
+            "",
+            ""
         ]
     },
-    "page1": {
-        "repoHeader": [
-            "Summary of each repository, generated using their API",
-            "\u592b\u308c\u592b\u308c\u306e\u30ea\u30dd\u30b8\u30c8\u30ea\u306e\u5927\u7b4b\u3067\u3059. Git\u306eAPI\u3092\u4f7f\u3063\u3066\u30ea\u30b9\u30c8\u304c\u4f5c\u308a\u307e\u3057\u305f"
-        ],
-        "bitB": {
-            "following": "NA",
-            "repos": [
-                {
-                    "description": "slideshowmaker",
-                    "name": "SlideshowMaker",
-                    "image": ""
-                },
-                {
-                    "description": "eportfolio",
-                    "name": "ePortfolio",
-                    "image": ""
-                }
-            ],
-            "repoCount": "2",
-            "username": "dfejza",
-            "usernameLink": "https://bitbucket.org/dfejza/",
-            "followers": "NA"
+    "mangaDb": [
+        {
+            "name": "hoshinosamidare",
+            "coverPage": "./assets/manga/hoshinosamidare/hoshinosamidare.jpg",
+            "volumeCount": 1,
+            "volumePageCountList": [
+                212
+            ]
         },
-        "following": [
-            "Following",
-            "\u30d5\u30a9\u30ed\u30fc"
-        ],
-        "followers": [
-            "Followers",
-            "\u30d5\u30a9\u30ed\u30ef\u30fc"
-        ],
-        "repoCount": [
-            "Repositories",
-            "\u30ea\u30dd\u30b8\u30c8\u30ea"
-        ],
-        "projects": [
-            []
-        ],
-        "git": {
-            "following": 2,
-            "icon": "https://avatars2.githubusercontent.com/u/15079960?v=3",
-            "followers": 1,
-            "repoCount": 4,
-            "username": "dfejza",
-            "usernameLink": "https://github.com/dfejza",
-            "repos": [
-                {
-                    "fullname": "dfejza/Challonger",
-                    "link": "https://github.com/dfejza/Challonger",
-                    "description": "Tournament bracket simulator using REST API, C++  QT",
-                    "name": "Challonger",
-                    "image": "https://raw.githubusercontent.com/dfejza/Challonger/master/demo.gif"
-                },
-                {
-                    "fullname": "dfejza/ePortfolio-Creator",
-                    "link": "https://github.com/dfejza/ePortfolio-Creator",
-                    "description": "Java application to create your own Portfolio website, using a strait forward GUI. Has a live preview and ability to export to HTML,CSS andJS format.",
-                    "name": "ePortfolio-Creator",
-                    "image": "https://raw.githubusercontent.com/dfejza/ePortfolio-Creator/master/demo.gif"
-                },
-                {
-                    "fullname": "dfejza/snake",
-                    "link": "https://github.com/dfejza/snake",
-                    "description": "Simple game of snake, written in pure Javascript. No guides followed.",
-                    "name": "snake",
-                    "image": "https://raw.githubusercontent.com/dfejza/snake/master/demo.gif"
-                },
-                {
-                    "fullname": "dfejza/Website-Portfolio",
-                    "link": "https://github.com/dfejza/Website-Portfolio",
-                    "description": "An interface to strengthen my understanding of various web development languages.",
-                    "name": "Website-Portfolio",
-                    "image": "https://raw.githubusercontent.com/dfejza/Website-Portfolio/master/demo.gif"
-                }
+        {
+            "name": "tokyoghoul",
+            "coverPage": "./assets/manga/tokyoghoul/tokyoghoul.jpg",
+            "volumeCount": 1,
+            "volumePageCountList": [
+                224
+            ]
+        },
+        {
+            "name": "vagabond",
+            "coverPage": "./assets/manga/vagabond/vagabond.jpg",
+            "volumeCount": 2,
+            "volumePageCountList": [
+                248,
+                240
+            ]
+        },
+        {
+            "name": "yotsubato",
+            "coverPage": "./assets/manga/yotsubato/yotsubato.jpg",
+            "volumeCount": 1,
+            "volumePageCountList": [
+                224
+            ]
+        },
+        {
+            "name": "shigatsu",
+            "coverPage": "./assets/manga/shigatsu/shigatsu.jpg",
+            "volumeCount": 5,
+            "volumePageCountList": [
+                227,
+                202,
+                204,
+                195,
+                199
+            ]
+        },
+        {
+            "name": "sakamoto",
+            "coverPage": "./assets/manga/sakamoto/sakamoto.jpg",
+            "volumeCount": 2,
+            "volumePageCountList": [
+                184,
+                197
             ]
         }
-    }
+    ]
 }
